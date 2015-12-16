@@ -48,7 +48,8 @@ class Dependencia  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
             $registros = $sentencia->fetchAll();
-            return $registros;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
             
             } catch (Exception $exc) {
                 echo $exc;
@@ -66,6 +67,8 @@ class Dependencia  extends Conexion{
                  $sentencia =  $this->dblink->prepare($sql);
                  $sentencia->execute();
                 $this->dblink->commit();                            
+                $array=array('state'=>1);
+                return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -90,6 +93,8 @@ class Dependencia  extends Conexion{
              $sentencia =  $this->dblink->prepare($sql);
              $sentencia->execute();
             $this->dblink->commit();
+            $array=array('state'=>1);
+            return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -115,7 +120,8 @@ class Dependencia  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
-            return $resultado;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
       
         } catch (Exception $exc) {
             throw $exc;
@@ -126,7 +132,9 @@ class Dependencia  extends Conexion{
             $sql = "delete from tbdependencia where dep_Codigo = '".$this->getCodigo()."'";
              $sentencia =  $this->dblink->prepare($sql) ;       
              $sentencia->execute();
-                                                                    
+             $array=array('state'=>1);
+             return $array;                                                        
+             
         } catch (Exception $exc) {        
                                         
             throw $exc;
@@ -178,8 +186,8 @@ class Dependencia  extends Conexion{
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(); 
-            
-            return $resultado;
+             $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
          
         } catch (Exception $exc) {
             throw $exc;
