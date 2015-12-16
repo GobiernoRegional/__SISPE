@@ -16,9 +16,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>HOME | SISPE</title>
-        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+      <meta charset="UTF-8">
+      <title>HOME | SISPE</title>
+      <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 	    <!-- Bootstrap 3.3.2 -->
 	    <link href="../util/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	    <!-- Font Awesome Icons -->
@@ -86,7 +86,7 @@
                 </div>
             </form>
             <!-- FIN del formulario modal -->  
-             <!-- INICIO del formulario modal EDITAR -->
+            <!-- INICIO del formulario modal EDITAR -->
             <form name="frmeditar" id="frmeditar">
                 <div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">

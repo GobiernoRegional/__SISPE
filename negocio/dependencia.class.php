@@ -5,7 +5,7 @@ class Dependencia  extends Conexion{
     private $codigo;
     private $descripcion;
     private $telefono;
-    private  $distrito;
+    private $distrito;
     
     function getTelefono() {
         return $this->telefono;
@@ -41,14 +41,12 @@ class Dependencia  extends Conexion{
 
     function listar(){
         try {
-            $sql="select * from tbdependencia dep
-                  inner join tbubigeo_distrito udi on 
-                    (dep.dep_udi_codigo=udi.udi_codigo) order by dep_codigo asc";
+            $sql="select * from tbdependencia order by dep_codigo asc";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
             $registros = $sentencia->fetchAll();
-            $array=array('state'=>1,'resultado'=>$resultado);
+            $array=array('state'=>1,'resultado'=>$registros);
             return $array;
             
             } catch (Exception $exc) {
@@ -62,10 +60,10 @@ class Dependencia  extends Conexion{
         try {  
                 
                 $sql = "select fn_insertarDependencia( '".$this->getDescripcion()."',"
-                        . "'".$this->getTelefono()."',"."'".$this->getDistrito()."')";
+                        . "'".$this->getTelefono()."')";
                 
-                 $sentencia =  $this->dblink->prepare($sql);
-                 $sentencia->execute();
+                $sentencia =  $this->dblink->prepare($sql);
+                $sentencia->execute();
                 $this->dblink->commit();                            
                 $array=array('state'=>1);
                 return $array;
@@ -85,8 +83,7 @@ class Dependencia  extends Conexion{
             $sql = "update tbDependencia "
                     . "set "
                     . "dep_Nombre ='".$this->getDescripcion()."',"              
-                    . "dep_telefono ='".$this->getTelefono()."',"
-                    . "dep_udi_Codigo ='".$this->getDistrito()."'"
+                    . "dep_telefono ='".$this->getTelefono()."'"
                     . "where "
                     . "dep_Codigo = '".$this->getCodigo()."'";
             
@@ -110,8 +107,7 @@ class Dependencia  extends Conexion{
                 select
                         dep_Codigo,
                         dep_Nombre,
-                        dep_telefono,
-                        dep_udi_Codigo
+                        dep_telefono
                 from
                         tbdependencia
                 where
@@ -168,7 +164,8 @@ class Dependencia  extends Conexion{
                 }else{
                     $codigo=(string)("DEP".$codigoss);
                 }
-                return $codigo;                                                 
+                $array=array('state'=>1,'resultado'=>$codigo);
+                return $array;                                                   
         } catch (Exception $exc) {        
                                         
             throw $exc;
