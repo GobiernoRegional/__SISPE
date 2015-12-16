@@ -1,0 +1,73 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="principal.php" class="navbar-brand">SISPE</a>
+		</div>
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class=""><a href="principal.php">Inicio<span class="sr-only">(current)</span></a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestiones <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="cargo.php">Cargos</a></li>
+						<hr>
+						<li><a href="dependencia.php">Dependencias</a></li>
+						<hr>
+						<li><a href="area.php">Areas</a></li>
+						<hr>
+						<li><a href="personal.php">Personal</a></li>
+						<hr>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plan Perú <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Ejes Estratégicos</a></li>
+						<hr>
+						<li><a href="#">Objetivo Nacional</a></li>
+
+						<li><a href="#">Lineamientos de Política</a></li>
+
+						<li><a href="#">Prioridades</a></li>
+
+						<li><a href="#">Objetivos específicos, metas y acciones estratégicas</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PRDC <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Ejes Estratégicos</a></li>
+						<hr>
+						<li><a href="#">Objetivos Estratégicos</a></li>
+						<hr>
+						<li><a href="#">Políticas</a></li>
+						<li><a href="#">Variables</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Usuarios</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>  Danko Jared <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Configuración</a></li>
+						<hr>
+						<li><a href="#">Cerrar Sesión</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

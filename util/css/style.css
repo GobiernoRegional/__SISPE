@@ -1,0 +1,17 @@
+.footer__creado{
+	padding: 5px;
+    background-color: #42A5F5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: "Roboto",sans-serif;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+	.footer__creado__a{
+		color: #1d1d1d;
+	}
+		.footer__creado__a:hover{
+			color: white;
+		}
