@@ -35,30 +35,17 @@ class Sesion extends Conexion {
     public function iniciarSesion() {
         try {
             $sql = "
-<<<<<<< HEAD:SisPE/negocio/Sesion.class.php
                     select 
-                        usu_nombre as usuario, 
-=======
-                     select 
                         usu_Nombre as usuario, 
->>>>>>> 134963652b31b81f4a190f226190fbfb43a44c47:spe/negocio/Sesion.class.php
                         usu_estado,
                         usu_clave, 
                         per_nombre as nombre,
                         per_apellido as apellido,
-<<<<<<< HEAD:SisPE/negocio/Sesion.class.php
-                        car_nombre as cargo                        
-                        from 
-                        tbusuario u
-                        inner join tbpersonal p on (u.usu_per_codigo = p.per_codigo)
-                        inner join tbcargo c on(p.per_car_codigo = c.car_Codigo)
-=======
-                        car_nombre as cargo
+                        car_nombre as cargo                          
                     from 
                         tbusuario u
                         inner join tbpersonal p on (u.usu_per_Codigo = p.per_Codigo)
                         inner join tbcargo c on(p.per_car_Codigo = c.car_Codigo)
->>>>>>> 134963652b31b81f4a190f226190fbfb43a44c47:spe/negocio/Sesion.class.php
                     where 
                         upper(usu_nombre)= upper(:p_usuario)
                     ";
