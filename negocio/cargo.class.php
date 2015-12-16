@@ -70,7 +70,8 @@ class Cargo  extends Conexion{
             $sentencia = $this->dblink->prepare($sql)OR DIE ("No se pudo Modificar Este Registro");
             $sentencia->execute();
             $this->dblink->commit();
-            
+            $array=array('state'=>1);
+            return $array;
         } catch (Exception $exc) {
             $this->dblink->rollBack();
             throw $exc;
@@ -93,7 +94,8 @@ class Cargo  extends Conexion{
             $sentecia = $this->dblink->prepare($sql) OR DIE ("No se pudo leer estos Registro");
             $sentecia->execute();
             $resultado = $sentecia->fetch(PDO::FETCH_ASSOC);
-            return $resultado;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
         } catch (Exception $exc) {
             throw $exc;
         }            
@@ -103,7 +105,8 @@ class Cargo  extends Conexion{
             $sql = "delete from tbcargo where car_codigo = '".$this->getCodigo()."'";
             $sentencia = $this->dblink->prepare($sql) OR DIE ("No se pudo borrar Este Registro");
             $sentencia->execute();
-                                                              
+            $array=array('state'=>1);
+            return $array;                            
         } catch (Exception $exc) {        
                                         
             throw $exc;
@@ -135,7 +138,8 @@ class Cargo  extends Conexion{
                 }else{
                     $codigo=(string)("CAR".$codigoss);
                 }
-                return $codigo;                                                 
+                $array=array('state'=>1,'resultado'=>$codigo);
+                return $array;                                                    
         } catch (Exception $exc) {        
                                         
             throw $exc;

@@ -23,6 +23,10 @@
 	    <link href="../util/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	    <!-- Font Awesome Icons -->
 	    <link href="../util/lte/css/font-awesome.css" rel="stylesheet" type="text/css" />
+      <!-- DATA TABLES -->
+      <link href="../util/lte/plugins/datatables/dataTables.bootstrap.css" type="text/css" rel="stylesheet"/>
+      <!-- SWEET ALERT -->
+      <link rel="stylesheet" href="../util/sweet/sweetalert.css">
 	    <!-- CSS Propio -->
 	    <link href="../util/css/style.css" rel="stylesheet" type="text/css" />
 	    <!-- ICONO -->
@@ -48,7 +52,7 @@
                 </div>
             </div>
 
-            <!-- INICIO del formulario modal -->
+            <!-- INICIO del formulario modal GRABAR -->
             <form name="frmgrabar" id="frmgrabar">
                 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -70,6 +74,40 @@
                               </div>
                               <div class="col-lg-8">
                                   <input type="text" class="form-control" name="txtcargo" id="txtcargo"><br>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="submit" class="btn btn-success" aria-hidden="true">Grabar los datos</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" id="btncerrar">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
+            <!-- FIN del formulario modal -->  
+             <!-- INICIO del formulario modal EDITAR -->
+            <form name="frmeditar" id="frmeditar">
+                <div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="titulomodal">Editar cargo</h4>
+                      </div>
+                      <div class="modal-body">
+                          <div class="row">
+                              <div class="col-lg-4">
+                                  <label>Código:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                  <input type="text" class="form-control" name="txtcodigoedit" id="txtcodigoedit" readonly="readonly"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                  <label>Cargo:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                  <input type="text" class="form-control" name="txtcargoedit" id="txtcargoedit"><br>
                               </div>
                           </div>
                       </div>
@@ -107,6 +145,11 @@
     <script src="../util/jquery/jquery.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../util/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <!-- DATA TABLE -->
+    <script src="../util/lte/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="../util/lte/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+    <!-- SWEET JS -->
+    <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/cargo.js"></script>
   </body>
