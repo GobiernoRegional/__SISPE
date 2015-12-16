@@ -3,4 +3,4 @@
 	$objDependencia = new Dependencia();
 	$resultado=$objDependencia->ObtenerCodigo();
 	echo json_encode($resultado);
-?>
+?>  
