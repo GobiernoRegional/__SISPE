@@ -73,7 +73,7 @@
                                   <label>Cargo:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcargo" id="txtcargo"><br>
+                                  <input type="text" class="form-control" name="txtcargo" id="txtcargo" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>
@@ -107,7 +107,7 @@
                                   <label>Cargo:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcargoedit" id="txtcargoedit"><br>
+                                  <input type="text" class="form-control" name="txtcargoedit" id="txtcargoedit" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>

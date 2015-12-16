@@ -62,6 +62,9 @@ $('#frmeditar').submit(function(e){
 function limpiarFormulario(){
 	$("#txtcargo").val("");
 }
+function camposMayus(field){
+  field.value=field.value.toUpperCase();
+}
 function limpiarFormularioEditar(){
 	$("#txtcodigoedit").val("");
 	$("#txtcargoedit").val("");
