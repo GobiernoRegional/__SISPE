@@ -29,7 +29,8 @@ class Cargo  extends Conexion{
             $sentecia = $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentecia->execute();
             $resultado = $sentecia->fetchAll();
-            return $resultado;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
         } catch (Exception $exc) {
             echo $exc;
         }
@@ -46,7 +47,8 @@ class Cargo  extends Conexion{
                 $sentencia->bindParam(":descrip",$this->getDescripcion());
                 $sentencia->execute();
                 $this->dblink->commit();                           
-            
+                $array=array('state'=>1);
+                return $array;
         } catch (Exception $exc) {
             $this->dblink->rollBack();
             throw $exc;
