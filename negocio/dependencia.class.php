@@ -46,6 +46,7 @@ class Dependencia  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
             $registros = $sentencia->fetchAll();
+
             $array=array('state'=>1,'resultado'=>$registros);
             return $array;
             
@@ -64,7 +65,8 @@ class Dependencia  extends Conexion{
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
-                $this->dblink->commit();                            
+                $this->dblink->commit();  
+
                 $array=array('state'=>1);
                 return $array;
             
@@ -90,6 +92,7 @@ class Dependencia  extends Conexion{
              $sentencia =  $this->dblink->prepare($sql);
              $sentencia->execute();
             $this->dblink->commit();
+
             $array=array('state'=>1);
             return $array;
             
@@ -116,6 +119,7 @@ class Dependencia  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+
             $array=array('state'=>1,'resultado'=>$resultado);
             return $array;
       
@@ -128,6 +132,7 @@ class Dependencia  extends Conexion{
             $sql = "delete from tbdependencia where dep_Codigo = '".$this->getCodigo()."'";
              $sentencia =  $this->dblink->prepare($sql) ;       
              $sentencia->execute();
+
              $array=array('state'=>1);
              return $array;                                                        
              
@@ -164,6 +169,7 @@ class Dependencia  extends Conexion{
                 }else{
                     $codigo=(string)("DEP".$codigoss);
                 }
+                
                 $array=array('state'=>1,'resultado'=>$codigo);
                 return $array;                                                   
         } catch (Exception $exc) {        
