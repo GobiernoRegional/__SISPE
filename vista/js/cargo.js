@@ -17,12 +17,13 @@ $('#frmgrabar').submit(function(e){
        			listar();
        			cargarCodigo();
        			$('#myModal').modal('hide');
+       			limpiarFormulario();
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
         		cargarCodigo();
         		$('#myModal').modal('hide');
-        		
+        		limpiarFormulario();
       		}                                                           
     	}
   	})
@@ -58,6 +59,13 @@ $('#frmeditar').submit(function(e){
     	swal("Ha ocurrido un error", "", "error");
   	})
 });
+function limpiarFormulario(){
+	$("#txtcargo").val("");
+}
+function limpiarFormularioEditar(){
+	$("#txtcodigoedit").val("");
+	$("#txtcargoedit").val("");
+}
 function listar(){
 	$("#bodycargos").empty();
 	$.ajax({
