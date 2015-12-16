@@ -39,7 +39,8 @@ class Area  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
             $registros = $sentencia->fetchAll();
-            return $registros;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
             
             } catch (Exception $exc) {
                 echo $exc;
@@ -56,7 +57,9 @@ class Area  extends Conexion{
                 
                  $sentencia =  $this->dblink->prepare($sql);
                  $sentencia->execute();
-                $this->dblink->commit();                            
+                $this->dblink->commit();
+                $array=array('state'=>1);
+                return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -79,7 +82,9 @@ class Area  extends Conexion{
             
              $sentencia =  $this->dblink->prepare($sql);
              $sentencia->execute();
-            $this->dblink->commit();
+             $this->dblink->commit();
+             $array=array('state'=>1);
+                return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -104,7 +109,8 @@ class Area  extends Conexion{
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
             $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
-            return $resultado;
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
       
         } catch (Exception $exc) {
             throw $exc;
@@ -115,6 +121,8 @@ class Area  extends Conexion{
             $sql = "delete from tbarea where are_Codigo = '".$this->getCodigo()."'";
              $sentencia =  $this->dblink->prepare($sql) ;       
              $sentencia->execute();
+             $array=array('state'=>1);
+             return $array; 
                                                                     
         } catch (Exception $exc) {        
                                         
