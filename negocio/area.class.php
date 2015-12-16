@@ -33,13 +33,13 @@ class Area  extends Conexion{
     function listar(){
         try {
             $sql="select * from tbarea are
-                  inner join tbdependencia dep on 
-                    (are.are_dep_codigo=dep.dep_codigo) order by are_codigo asc";
+                inner join tbdependencia dep on 
+                (are.are_dep_codigo=dep.dep_codigo) order by are_codigo asc";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
             $registros = $sentencia->fetchAll();
-            $array=array('state'=>1,'resultado'=>$resultado);
+            $array=array('state'=>1,'resultado'=>$registros);
             return $array;
             
             } catch (Exception $exc) {
@@ -55,8 +55,8 @@ class Area  extends Conexion{
                 $sql = "select fn_insertarArea( '".$this->getDescripcion()."',"
                         ."'".$this->getDependencia()."')";
                 
-                 $sentencia =  $this->dblink->prepare($sql);
-                 $sentencia->execute();
+                $sentencia =  $this->dblink->prepare($sql);
+                $sentencia->execute();
                 $this->dblink->commit();
                 $array=array('state'=>1);
                 return $array;
@@ -80,11 +80,11 @@ class Area  extends Conexion{
                     . "where "
                     . "are_Codigo = '".$this->getCodigo()."'";
             
-             $sentencia =  $this->dblink->prepare($sql);
-             $sentencia->execute();
-             $this->dblink->commit();
-             $array=array('state'=>1);
-                return $array;
+            $sentencia =  $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $this->dblink->commit();
+            $array=array('state'=>1);
+            return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -119,10 +119,10 @@ class Area  extends Conexion{
     public function eliminar() {
         try {
             $sql = "delete from tbarea where are_Codigo = '".$this->getCodigo()."'";
-             $sentencia =  $this->dblink->prepare($sql) ;       
-             $sentencia->execute();
-             $array=array('state'=>1);
-             return $array; 
+            $sentencia =  $this->dblink->prepare($sql) ;       
+            $sentencia->execute();
+            $array=array('state'=>1);
+            return $array; 
                                                                     
         } catch (Exception $exc) {        
                                         
@@ -157,7 +157,8 @@ class Area  extends Conexion{
                 }else{
                     $codigo=(string)("ARE".$codigoss);
                 }
-                return $codigo;                                                 
+                $array=array('state'=>1,'resultado'=>$codigo);
+            return $array;                                               
         } catch (Exception $exc) {        
                                         
             throw $exc;
