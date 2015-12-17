@@ -4,7 +4,7 @@
 	require_once '../negocio/area.class.php';
 	$objArea = new Area();
 	$objArea->setDescripcion($area);
-    $objArea->setDependencia($dependencia);
+        $objArea->setDependencia($dependencia);
 	$resultado=$objArea->agregar();
 	echo json_encode($resultado);
 ?>

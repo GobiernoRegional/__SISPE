@@ -26,7 +26,7 @@
 	    <!-- CSS Propio -->
 	    <link href="../util/css/style.css" rel="stylesheet" type="text/css" />
 	    <!-- ICONO -->
-	    <link rel="shortcut icon" href="../util/logins/img/grl2.png">
+            <link rel="shortcut icon" href="../util/logins/img/grl3.png">
     </head>
     <body>
         <?php

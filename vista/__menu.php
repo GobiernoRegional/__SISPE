@@ -11,7 +11,7 @@
             <ul class="treeview-menu">
                 <li id="menucargo"><a href="cargo.php" id="cargos"><i class="fa fa-crosshairs" ></i> Cargos</a></li>
                 <li id="menuinstitucion"><a href="institucion.php" id="areas"><i class="fa fa-university"></i> Institución</a></li>
-                <li id="menupersonal"><a href="personal.php" id="personal"><i class="fa fa-users"></i> Personal</a></li>
+                <li id="menupersonal"><a href="personal.php" id="personal"><i class="fa fa-user-plus"></i> Personal</a></li>
                 <li class="menu-division"></li>
                 <li id="menuusuarios"><a href="usuario.php" id="usuarios"><i class="fa fa-user" ></i> Usuarios</a></li>
             </ul>
