@@ -34,7 +34,7 @@ class ObjetivoEspNac  extends Conexion{
 
     function listar(){
         try {
-            $sql="select * from tbobjetivo_especificonacional oes
+            $sql="select * from tbobjetivo_especificonacional oen
                 inner join  tbejeestrategico eje on
                 (oen.oen_eje_codigo = eje.eje_codigo) order by 1";
             
@@ -95,13 +95,13 @@ class ObjetivoEspNac  extends Conexion{
         try {
             $sql = "
                 select
-                        oes_codigo,
-                        oes_nombre,
-                        oes_eje_codigo
+                        oen_codigo,
+                        oen_nombre,
+                        oen_eje_codigo
                 from
-                        tbobjetivo_especifico
+                        tbobjetivo_especificonacional
                 where
-                        oes_codigo = '".$codigo."'
+                        oen_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
