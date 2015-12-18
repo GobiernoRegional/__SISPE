@@ -54,7 +54,7 @@ class Objetivo  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_objetivonacionalinsertar( '".$this->getNombre()."',"
+                $sql = "select fn_objetivoregionalinsertar( '".$this->getNombre()."',"
                         ."'".$this->getEje()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
@@ -75,7 +75,7 @@ class Objetivo  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_objetivonacionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getEje()."')";
+            $sql = "select fn_objetivoregionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getEje()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -115,7 +115,7 @@ class Objetivo  extends Conexion{
     }
     public function eliminar() {
         try {
-            $sql = "select fn_objetivonacionaleliminar('".$this->getCodigo()."')";
+            $sql = "select fn_objetivoregionaleliminar('".$this->getCodigo()."')";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);

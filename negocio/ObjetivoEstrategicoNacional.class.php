@@ -1,41 +1,42 @@
 <?php
 
 require_once '../datos/conexion.php';
-class Accion  extends Conexion{
+class ObjetivoEspNac  extends Conexion{
     private $codigo;
-    private $descripcion;    
-    private  $objetivo;
+    private $nombre;    
+    private  $eje;
     
+    function getEje() {
+      return $this->eje;
+    }   
+
     function getCodigo() {
       return $this->codigo;
     }
 
-    function getDescripcion() {
-      return $this->descripcion;
+    function getNombre() {
+      return $this->nombre;
     }
 
-    function getObjetivo() {
-      return $this->objetivo;
-    }
-
+   
     function setCodigo($codigo) {
       $this->codigo = $codigo;
     }
 
-    function setDescripcion($descripcion) {
-      $this->descripcion = $descripcion;
+    function setNombre($nombre) {
+      $this->nombre = $nombre;
     }
-
-    function setObjetivo($objetivo) {
-      $this->objetivo = $objetivo;
+    
+    function setEje($eje) {
+      $this->eje = $eje;
     }
-
 
 
     function listar(){
         try {
-            $sql="select * from  tbaccion acc "
-                . "inner join tbobjetivo_especificonacional  oen on (acc.acc_oen_codigo = oen.oen_codigo)";
+            $sql="select * from tbobjetivo_especificonacional oes
+                inner join  tbejeestrategico eje on
+                (oen.oen_eje_codigo = eje.eje_codigo) order by 1";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
@@ -53,8 +54,8 @@ class Accion  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_accioninsertar( '".$this->getDescripcion()."',"
-                        ."'".$this->getObjetivo()."')";
+                $sql = "select fn_objetivonacionalinsertar( '".$this->getNombre()."',"
+                        ."'".$this->getEje()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -74,7 +75,7 @@ class Accion  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_accionmodificar('".$this->getCodigo()."','".$this->getDescripcion()."','".$this->getObjetivo()."')";
+            $sql = "select fn_objetivonacionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getEje()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -94,13 +95,13 @@ class Accion  extends Conexion{
         try {
             $sql = "
                 select
-                        acc_codigo,
-                        acc_descripcion,
-                        acc_obj_codigo
+                        oes_codigo,
+                        oes_nombre,
+                        oes_eje_codigo
                 from
-                        tbaccion
+                        tbobjetivo_especifico
                 where
-                        acc_codigo = '".$codigo."'
+                        oes_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
@@ -114,7 +115,7 @@ class Accion  extends Conexion{
     }
     public function eliminar() {
         try {
-            $sql = "delete from tbaccion where acc_codigo = '".$this->getCodigo()."'";
+            $sql = "select fn_objetivonacionaleliminar('".$this->getCodigo()."')";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);
@@ -132,26 +133,26 @@ class Accion  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {               
-                $sql = "Select acc_codigo from tbaccion order by acc_codigo desc limit 1";
+                $sql = "Select oen_codigo from tbobjetivo_especificonacional order by oen_codigo desc limit 1";
                 
                 $sentencia =  $this->dblink->prepare($sql);            
                 $sentencia->execute();
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["acc_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["oen_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
                 if($codigoss>=0 && $codigoss <10){
                     
-                    $codigo=(string)("ACC00".$codigoss);
+                    $codigo=(string)("OEN00".$codigoss);
                     
                 }else if($codigoss>=10&& $codigoss <100){
                     
-                    $codigo=(string)("ACC0".$codigoss);                  
+                    $codigo=(string)("OEN0".$codigoss);                  
                 }else{
-                    $codigo=(string)("ACC".$codigoss);
+                    $codigo=(string)("OEN".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
             return $array;                                               
@@ -163,10 +164,10 @@ class Accion  extends Conexion{
         
     }
     
-    public function obtenerObejetivo() {
+    public function obtenerEjes() {
         try {
             $sql = "
-                   Select oen_codigo,oen_nombre from tbobjetivo_especificonacional order by oen_nombre
+                    select eje_codigo, eje_nombre from tbejeestrategico order by eje_nombre asc
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();

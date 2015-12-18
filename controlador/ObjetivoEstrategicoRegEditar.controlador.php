@@ -6,7 +6,7 @@
 	$objObjetivo = new Objetivo();
 	$objObjetivo->setCodigo($codigo);
 	$objObjetivo->setNombre($objetivo);
-        $objObjetivo->setObjetivo($eje);
+        $objObjetivo->setEje($eje);
 	$resultado=$objObjetivo->editar();
 	echo json_encode($resultado);
 ?>
