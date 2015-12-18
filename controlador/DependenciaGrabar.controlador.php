@@ -7,6 +7,7 @@
 	$objDependencia->setCodigo($codigo);
 	$objDependencia->setDescripcion($dependencia);
 	$objDependencia->setTelefono($telefono);
+        $objDependencia->setDistrito("distrito");
 	$resultado=$objDependencia->agregar();
         print_r($resultado);
 	echo json_encode($resultado);
