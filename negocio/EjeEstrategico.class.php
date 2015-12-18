@@ -51,7 +51,7 @@ class EjeEstrategico  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_insertarEjeEstrategico( '".$this->getNombre()."',"
+                $sql = "select fn_ejeestrategicoinsertar( '".$this->getNombre()."',"
                         ."'".$this->getSubcapitulo()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
@@ -131,20 +131,6 @@ class EjeEstrategico  extends Conexion{
         
     }
     
-    public function obtenerSubCapitulo() {
-        try {
-            $sql = "
-                    select sub_codigo, sub_nombre from tbsubcapitulos order by sub_nombre asc
-                    ";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(); 
-            
-            return $resultado;
-         
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
+    
 
 }

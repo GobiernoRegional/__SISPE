@@ -62,12 +62,7 @@
                       </div>
                       <div class="modal-body">
                           <div class="row">
-                              <div class="col-lg-4">
-                                  <label>Código:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcodigo" id="txtcodigo" readonly="readonly"><br>
-                              </div>
+                              
                               <div class="col-lg-4">
                                   <label>Nombre:</label>
                               </div>

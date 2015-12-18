@@ -6,7 +6,7 @@ $('#frmgrabar').submit(function(e){
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/EjeGrabar.controlador.php",
+    	url: "../controlador/EjeEstrategicoGrabar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmgrabar").serialize() ,
@@ -35,7 +35,7 @@ $('#frmeditar').submit(function(e){
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/EjeEditar.controlador.php",
+    	url: "../controlador/EjeEstrategicoEditar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmeditar").serialize() ,
@@ -108,7 +108,7 @@ function editar(id){
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/cargarEjeEstrategico.controlador.php",
+    	url: "../controlador/EjeEstrategicoCargarCodigo.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,
@@ -130,7 +130,7 @@ function eliminar(id){
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/EjeEliminar.controlador.php",
+    	url: "../controlador/EjeEstrategicoEliminar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,
