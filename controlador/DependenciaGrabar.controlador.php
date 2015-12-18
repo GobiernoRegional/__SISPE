@@ -8,5 +8,6 @@
 	$objDependencia->setDescripcion($dependencia);
 	$objDependencia->setTelefono($telefono);
 	$resultado=$objDependencia->agregar();
+        print_r($resultado);
 	echo json_encode($resultado);
 ?>
