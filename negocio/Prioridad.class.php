@@ -52,7 +52,7 @@ class Prioridad  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_insertarPrioridad( '".$this->getNombre()."',"
+                $sql = "select fn_prioridadinsertar('".$this->getNombre()."',"
                         ."'".$this->getEje()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);

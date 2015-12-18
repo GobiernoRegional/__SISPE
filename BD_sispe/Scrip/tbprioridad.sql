@@ -46,7 +46,7 @@ $BODY$
   $BODY$
   LANGUAGE plpgsql;
   
---select fn_prioridadinsertar('ABCDFS');
---select fn_prioridadmodificar('POL001','rteerASA');
+--select fn_prioridadinsertar('ABCDFS','');
+--select fn_prioridadmodificar('POL001','rteerASA','');
 
 --select * from tbprioridad
