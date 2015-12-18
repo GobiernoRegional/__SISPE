@@ -6,7 +6,7 @@ $('#frmgrabar').submit(function(e){
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/grabarCargo.controlador.php",
+    	url: "../controlador/EjeGrabar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmgrabar").serialize() ,
@@ -35,7 +35,7 @@ $('#frmeditar').submit(function(e){
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/editarCargo.controlador.php",
+    	url: "../controlador/EjeEditar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmeditar").serialize() ,
@@ -59,31 +59,21 @@ $('#frmeditar').submit(function(e){
     	swal("Ha ocurrido un error", "", "error");
   	})
 });
-function camposMayus(field){
-  field.value=field.value.toUpperCase();
-}
-function limpiarFormulario(){
-  $("#txtcargo").val("");
-}
-function limpiarFormularioEditar(){
-	$("#txtcodigoedit").val("");
-	$("#txtcargoedit").val("");
-}
 function listar(){
-	$("#bodycargos").empty();
+	$("#bodyejeestrategico").empty();
 	$.ajax({
-    	url: "../controlador/listarcargo.controlador.php",
+    	url: "../controlador/EjeEstrategicoListar.php",
     	type: "post",
     	dataType: "json",
     	success: function(DataJson){
       		if(DataJson.state){
        			for(data in DataJson.resultado){
-       				$("#bodycargos").append("<tr><td>"+DataJson.resultado[data].car_codigo+"</td><td>"+DataJson.resultado[data].car_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].car_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].car_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+       				$("#bodyejeestrategico").append("<tr><td>"+DataJson.resultado[data].eje_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
        			}
       		}else{                           
         		
       		}
-          $("#tablecargos").DataTable();                                                               
+          $("#tablejeestrategico").DataTable();                                                               
     	}
   	})
   	.fail(function(){
@@ -92,7 +82,7 @@ function listar(){
 }
 function cargarCodigo(){
 	$.ajax({
-    	url: "../controlador/obtenercodigoControlador.controlador.php",
+    	url: "../controlador/EjeObtenerCodigo.controlador.php",
     	type: "post",
     	dataType: "json",
     	success: function(DataJson){
@@ -107,19 +97,25 @@ function cargarCodigo(){
     	//swal("Ha ocurrido un error", "", "error");
   	});
 }
+function camposMayus(field){
+  field.value=field.value.toUpperCase();
+}
+function limpiarFormulario(){
+  $("#txtnombre").val("");
+}
 function editar(id){
 	var parametro={
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/cargarCargoCodigo.controlador.php",
+    	url: "../controlador/cargarEjeEstrategico.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,
     	success: function(DataJson){
       		if(DataJson.state){
-   				$("#txtcodigoedit").val(DataJson.resultado.car_codigo);
-   				$("#txtcargoedit").val(DataJson.resultado.car_nombre);
+   				$("#txtcodigoedit").val(DataJson.resultado.eje_codigo);
+   				$("#txtnombreedit").val(DataJson.resultado.eje_nombre);
       		}else{                           
         		
       		}                                                           
@@ -134,7 +130,7 @@ function eliminar(id){
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/eliminarCargo.controlador.php",
+    	url: "../controlador/EjeEliminar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,

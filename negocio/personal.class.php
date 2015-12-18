@@ -16,6 +16,8 @@ class Personal extends Conexion{
     private  $telefono;
     private  $correo;
     private  $estado;
+    private  $usuario;
+    private  $pass;
     
     function getCodpersona() {
         return $this->codpersona;
@@ -67,6 +69,14 @@ class Personal extends Conexion{
 
     function getEstado() {
         return $this->estado;
+    }
+
+    function getUsuario(){
+        return $this->usuario;
+    }
+
+    function getPass(){
+        return $this->pass;
     }
 
     function setCodpersona($codpersona) {
@@ -121,8 +131,15 @@ class Personal extends Conexion{
         $this->estado = $estado;
     }
 
+    function setUsuario($usuario){
+        $this->usuario=$usuario;
+    }
+
+    function setPass($pass){
+        $this->pass=$pass;
+    }
     
-function  listar(){
+    function  listar(){
         try {
             $sql="
                 Select
@@ -130,12 +147,12 @@ function  listar(){
                 from
                     tbpersonal per
                     inner join tbcargo car on (per.per_car_codigo=car.car_codigo)
-                    inner join tbubigeo_distrito udi on (per.per_udi_codigo=udi.udi_codigo)
                     inner join tbarea ar on (per.per_are_codigo=ar.are_codigo)             
                   ";
             $sentecia = $this->dblink->query($sql)OR DIE ("No se pudo Leer Estos Registro");
             $resultado = $sentecia->fetchAll();
-            return $resultado;
+            $array = array('state' =>1 ,'resultado'=>$resultado);
+            return $array;
         } catch (Exception $exc) {
             echo $exc->getMessage();
         }
@@ -156,9 +173,7 @@ function  listar(){
                     . "per_correo ='".$this->getCorreo()."',"
                     . "per_fnac ='".$this->getFechaNacimiento()."',"
                     . "per_telefono ='".$this->getTelefono()."',"
-                    . "per_estado ='".$this->getEstado()."',"
                     . "per_car_Codigo ='".$this->getCargo()."',"
-                    . "per_udi_Codigo ='".$this->getDistrito()."',"
                     . "per_are_Codigo ='".$this->getInstitucion()."'" 
                     . "where "
                     . "per_Codigo = '".$this->getCodpersona()."'";
@@ -172,7 +187,8 @@ function  listar(){
             throw $exc;
         }
         
-        return true;        
+        $array = array('state' =>1);
+        return $array;       
     }
     
     public function leerDatos($codigo) {
@@ -190,20 +206,17 @@ function  listar(){
                         per_telefono,
                         per_estado,
                         per_car_Codigo,
-                        per_udi_Codigo,
-                        (udi_nombre||' (' || upr_nombre||')')as ciudad,
                         per_are_Codigo
                 from
                         tbpersonal  per
-                        inner join tbubigeo_distrito dis on(per.per_udi_codigo = dis.udi_codigo)
-                        inner join tbubigeo_provincia pr on (dis.udi_upr_codigo=pr.upr_codigo)
                 where
                         per_Codigo = '".$codigo."'
                 ";
             $sentecia = $this->dblink->prepare($sql) OR DIE ("No se pudo leer estos Registro");
             $sentecia->execute();
             $resultado = $sentecia->fetch(PDO::FETCH_ASSOC);
-            return $resultado;
+            $array = array('state' =>1 ,'resultado'=>$resultado);
+            return $array;
         } catch (Exception $exc) {
             throw $exc;
         }            
@@ -218,7 +231,8 @@ function  listar(){
                                         
             throw $exc;
         }        
-        return true;
+        $array = array('state' =>1);
+        return $array;   
         
     }
     public function agregarpersonal() {
@@ -228,7 +242,7 @@ function  listar(){
         
             $sql= "select fn_insertarpersonal('".$this->getApellidos()."','".$this->getNombres()."','".$this->getDni()."',
                     '".$this->getFechaNacimiento()."','".$this->getInstitucion()."','".$this->getDireciones()."',
-                    '".$this->getSexo()."','".$this->getCargo()."','".$this->getDistrito()."','".$this->getCorreo()."','".$this->getTelefono()."','".$this->getEstado()."')
+                    '".$this->getSexo()."','".$this->getCargo()."','".$this->getCorreo()."','".$this->getTelefono()."','1','".$this->getUsuario()."','".$this->getPass()."')
                     ";
                                        
                 $sentencia = $this->dblink->prepare($sql);
@@ -240,41 +254,10 @@ function  listar(){
             throw $exc;
         }
         
-        return true;        
+        $array = array('state' =>1);
+        return $array;           
     }
-
-    public function obtenerCargos() {
-        try {
-            $sql = "
-                select
-                        car_Codigo,
-                        car_Nombre
-                from
-                        tbcargo
-                ";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll();
-            
-            return $resultado;
-            
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
-    public function obtenerArea() {
-         try {
-            $sql = "select are_codigo, are_nombre from tbarea order by are_nombre asc";            
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll();
-            
-            return $resultado;
-         
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
+    /*
     public function obtenerCiudades() {
         try {
             $sql = "
@@ -291,7 +274,7 @@ function  listar(){
             throw $exc;
         }
     }
-
+    */
 
 
 }
