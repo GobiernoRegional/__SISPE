@@ -12,6 +12,7 @@ $('#frmgrabar').submit(function(e){
     	data:$("#frmgrabar").serialize() ,
 
     	success: function(DataJson){
+            
       		if(DataJson.state){
       			swal("Registro Correcto", "", "success");
        			listar();
