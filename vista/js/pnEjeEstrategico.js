@@ -62,7 +62,7 @@ $('#frmeditar').submit(function(e){
 function listar(){
 	$("#bodyejeestrategico").empty();
 	$.ajax({
-    	url: "../controlador/EjeListar.controlador.php",
+    	url: "../controlador/EjeEstrategicoListar.php",
     	type: "post",
     	dataType: "json",
     	success: function(DataJson){

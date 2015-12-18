@@ -29,9 +29,9 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Plan Perú <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Ejes Estratégicos</a></li>
+						<li><a href="pnEjeEstrategico.php">Ejes Estratégicos</a></li>
 						<hr>
-						<li><a href="#">Objetivo Nacional</a></li>
+						<li><a href="pnObjetivoNacional.php">Objetivo Nacional</a></li>
 
 						<li><a href="#">Lineamientos de Política</a></li>
 
