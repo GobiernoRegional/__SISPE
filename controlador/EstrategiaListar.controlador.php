@@ -1,7 +1,7 @@
 <?php
-    require_once '../negocio/area.class.php';
-    $objArea = new Area(); 
-    $resultado=$objArea->listar();
+    require_once '../negocio/Estrategia.class.php';
+    $objEstrategia = new Estrategia(); 
+    $resultado=$objEstrategia->listar();
     echo json_encode($resultado);
 ?>
     

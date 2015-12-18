@@ -1,6 +1,6 @@
 <?php
-	require_once '../negocio/ejesEstrategico.class.php';
-	$objEje = new Eje();
-	$resultado=$objEje->obtenerSubcapitulos();
+	require_once '../negocio/Inversion.class.php';
+	$objInversion = new Inversion();
+	$resultado=$objInversion->obtenerTipoSector();
 	echo json_encode($resultado);
 ?>

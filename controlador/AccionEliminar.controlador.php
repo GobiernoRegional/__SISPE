@@ -1,8 +1,8 @@
 <?php
 	$codigo=$_POST["codigo"];
-	require_once '../negocio/area.class.php';
-	$objArea = new Area();
-	$objArea->setCodigo($codigo);
-	$resultado=$objArea->eliminar();
+        require_once '../negocio/Accion.class.php';
+	$objAccion = new Accion();
+	$objAccion->setCodigo($codigo);
+	$resultado=$objAccion->eliminar();
 	echo json_encode($resultado);
 ?>

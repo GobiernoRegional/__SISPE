@@ -1,42 +1,76 @@
 <?php
 
 require_once '../datos/conexion.php';
-class Objetivo  extends Conexion{
+class Variable  extends Conexion{
     private $codigo;
     private $nombre;    
-    private  $eje;
+    private $sector;
+    private $justificacion;
+    private $unidadanalisis;
+    private $resposablegestion;
+    private $responsablereporte;
     
-    function getEje() {
-      return $this->eje;
-    }   
-
     function getCodigo() {
-      return $this->codigo;
+     return $this->codigo;
     }
 
     function getNombre() {
-      return $this->nombre;
+     return $this->nombre;
     }
 
-   
+    function getSector() {
+     return $this->sector;
+    }
+
+    function getJustificacion() {
+     return $this->justificacion;
+    }
+
+    function getUnidadanalisis() {
+     return $this->unidadanalisis;
+    }
+
+    function getResposablegestion() {
+     return $this->resposablegestion;
+    }
+
+    function getResponsablereporte() {
+     return $this->responsablereporte;
+    }
+
     function setCodigo($codigo) {
-      $this->codigo = $codigo;
+     $this->codigo = $codigo;
     }
 
     function setNombre($nombre) {
-      $this->nombre = $nombre;
+     $this->nombre = $nombre;
     }
-    
-    function setEje($eje) {
-      $this->eje = $eje;
+
+    function setSector($sector) {
+     $this->sector = $sector;
+    }
+
+    function setJustificacion($justificacion) {
+     $this->justificacion = $justificacion;
+    }
+
+    function setUnidadanalisis($unidadanalisis) {
+     $this->unidadanalisis = $unidadanalisis;
+    }
+
+    function setResposablegestion($resposablegestion) {
+     $this->resposablegestion = $resposablegestion;
+    }
+
+    function setResponsablereporte($responsablereporte) {
+     $this->responsablereporte = $responsablereporte;
     }
 
 
     function listar(){
         try {
-            $sql="select * from tbobjetivo_especifico oes
-                inner join  tbejeestrategico eje on
-                (oes.oes_eje_codigo = eje.eje_codigo) order by 1";
+            $sql="select * from  tbvariable var "
+                . "inner join tbtipo_sector  tse on (var.var_tse_codigo = tse.tse_codigo)";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
@@ -54,8 +88,9 @@ class Objetivo  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_objetivonacionalinsertar( '".$this->getNombre()."',"
-                        ."'".$this->getEje()."')";
+                $sql = "select fn_variableinsertar('".$this->getNombre()."','".$this->getSector()."',"
+                    . "'".$this->getJustificacion()."','".$this->getUnidadanalisis()."',"
+                    . "'".$this->getResposablegestion()."','".$this->getResponsablereporte()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -75,7 +110,9 @@ class Objetivo  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_objetivonacionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getEje()."')";
+             $sql = "select fn_variablemodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getSector()."',"
+                    . "'".$this->getJustificacion()."','".$this->getUnidadanalisis()."',"
+                    . "'".$this->getResposablegestion()."','".$this->getResponsablereporte()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -95,13 +132,18 @@ class Objetivo  extends Conexion{
         try {
             $sql = "
                 select
-                        oes_codigo,
-                        oes_nombre,
-                        oes_eje_codigo
+                        
+                        var_codigo,
+                        var_nombre,
+                        var_tse_codigo 	,
+                        var_justificacion ,
+                        var_unidadanalisis ,
+                        var_resposablegestion ,
+                        var_responsablereporte 
                 from
-                        tbobjetivo_especifico
+                        tbvariable
                 where
-                        oes_codigo = '".$codigo."'
+                        var_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
@@ -115,7 +157,7 @@ class Objetivo  extends Conexion{
     }
     public function eliminar() {
         try {
-            $sql = "select fn_objetivonacionaleliminar('".$this->getCodigo()."')";
+            $sql = "delete from tbvariable where var_codigo = '".$this->getCodigo()."'";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);
@@ -133,26 +175,26 @@ class Objetivo  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {               
-                $sql = "Select oes_codigo from tbobjetivo_especifico order by oes_codigo desc limit 1";
+                $sql = "Select var_codigo from tbvariable order by var_codigo desc limit 1";
                 
                 $sentencia =  $this->dblink->prepare($sql);            
                 $sentencia->execute();
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["oes_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["var_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
                 if($codigoss>=0 && $codigoss <10){
                     
-                    $codigo=(string)("OES00".$codigoss);
+                    $codigo=(string)("VAR00".$codigoss);
                     
                 }else if($codigoss>=10&& $codigoss <100){
                     
-                    $codigo=(string)("OES0".$codigoss);                  
+                    $codigo=(string)("VAR0".$codigoss);                  
                 }else{
-                    $codigo=(string)("OES".$codigoss);
+                    $codigo=(string)("VAR".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
             return $array;                                               
@@ -164,10 +206,10 @@ class Objetivo  extends Conexion{
         
     }
     
-    public function obtenerEjes() {
+    public function obtenerTipoSector() {
         try {
             $sql = "
-                    select eje_codigo, eje_nombre from tbejeestrategico order by eje_nombre asc
+                   Select tse_codigo,tse_nombre from tbtipo_sector order by tse_nombre
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();

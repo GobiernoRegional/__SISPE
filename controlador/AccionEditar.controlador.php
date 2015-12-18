@@ -1,12 +1,12 @@
 <?php
 	$codigo=$_POST["txtcodigoedit"];
-	$area = $_POST["txtnombreedit"];
-    $dependencia = $_POST["txtdependenciaedit"];
-	require_once '../negocio/area.class.php';
-	$objArea = new Area();
-	$objArea->setCodigo($codigo);
-	$objArea->setDescripcion($area);
-    $objArea->setDependencia($dependencia);
-	$resultado=$objArea->editar();
+	$accion = $_POST["txtnombreedit"];
+        $objetivo = $_POST["txtobjetivoaedit"];
+        require_once '../negocio/Accion.class.php';
+	$objAccion = new Accion();
+	$objAccion->setCodigo($codigo);
+	$objAccion->setDescripcion($accion);
+        $objAccion->setObjetivo($objetivo);
+	$resultado=$objAccion->editar();
 	echo json_encode($resultado);
 ?>

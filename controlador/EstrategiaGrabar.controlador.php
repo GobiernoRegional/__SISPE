@@ -1,10 +1,10 @@
 <?php
-	$area=$_POST["txtnombre"];
-	$dependencia = $_POST["txtdependencia"];
-	require_once '../negocio/area.class.php';
-	$objArea = new Area();
-	$objArea->setDescripcion($area);
-        $objArea->setDependencia($dependencia);
-	$resultado=$objArea->agregar();
+	$estrategia=$_POST["txtnombre"];
+	
+	require_once '../negocio/Estrategia.class.php';
+	$objEstrategia = new Estrategia();
+	$objEstrategia->setDescripcion($estrategia);
+        
+	$resultado=$objEstrategia->agregar();
 	echo json_encode($resultado);
 ?>

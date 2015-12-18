@@ -1,7 +1,7 @@
 <?php
 	$codigo=$_POST["codigo"];
-	require_once '../negocio/area.class.php';
-	$objArea = new Area();
-	$resultado=$objArea->leerDatos($codigo);
+	require_once '../negocio/Estrategia.class.php';
+	$objEstrategia = new Estrategia();
+	$resultado=$objEstrategia->leerDatos($codigo);
 	echo json_encode($resultado);
 ?>

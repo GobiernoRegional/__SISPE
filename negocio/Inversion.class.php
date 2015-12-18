@@ -1,42 +1,70 @@
 <?php
 
 require_once '../datos/conexion.php';
-class Objetivo  extends Conexion{
+class Inversion  extends Conexion{
     private $codigo;
-    private $nombre;    
-    private  $eje;
+    private $ano;    
+    private $sector;
+    private $monto;
+    private $total;
+    private $porcentaje;
     
-    function getEje() {
-      return $this->eje;
-    }   
-
     function getCodigo() {
-      return $this->codigo;
+     return $this->codigo;
     }
 
-    function getNombre() {
-      return $this->nombre;
+  
+    function getSector() {
+     return $this->sector;
     }
-
-   
+  
     function setCodigo($codigo) {
-      $this->codigo = $codigo;
+     $this->codigo = $codigo;
     }
 
-    function setNombre($nombre) {
-      $this->nombre = $nombre;
+    
+    function setSector($sector) {
+     $this->sector = $sector;
     }
     
-    function setEje($eje) {
-      $this->eje = $eje;
+    function getAno() {
+        return $this->ano;
     }
 
+    function getMonto() {
+        return $this->monto;
+    }
+
+    function getTotal() {
+        return $this->total;
+    }
+
+    function getPorcentaje() {
+        return $this->porcentaje;
+    }
+
+    function setAno($ano) {
+        $this->ano = $ano;
+    }
+
+    function setMonto($monto) {
+        $this->monto = $monto;
+    }
+
+    function setTotal($total) {
+        $this->total = $total;
+    }
+
+    function setPorcentaje($porcentaje) {
+        $this->porcentaje = $porcentaje;
+    }
+
+      
 
     function listar(){
         try {
-            $sql="select * from tbobjetivo_especifico oes
-                inner join  tbejeestrategico eje on
-                (oes.oes_eje_codigo = eje.eje_codigo) order by 1";
+            $sql="select * from  tbinversion inv "
+                . "inner join tbtipo_sector  tse on (inv.inv_tse_codigo = tse.tse_codigo)";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
@@ -54,8 +82,7 @@ class Objetivo  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_objetivonacionalinsertar( '".$this->getNombre()."',"
-                        ."'".$this->getEje()."')";
+                $sql = "select fn_inversioninsertar('".$this->getAno()."',".$this->getMonto().",".$this->getTotal().",".$this->getPorcentaje().",'".$this->getSector()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -75,8 +102,7 @@ class Objetivo  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_objetivonacionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getEje()."')";
-          
+             $sql = "select fn_inversionmodificar('".$this->getCodigo()."','".$this->getAno()."',".$this->getMonto().",".$this->getTotal().",".$this->getPorcentaje().",'".$this->getSector()."')";
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
             $this->dblink->commit();
@@ -95,13 +121,17 @@ class Objetivo  extends Conexion{
         try {
             $sql = "
                 select
-                        oes_codigo,
-                        oes_nombre,
-                        oes_eje_codigo
+                        
+                        inv_codigo,
+                        inv_ano   	,
+			inv_monto 	,
+			inv_total 	,
+			inv_porcentaje	,
+			inv_tse_codigo 	
                 from
-                        tbobjetivo_especifico
+                        tbinversion
                 where
-                        oes_codigo = '".$codigo."'
+                        inv_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
@@ -115,7 +145,7 @@ class Objetivo  extends Conexion{
     }
     public function eliminar() {
         try {
-            $sql = "select fn_objetivonacionaleliminar('".$this->getCodigo()."')";
+            $sql = "delete from tbinversion where inv_codigo = '".$this->getCodigo()."'";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);
@@ -133,26 +163,26 @@ class Objetivo  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {               
-                $sql = "Select oes_codigo from tbobjetivo_especifico order by oes_codigo desc limit 1";
+                $sql = "Select inv_codigo from tbinversion order by inv_codigo desc limit 1";
                 
                 $sentencia =  $this->dblink->prepare($sql);            
                 $sentencia->execute();
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["oes_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["inv_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
                 if($codigoss>=0 && $codigoss <10){
                     
-                    $codigo=(string)("OES00".$codigoss);
+                    $codigo=(string)("INV00".$codigoss);
                     
                 }else if($codigoss>=10&& $codigoss <100){
                     
-                    $codigo=(string)("OES0".$codigoss);                  
+                    $codigo=(string)("INV0".$codigoss);                  
                 }else{
-                    $codigo=(string)("OES".$codigoss);
+                    $codigo=(string)("INV".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
             return $array;                                               
@@ -164,10 +194,10 @@ class Objetivo  extends Conexion{
         
     }
     
-    public function obtenerEjes() {
+    public function obtenerTipoSector() {
         try {
             $sql = "
-                    select eje_codigo, eje_nombre from tbejeestrategico order by eje_nombre asc
+                   Select tse_codigo,tse_nombre from tbtipo_sector order by tse_nombre
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();

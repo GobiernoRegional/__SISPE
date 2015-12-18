@@ -1,12 +1,21 @@
 <?php
-	$codigo=$_POST["txtcodigoedit"];
-	$area = $_POST["txtnombreedit"];
-    $dependencia = $_POST["txtdependenciaedit"];
-	require_once '../negocio/area.class.php';
-	$objArea = new Area();
-	$objArea->setCodigo($codigo);
-	$objArea->setDescripcion($area);
-    $objArea->setDependencia($dependencia);
-	$resultado=$objArea->editar();
+	$codigo             = $_POST["txtcodigoedit"];
+	$ano                = $_POST["txtanoedit"];
+        $sector             = $_POST["txtsectoredit"];
+        $monto              = $_POST["txtmontoedit"];
+        $total              = $_POST["txttotaledit"];
+        $porcentaje         = $_POST["txtreporcentajeedit"];
+        
+        require_once '../negocio/Inversion.class.php';
+	$objInversion = new Inversion();
+        
+	$objInversion->setCodigo($codigo);
+	$objInversion->setAno($ano);
+        $objInversion->setSector($sector);
+        $objInversion->setMonto($monto);
+        $objInversion->setTotal($total);
+        $objInversion->setPorcentaje($porcentaje);
+        
+	$resultado=$objInversion->editar();
 	echo json_encode($resultado);
 ?>
