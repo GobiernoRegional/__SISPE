@@ -1,251 +1,237 @@
-//Listar
-$(document).ready(function (){
-    listarPersonal();
-    cargarCombInstitucion();
-    cargarCombCargo();
-    cargarCombDistrito();
-    $("#menumantenimiento").attr("class","active");
-    $("#menupersonal").attr("class","active");
+$(document).ready(function(){
+	$("#divacceso").hide();
+	listar();
+	cargarCargo();
+	cargarArea();
+	cargarCargoEdit();
+	cargarAreaEdit();
 });
-function listarPersonal(){             
-    $.post("../controlador/personal.controlador.php"
-          ).done(function(resultado){
-                $("#listados").empty();//limpio
-                $("#listados").append(resultado);//agrego
-                $("#tabla-listado").dataTable({
-                    "aaSorting": [[1, "asc"]],
-                    
-                    "sScrollX":       "180%",
-                    "sScrollXInner":  "270%",
-                    "bScrollCollapse": true,
-                    "bPaginate":       true 
-                });//lo muestro en una tabla
-            });
-}
+$('#frmgrabar').submit(function(e){ 
+    e.preventDefault();
+    
+  	$.ajax({
+    	url: "../controlador/grabarPersonal.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data:$("#frmgrabar").serialize() ,
 
-//Agregar Personal
-function agregarPersonal(){
-
-    $("#txtcodigoper").val('Personal');
-    $("#txnombres").val(""); 
-    $("#txtapellido").val(""); 
-    $("#txtdni").val(""); 
-    $("#cbosexo_modal").val(""); 
-    $("#txtdireccion").val(""); 
-    $("#txtfechanacimiento").val(""); 
-    $("#txtcorreo").val(""); 
-    $("#txttelefono").val(""); 
-    $("#cboinstitucion_modal").val(""); 
-    $("#cbocargo_modal").val(""); 
-    $("#cbodistrito_modal").val(""); 
-    $("#cboestado_modal").val(""); 
-   
-    $("#myModalLabel").empty().append("Agregar nuevo Personal");
-    $("#txttipooperacion").val("agregar");
-}
-
-$("#frmgrabar").submit(function(event){
-   event.preventDefault(); //ignore el evento
-   
-   if (! confirm("Esta seguro de grabar los datos")){
-       return 0;
-   }   
-
-   var operacion="agregar";
-   $.post(
-           "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",
-            {
-                a_operacion: operacion,
-                p_array_datos: $("#frmgrabar").serialize()
-                
-            }
-        ).done(function(resultado){
-            alert(resultado);
-           if(resultado==="exito"){                 
-               $("#btncerrar").click();
-                listarPersonal();
-           }
-           
-        }).fail(function(error){
-            alert(error.responseText);
-        });
-   
+    	success: function(DataJson){
+      		if(DataJson.state){
+      			swal("Registro Correcto", "", "success");
+       			listar();
+       			$('#myModal').modal('hide');
+       			limpiarFormulario();
+      		}else{
+      			swal("Ha ocurrido un error", "", "error");                           
+        		listar();
+        		$('#myModal').modal('hide');
+        		limpiarFormulario();
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	})
 });
-
-//Editar Personal
-function editarPersonal(codigo){
-    // alert(2);
-    $("#myModalLabel").empty().append("Editar datos De Personal");
-    $("#txttipooperacion").val("editar");
+$('#frmeditar').submit(function(e){ 
+    e.preventDefault();
     
-    var operacion="leer";
-    
-    $.post(
-            "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",
-            {
-                p_codigo : codigo,
-                a_operacion : operacion
-            }
-            ).done(function(resultado){
-                var datos = $.parseJSON(resultado);
-                $("#txtcodigoper").val(datos.per_codigo);
-                $("#txnombres").val(datos.per_nombre);
-                $("#txtapellido").val(datos.per_apellido);
-                $("#txtdni").val(datos.per_dni);
-                $("#cbosexo_modal").val(datos.per_sexo);
-                $("#txtdireccion").val(datos.per_direccion);
-                $("#txtfechanacimiento").val(datos.per_fnac);
-                $("#txtcorreo").val(datos.per_correo);
-                $("#txttelefono").val(datos.per_telefono);
-                $("#cboinstitucion_modal").val(datos.per_ins_codigo);
-                $("#cbocargo_modal").val(datos.per_car_codigo);
-                $("#txtcoddistrito").val(datos.per_udi_codigo);
-                $("#cboestado_modal").val(datos.estado);
-            }).fail(function(error){
-                alert(error.responseText);
-            });
-            
-}
+  	$.ajax({
+    	url: "../controlador/editarPersonal.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data:$("#frmeditar").serialize() ,
 
-//Eliminar
-function eliminarPersonal(codigo){
-    if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
-        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
-    } 
-
-    var operacion="eliminar"; 
-    
-    $.post(
-            "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",{
-                p_codigo : codigo,
-                a_operacion:operacion
-            }
-          ).done(function(resultado){//cuando haya terminado esto alamacenrloe n resultado
-              alert(resultado)  ;
-              if (resultado==="exito"){
-                    listarPersonal();
-                }
-              }).fail(function(error){
-              alert(error.responseText);
-          });
-}
-
-function EliminarVariosPersonales(codigo){
-    var valor=0;
-    var objarrays=new Array();
-    
-    $("input[type=checkbox]:checked").each(function(){
-	//cada elemento seleccionado
-        valor=valor +1
-        objarrays[valor-1]=$(this).val();
-        
-    });
-    
-    if(objarrays.length===0){
-        alert("Usted debe seleccionar un elemento");
-        return 0;
-    }  
-    if(codigo===1){
-    if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
-        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
-    }
-    var operacion="eliminar";
-    var  contador = 0;
-    var  contadorELIMI = 0;
-    
-    
-    for (var i=0;i<objarrays.length;i++){ 
-    
-    $.post(
-            "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",{
-                p_codigo : objarrays[i],
-                a_operacion:operacion
-            }
-          ).done(function(resultado){//cuando haya terminado esto alamacenrloe n resultado
-               contador = contador + 1;
-               
-                if (resultado==="exito" && contador===1 ){                   
-                    alert(resultado);
-                    listarPersonal();
-                }
-                if (resultado==="No se pudo borrar Este Registro"){  
-                    contadorELIMI=contadorELIMI+1
-                    alert("Numero de Registros no eliminados:"+contadorELIMI);
-                    listarPersonal();
-                }              
-              }).fail(function(error){
-              alert(error.responseText);
-          });
-    }
-    }   
-
-}
-
-function SeleccionarPersonal(valor){        
-        //Checkbox
-	if(valor===1){
-            $('input[type=checkbox]').each( function() {
-                this.checked = true;
-            });
-        }else{
-            $('input[type=checkbox]').each( function() {
-                this.checked = false;
-            });
-        }
-}
-
-function cargarCombInstitucion(){ 
- $.post(
-           "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",
-            {
-                a_operacion: "llenarCombox",
-                p_tabla:"institucion"               
-                
-            }
-        ).done(function(resultado){
-            $("#cboinstitucion_modal").append(resultado);
-        });
-}
-
-function cargarCombCargo(){ 
- $.post(
-           "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",
-            {
-                a_operacion: "llenarCombox",
-                p_tabla:"cargo"               
-                
-            }
-        ).done(function(resultado){
-//            alert(resultado);
-            $("#cbocargo_modal").append(resultado);
-        });
-
-}
-
-function cargarCombDistrito(){ 
- $.post(
-           "../controlador/personal.leer.agregar.editar.eliminar.controlador.php",
-            {
-                a_operacion: "llenarCombox",
-                p_tabla:"distrito"               
-                
-            }
-        ).done(function(resultado){
-//            alert(resultado);
-            $("#cbodistrito_modal").append(resultado);
-        });
-
-}
-
-
-$("#myModal").on('shown.bs.modal', function(){
-    $("#txtcodigoper").focus();
+    	success: function(DataJson){
+      		if(DataJson.state){
+      			swal("Editar Correcto", "", "success");
+       			listar();
+       			$('#myModal2').modal('hide');
+      		}else{
+      			swal("Ha ocurrido un error", "", "error");                           
+        		listar();
+        		$('#myModal2').modal('hide');
+        		
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	})
 });
-
- $(function() {
-     $('#dtdistrito_modal').on('input',function() {
-         var opt = $('option[value="'+$(this).val()+'"]');        
-         var codigo_emisor = opt.attr('id');
-//         alert(codigo_emisor);
-         $("#txtcoddistrito").val(codigo_emisor); 
-     })});
+function limpiarFormulario(){
+  $("#txtnombres").val("");
+  $("#txtapellidos").val("");
+  $("#txtdni").val("");
+  $("#txtfechanacimiento").val("");
+  $("#txtdireccion").val("");
+  $("#txtsexo").val(1);
+  $("#txtemail").val("");
+  $("#txttelefono").val("");
+  $("#txtcargo").val(0);
+  $("#txtarea").val(0);
+  $("#txtacceso").val(1);
+  $("#divacceso").hide();
+  $("#txtusuario").val("");
+  $("#txtpassword").val("");
+}
+function visible(id){
+	if (id==1) {
+		$("#divacceso").hide();
+	}else{
+		$("#divacceso").show();
+	}
+}
+function camposMayus(field){
+  	field.value=field.value.toUpperCase();
+}
+function listar(){
+	$("#bodypersonal").empty();
+	$.ajax({
+    	url: "../controlador/listarPersonal.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			for(data in DataJson.resultado){
+       				$("#bodypersonal").append("<tr><td>"+DataJson.resultado[data].per_codigo+"</td><td>"+DataJson.resultado[data].per_apellido+" "+DataJson.resultado[data].per_nombre+"</td><td>"+DataJson.resultado[data].are_nombre+"</td><td>"+DataJson.resultado[data].car_nombre+"</td><td>"+DataJson.resultado[data].per_dni+"</td><td>"+DataJson.resultado[data].per_correo+"</td><td>"+DataJson.resultado[data].per_telefono+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+       			}
+      		}else{                           
+        		
+      		}
+          $("#tablepersonal").DataTable();                                                               
+    	}
+  	})
+  	.fail(function(){
+    	//swal("Ha ocurrido un error", "", "error");
+  	})
+}
+function editar(id){
+	var parametro={
+		"codigo":id,
+	}
+	$.ajax({
+    	url: "../controlador/cargarPersonalCodigo.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data: parametro,
+    	success: function(DataJson){
+      		if(DataJson.state){
+   				$("#txtcodigo").val(DataJson.resultado.per_codigo);
+   				$("#txtnombresedit").val(DataJson.resultado.per_nombre);
+   				$("#txtapellidosedit").val(DataJson.resultado.per_apellido);
+   				$("#txtdniedit").val(DataJson.resultado.per_dni);
+   				$("#txtfechanacimientoedit").val(DataJson.resultado.per_fnac);
+   				$("#txtdireccionedit").val(DataJson.resultado.per_direccion);
+   				$("#txtsexoedit").val(DataJson.resultado.per_sexo);
+   				$("#txtemailedit").val(DataJson.resultado.per_correo);
+   				$("#txttelefonoedit").val(DataJson.resultado.per_telefono);
+   				$("#txtcargoedit").val(DataJson.resultado.per_car_codigo);
+   				$("#txtareaedit").val(DataJson.resultado.per_are_codigo);
+      		}else{                           
+        		
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	});
+}
+function eliminar(id){
+	var parametro={
+		"codigo":id,
+	}
+	$.ajax({
+    	url: "../controlador/eliminarPersonal.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data: parametro,
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			swal("Correcto", "", "success");
+            	listar();
+      		}else{                           
+        		
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	});
+}
+function cargarCargo(){
+	$.ajax({
+    	url: "../controlador/listarcargo.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			for(data in DataJson.resultado){
+       				$("#txtcargo").append("<option value="+DataJson.resultado[data].car_codigo+">"+DataJson.resultado[data].car_nombre+"</option>");
+       			}
+      		}else{                           
+        		
+      		}                                                              
+    	}
+  	})
+  	.fail(function(){
+    	//swal("Ha ocurrido un error", "", "error");
+  	})
+}
+function cargarArea(){
+	$.ajax({
+    	url: "../controlador/AreaListar.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			for(data in DataJson.resultado){
+       				$("#txtarea").append("<option value="+DataJson.resultado[data].are_codigo+">"+DataJson.resultado[data].are_nombre+"</option>");
+       			}
+      		}else{                           
+        		
+      		}                                                            
+    	}
+  	})
+  	.fail(function(){
+    	//swal("Ha ocurrido un error", "", "error");
+  	})
+}
+function cargarCargoEdit(){
+	$.ajax({
+    	url: "../controlador/listarcargo.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			for(data in DataJson.resultado){
+       				$("#txtcargoedit").append("<option value="+DataJson.resultado[data].car_codigo+">"+DataJson.resultado[data].car_nombre+"</option>");
+       			}
+      		}else{                           
+        		
+      		}                                                              
+    	}
+  	})
+  	.fail(function(){
+    	//swal("Ha ocurrido un error", "", "error");
+  	})
+}
+function cargarAreaEdit(){
+	$.ajax({
+    	url: "../controlador/AreaListar.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			for(data in DataJson.resultado){
+       				$("#txtareaedit").append("<option value="+DataJson.resultado[data].are_codigo+">"+DataJson.resultado[data].are_nombre+"</option>");
+       			}
+      		}else{                           
+        		
+      		}                                                            
+    	}
+  	})
+  	.fail(function(){
+    	//swal("Ha ocurrido un error", "", "error");
+  	})
+}
