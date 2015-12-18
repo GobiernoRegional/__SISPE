@@ -60,8 +60,8 @@ class Dependencia  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_insertarDependencia( '".$this->getDescripcion()."',"
-                        . "'".$this->getTelefono()."',null)";
+                $sql = "select fn_insertardependencia( '".$this->getDescripcion()."',"
+                        . "'".$this->getTelefono()."','0012')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
