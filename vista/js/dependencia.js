@@ -29,9 +29,8 @@ $('#frmgrabar').submit(function(e){
     	}
   	})
   	.fail(function(){
-            alert(DataJson.state);
     	swal("Ha ocurrido un error", "", "error");
-  	})
+  	});
         
 });
 $('#frmeditar').submit(function(e){ 
