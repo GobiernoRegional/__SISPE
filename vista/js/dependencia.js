@@ -18,6 +18,7 @@ $('#frmgrabar').submit(function(e){
        			cargarCodigo();
        			$('#myModal').modal('hide');
        			limpiarFormulario();
+                        alert(3);
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
@@ -28,8 +29,10 @@ $('#frmgrabar').submit(function(e){
     	}
   	})
   	.fail(function(){
+            alert(DataJson.state);
     	swal("Ha ocurrido un error", "", "error");
   	})
+        
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();

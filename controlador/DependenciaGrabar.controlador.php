@@ -1,5 +1,4 @@
 <?php
-	$codigo=$_POST["txtcodigo"];
 	$dependencia = $_POST["txtnombre"];
 	$telefono = $_POST["txttelefono"];
 	require_once '../negocio/dependencia.class.php';
