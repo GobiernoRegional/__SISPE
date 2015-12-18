@@ -178,7 +178,7 @@ class TipoSector  extends Conexion{
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["var_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["tse_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
@@ -237,7 +237,7 @@ class TipoSector  extends Conexion{
     public function obtenerEstrategia() {
         try {
             $sql = "
-                   Select est_codigo,est_descripcion from tbestrategia order by est_nombre
+                   Select est_codigo,est_descripcion from tbestrategia order by est_descripcion
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();

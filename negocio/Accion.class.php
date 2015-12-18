@@ -163,7 +163,7 @@ class Accion  extends Conexion{
         
     }
     
-    public function obtenerObejetivo() {
+    public function obtenerObjetivo() {
         try {
             $sql = "
                    Select oen_codigo,oen_nombre from tbobjetivo_especificonacional order by oen_nombre
