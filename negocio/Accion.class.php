@@ -166,7 +166,7 @@ class Accion  extends Conexion{
     public function obtenerObejetivo() {
         try {
             $sql = "
-                   Select oes_codigo,oes_nombre from tbobjetivo_especifico order by oes_nombre
+                   Select oen_codigo,oen_nombre from tbobjetivo_especificonacional order by oen_nombre
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();

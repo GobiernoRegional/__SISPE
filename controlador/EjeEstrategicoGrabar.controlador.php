@@ -2,7 +2,7 @@
 	$eje=$_POST["txtnombre"];
 	$subcapitulo = $_POST["txtsubcapitulo"];
         
-	require_once '../negocio/area.class.php';
+	require_once '../negocio/EjeEstrategico.class.php';
         
 	$objEje = new EjeEstrategico();
 	$objEje->setNombre($eje);

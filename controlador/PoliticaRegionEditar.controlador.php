@@ -1,7 +1,7 @@
 <?php
 	$codigo=$_POST["txtcodigoedit"];
 	$politica = $_POST["txtnombreedit"];
-	require_once '../negocio/politica.class.php';
+	require_once '../negocio/Politica.class.php';
 	$objPolitica = new PoliticaR();
 	$objPolitica->setCodigo($codigo);
 	$objPolitica->setDescripcion($politica);

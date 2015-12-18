@@ -1,6 +1,6 @@
 <?php
 	$politica=$_POST["txtnombre"];
-	require_once '../negocio/politica.class.php';
+	require_once '../negocio/Politica.class.php';
 	$objPolitica = new PoliticaR();
 	$objPolitica->setDescripcion($politica);
 	$resultado=$objPolitica->agregar();

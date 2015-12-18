@@ -1,5 +1,5 @@
 ﻿--INSERTAR
-CREATE OR REPLACE FUNCTION fn_objetivonacionalinsertar(
+CREATE OR REPLACE FUNCTION fn_objetivoregionalinsertar(
     nombre character varying,
     ejecodigo character)
   RETURNS void AS
@@ -27,7 +27,7 @@ $BODY$
 
 
 --UPDATE
-CREATE OR REPLACE FUNCTION fn_objetivonacionalmodificar(
+CREATE OR REPLACE FUNCTION fn_objetivoregionalmodificar(
     oescodigo character,
     nombre character varying,
     ejecodigo character)
@@ -48,7 +48,7 @@ $BODY$
   LANGUAGE plpgsql;
 
   --ELIMINAR
-CREATE OR REPLACE FUNCTION fn_objetivonacionaleliminar(
+CREATE OR REPLACE FUNCTION fn_objetivoregionaleliminar(
     oescodigo character)
   RETURNS void AS
 $BODY$
@@ -60,7 +60,7 @@ $BODY$
   $BODY$
   LANGUAGE plpgsql;
   
---select fn_objetivonacionalinsertar('rteer','EJE001');
---select fn_objetivonacionalmodificar('OES001','rteerASA','EJE001');
---select fn_objetivonacionaleliminar('OES001');
+--select fn_objetivoregionalinsertar('rteer','EJE001');
+--select fn_objetivoregionalmodificar('OES001','rteerASA','EJE001');
+--select fn_objetivoregionaleliminar('OES001');
 --select * from tbobjetivo_especifico

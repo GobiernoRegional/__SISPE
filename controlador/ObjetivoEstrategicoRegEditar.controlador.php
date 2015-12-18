@@ -2,7 +2,7 @@
 	$codigo=$_POST["txtcodigoedit"];
 	$objetivo = $_POST["txtnombreedit"];
         $eje = $_POST["txtejeedit"];
-	require_once '../negocio/objetivoEstrategico.class.php';
+	require_once '../negocio/ObjetivoEstrategicoRegional.class.php';
 	$objObjetivo = new Objetivo();
 	$objObjetivo->setCodigo($codigo);
 	$objObjetivo->setNombre($objetivo);
