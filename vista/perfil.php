@@ -3,12 +3,16 @@
     session_start();
     if( ! isset($_SESSION["usuario"])){
         header("location:index.php");        
-    } 
-    
-     $nombreUsuario = ucwords(strtolower($_SESSION["usuario"]));
-     $cargo = ucwords(strtolower($_SESSION["cargo"]));
-     $cuenta = ucwords(strtolower($_SESSION["cuenta"]));
-     $clave = ucwords(strtolower($_SESSION["clave"]));
+    }     
+     $nombreUsuario     = ucwords(strtolower($_SESSION["usuario"]));
+     $cargo             = ucwords(strtolower($_SESSION["cargo"]));
+     $cuenta            = ucwords(strtolower($_SESSION["cuenta"]));
+     $clave             = ucwords(strtolower($_SESSION["clave"]));
+     $area              = ucwords(strtolower($_SESSION["area"]));
+     $correo            = ucwords(strtolower($_SESSION["correo"]));
+     $telefono          = ucwords(strtolower($_SESSION["telefono"]));
+     $nombre            = ucwords(strtolower($_SESSION["nombres"]));
+     $apellido          = ucwords(strtolower($_SESSION["apellidos"]));
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +77,7 @@
                                 <input type="text"   style="border-style:hidden; width: 50% " id="txtcorreo"  name="txtcorreo"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Institución: &nbsp;&nbsp;</label>
+                                <label>Área: &nbsp;&nbsp;</label>
                                 <input type="text"  style="border-style:hidden; width: 50% " id="txtinstitucion"  name="txtinstitucion"  readonly=""/>
                             </div>
                         </div>
