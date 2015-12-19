@@ -41,11 +41,15 @@ class Sesion extends Conexion {
                         usu_clave, 
                         per_nombre as nombre,
                         per_apellido as apellido,
+                        per_telefono,
+                        per_correo,
+                        are_nombre,
                         car_nombre as cargo                          
                     from 
                         tbusuario u
                         inner join tbpersonal p on (u.usu_per_Codigo = p.per_Codigo)
                         inner join tbcargo c on(p.per_car_Codigo = c.car_Codigo)
+                        inner join tbarea a on (p.per_are_codigo = a.are_codigo)
                     where 
                         upper(usu_nombre)= upper(:p_usuario)
                     ";
@@ -64,10 +68,15 @@ class Sesion extends Conexion {
                 }else{
                     session_name("sistema-spe");
                     session_start();
-                    $_SESSION["usuario"] = $resultado["nombre"].' '.$resultado["apellido"];
-                    $_SESSION["cargo"] = $resultado["cargo"];
-                    $_SESSION["cuenta"] = $resultado["usuario"];
-                    $_SESSION["clave"]= $this->getClave();
+                    $_SESSION["usuario"]    = $resultado["nombre"].' '.$resultado["apellido"];
+                    $_SESSION["nombres"]    = $resultado["nombre"];
+                    $_SESSION["apellidos"]  = $resultado["apellido"];
+                    $_SESSION["cargo"]      = $resultado["cargo"];
+                    $_SESSION["cuenta"]     = $resultado["usuario"];
+                    $_SESSION["area"]       = $resultado["are_nombre"]  ;
+                    $_SESSION["correo"]     = $resultado["per_correo"];
+                    $_SESSION["telefono"]   = $resultado["per_telefono"];
+                    $_SESSION["clave"]      = $this->getClave();
                                         
 
                     if ($this->getRecordar()=="S"){

@@ -1,6 +1,6 @@
 <?php
 
-    session_name("sistema-comercial");
+    session_name("sistema-spe");
     session_start();
     
     unset($_SESSION["usuario"]);
