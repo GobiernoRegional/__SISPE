@@ -110,7 +110,8 @@ class ObjNacional  extends Conexion{
                 select
                         ona_Codigo,
                         ona_nombre,
-                        ona_eje_codigo
+                        ona_eje_codigo,
+                        ona_descripcion
                 from
                         tbObjetivo_Nacional
                 where
@@ -142,20 +143,6 @@ class ObjNacional  extends Conexion{
         
     }
     
-    public function obtenerEjeEstrategico() {
-        try {
-            $sql = "
-                    select eje_codigo, eje_nombre from tbejeestrategico order by eje_nombre asc
-                    ";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(); 
-            
-            return $resultado;
-         
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
+    
 
 }
