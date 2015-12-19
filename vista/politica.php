@@ -1,5 +1,15 @@
 <?php
+    session_name("sistema-spe");
+    session_start();
+    
+    if( ! isset($_SESSION["usuario"])){
+        header("location:index.php");
+    }
+        
+    $nombreUsuario = ucwords(strtolower($_SESSION["usuario"]));
+    $cargo = ucwords(strtolower($_SESSION["cargo"]));
 
+    
 ?>
 <!DOCTYPE html>
 <html>

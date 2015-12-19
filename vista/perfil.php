@@ -57,27 +57,27 @@
                         </div>   
                         <div class="col-lg-7">
                             <div class="form-group">
-                                <label>Nombres: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>   
+                                <label class="col-lg-12">Nombres: </label>   
                                 <input type="text"  style="border-style:hidden" id="txtnombres"  name="txtnombres"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;</label> 
+                                <label>Apellidos: </label> 
                                 <input type="text"   style="border-style:hidden" id="txtapellidos"  name="txtapellidos" readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>DNI: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>DNI: </label>
                                 <input type="text"   style="border-style:hidden" id="txtdni"  name="txtdni"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Teléfono: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>Teléfono: </label>
                                 <input type="text"   style="border-style:hidden" id="txttelefono"  name="txttelefono"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Correo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                <label>Correo: </label>
                                 <input type="text"   style="border-style:hidden; width: 50% " id="txtcorreo"  name="txtcorreo"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Área: &nbsp;&nbsp;</label>
+                                <label>Área:</label>
                                 <input type="text"  style="border-style:hidden; width: 50% " id="txtinstitucion"  name="txtinstitucion"  readonly=""/>
                             </div>
                         </div>
