@@ -158,7 +158,7 @@ class Area  extends Conexion{
                     $codigo=(string)("ARE".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
-            return $array;                                               
+                return $array;                                               
         } catch (Exception $exc) {        
                                         
             throw $exc;
