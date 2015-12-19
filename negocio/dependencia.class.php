@@ -61,7 +61,7 @@ class Dependencia  extends Conexion{
         try {  
                 
                 $sql = "select fn_insertardependencia( '".$this->getDescripcion()."',"
-                        . "'".$this->getTelefono()."','0012')";
+     "'".$this->getTelefono()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
