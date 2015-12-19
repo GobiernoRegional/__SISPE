@@ -32,9 +32,9 @@
 						<hr>
 						<li><a href="pnObjetivoNacional.php">Objetivo Nacional</a></li>
 
-						<li><a href="#">Lineamientos de Política</a></li>
+						<li><a href="pnLineamientosPolitica.php">Lineamientos de Política</a></li>
 
-						<li><a href="#">Prioridades</a></li>
+						<li><a href="pnPrioridades.php">Prioridades</a></li>
 
 						<li><a href="#">Objetivos específicos, metas y acciones estratégicas</a></li>
 					</ul>
@@ -46,7 +46,7 @@
 						<hr>
 						<li><a href="#">Objetivos Estratégicos</a></li>
 						<hr>
-                                                <li><a href="politica.php">Políticas</a></li>
+                        <li><a href="politica.php">Políticas</a></li>
 						<li><a href="#">Variables</a></li>
 					</ul>
 				</li>

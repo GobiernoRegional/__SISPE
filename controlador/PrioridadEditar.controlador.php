@@ -1,7 +1,7 @@
 <?php
 	$codigo=$_POST["txtcodigoedit"];
 	$prioridad = $_POST["txtprioridadedit"];
-        $eje = $_POST["txtejeedit"];
+    $eje = $_POST["txtejeedit"];
         
 	require_once '../negocio/Prioridad.class.php';
         
