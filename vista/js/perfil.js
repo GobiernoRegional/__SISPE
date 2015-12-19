@@ -3,21 +3,21 @@ $(document).ready(function (){
 //     $('#txtcorreo').css('display', 'block');
 
     $('#btnperfil').css('display', 'none');
-    document.getElementById("txttelefono").disabled='false'; 
-    document.getElementById("txtcorreo").disabled='false'; 
-    document.getElementById("txtdireccion").disabled='false'; 
+//    document.getElementById("txttelefono").readonly='false'; 
+//    document.getElementById("txtcorreo").readonly='false'; 
+//    document.getElementById("txtdireccion").readonly='false'; 
 });
 
 //TELEFONO
 $(document).on("dblclick", "#txttelefono", function(){    
-    document.getElementById('txttelefono').disabled="";
+//    document.getElementById('txttelefono').disabled="";
     $('#txttelefono').css('background', '#FFFFFF');
     $('#btnperfil').css('display', 'block');
 });
 
 $(document).on("keypress", "#txttelefono", function(evento){
     if (evento.which === 13){
-        document.getElementById("txttelefono").disabled='false';
+//        document.getElementById("txttelefono").disabled='false';
         $('#txttelefono').css('background', '#D9EDF7');
         $('#btnperfil').css('display', 'block');
     }else{
@@ -27,14 +27,14 @@ $(document).on("keypress", "#txttelefono", function(evento){
 
 //CORREO
 $(document).on("dblclick", "#txtcorreo", function(){    
-    document.getElementById('txtcorreo').disabled="";
+//    document.getElementById('txtcorreo').disabled="";
     $('#txtcorreo').css('background', '#FFFFFF');
     $('#btnperfil').css('display', 'block');
 });
 
 $(document).on("keypress", "#txtcorreo", function(evento){
     if (evento.which === 13){
-        document.getElementById("txtcorreo").disabled='false';
+//        document.getElementById("txtcorreo").disabled='false';
         $('#txtcorreo').css('background', '#D9EDF7');
         $('#btnperfil').css('display', 'block');
     }
@@ -42,14 +42,14 @@ $(document).on("keypress", "#txtcorreo", function(evento){
 
 //DIRECCIÓN
 $(document).on("dblclick", "#txtdireccion", function(){    
-    document.getElementById('txtdireccion').disabled="";
+//    document.getElementById('txtdireccion').disabled="";
     $('#txtdireccion').css('background', '#FFFFFF');
     $('#btnperfil').css('display', 'block');
 });
 
 $(document).on("keypress", "#txtdireccion", function(evento){
     if (evento.which === 13){
-        document.getElementById("txtdireccion").disabled='false';
+//        document.getElementById("txtdireccion").disabled='false';
         $('#txtdireccion').css('background', '#D9EDF7');
         $('#btnperfil').css('display', 'block');
     }
