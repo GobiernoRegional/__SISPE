@@ -12,7 +12,7 @@ $('#frmgrabar').submit(function(e){
     	data:$("#frmgrabar").serialize() ,
 
     	success: function(DataJson){
-                alert("entro");
+//                alert("entro");
       		if(DataJson.state){
       			swal("Registro Correcto", "", "success");
        			listar();
@@ -29,7 +29,7 @@ $('#frmgrabar').submit(function(e){
     	}
   	})
   	.fail(function(){
-            alert(" no entro");
+//            alert(" no entro");
             swal("Ha ocurrido un error", "", "error");
   	});
         
