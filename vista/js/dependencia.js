@@ -18,7 +18,6 @@ $('#frmgrabar').submit(function(e){
        			cargarCodigo();
        			$('#myModal').modal('hide');
        			limpiarFormulario();
-                        alert(3);
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
