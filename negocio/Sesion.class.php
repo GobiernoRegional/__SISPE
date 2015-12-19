@@ -41,8 +41,10 @@ class Sesion extends Conexion {
                         usu_clave, 
                         per_nombre as nombre,
                         per_apellido as apellido,
+                        per_dni,
                         per_telefono,
                         per_correo,
+                        per_direccion,
                         are_nombre,
                         car_nombre as cargo                          
                     from 
@@ -71,12 +73,14 @@ class Sesion extends Conexion {
                     $_SESSION["usuario"]    = $resultado["nombre"].' '.$resultado["apellido"];
                     $_SESSION["nombres"]    = $resultado["nombre"];
                     $_SESSION["apellidos"]  = $resultado["apellido"];
+                    $_SESSION["dni"]        = $resultado["per_dni"];
                     $_SESSION["cargo"]      = $resultado["cargo"];
                     $_SESSION["cuenta"]     = $resultado["usuario"];
                     $_SESSION["area"]       = $resultado["are_nombre"]  ;
                     $_SESSION["correo"]     = $resultado["per_correo"];
                     $_SESSION["telefono"]   = $resultado["per_telefono"];
                     $_SESSION["clave"]      = $this->getClave();
+                    $_SESSION["direccion"]  = $resultado["per_direccion"]; 
                                         
 
                     if ($this->getRecordar()=="S"){
