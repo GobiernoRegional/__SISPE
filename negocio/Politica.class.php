@@ -32,8 +32,10 @@ class PoliticaR  extends Conexion{
            
             $sentecia = $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentecia->execute();
-            $resultado = $sentecia->fetchAll();
-            return $resultado;
+            $registros = $sentecia->fetchAll();
+            
+            $array=array('state'=>1,'resultado'=>$registros);
+            return $array;
         } catch (Exception $exc) {
             echo $exc;
         }
@@ -48,7 +50,9 @@ class PoliticaR  extends Conexion{
                 
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
-                $this->dblink->commit();                                  
+                $this->dblink->commit();   
+                $array=array('state'=>1);
+                return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -66,6 +70,8 @@ class PoliticaR  extends Conexion{
             $sentencia = $this->dblink->prepare($sql)OR DIE ("No se pudo Modificar Este Registro");
             $sentencia->execute();
             $this->dblink->commit();
+            $array=array('state'=>1);
+            return $array;
             
         } catch (Exception $exc) {
             $this->dblink->rollBack();
@@ -84,12 +90,14 @@ class PoliticaR  extends Conexion{
                 from
                         tbpolitica                         
                 where
-                        pol_codigo = ".$codigo."'
+                        pol_codigo = '".$codigo."'
                 ";
             $sentecia = $this->dblink->prepare($sql) OR DIE ("No se pudo leer estos Registro");
             $sentecia->execute();
             $resultado = $sentecia->fetch(PDO::FETCH_ASSOC);
-            return $resultado;
+            
+            $array=array('state'=>1,'resultado'=>$resultado);
+            return $array;
         } catch (Exception $exc) {
             throw $exc;
         }            
@@ -99,6 +107,9 @@ class PoliticaR  extends Conexion{
             $sql = "delete from tbpolitica where pol_codigo = '".$this->getCodigo()."'";
             $sentencia = $this->dblink->prepare($sql) OR DIE ("No se pudo borrar Este Registro");
             $sentencia->execute();
+            
+            $array=array('state'=>1);
+            return $array;
                                                               
         } catch (Exception $exc) {        
                                         
@@ -133,7 +144,7 @@ class PoliticaR  extends Conexion{
                     $codigo=(string)("POL".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
-            return $array;                                               
+                return $array;                                               
         } catch (Exception $exc) {        
                                         
             throw $exc;
