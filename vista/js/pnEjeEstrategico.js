@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	listar();
-	cargarCodigo();
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
@@ -80,23 +79,7 @@ function listar(){
     	//swal("Ha ocurrido un error", "", "error");
   	})
 }
-function cargarCodigo(){
-	$.ajax({
-    	url: "../controlador/EjeObtenerCodigo.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	success: function(DataJson){
-      		if(DataJson.state){
-   				$("#txtcodigo").val(DataJson.resultado);
-      		}else{                           
-        		
-      		}                                                           
-    	}
-  	})
-  	.fail(function(){
-    	//swal("Ha ocurrido un error", "", "error");
-  	});
-}
+
 function camposMayus(field){
   field.value=field.value.toUpperCase();
 }
