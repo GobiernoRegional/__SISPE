@@ -39,14 +39,14 @@
             <ol class="breadcrumb">
                 <li><a href="principal.php"><i class="fa fa-home"></i> SISPE</a></li>
                 <li><a href="#">Plan Perú</a></li>
-                <li class="active">Objetivo Nacional</li>
+                <li class="active">Objetivos Específicos</li>
             </ol>
         	<div class="row">
                <div style="text-align:center;">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-hand-o-right"></i></a>
                 </div>
                 <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Objetivo Nacional</label>
+                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Objetivo Específico</label>
                 </div>
             </div>
             <!-- INICIO del formulario modal GRABAR -->
@@ -69,16 +69,10 @@
                                 </select><br>
                               </div>
                               <div class="col-lg-4">
-                                <label>Objetivo Nacional:</label>
+                                <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
                                 <input type="text" class="form-control" name="txtobjetivo" id="txtobjetivo" onchange="camposMayus(this)"><br>
-                              </div>
-                              <div class="col-lg-4">
-                                  <label>Descripción:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                  <textarea class="form-control" name="txtdescripcion" id="txtdescripcion"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -112,16 +106,10 @@
                                 </select><br>
                               </div>
                               <div class="col-lg-4">
-                                <label>Objetivo Nacional:</label>
+                                <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
                                 <input type="text" class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" onchange="camposMayus(this)"><br>
-                              </div>
-                              <div class="col-lg-4">
-                                  <label>Descripción:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                  <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -137,16 +125,16 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tableobjetivonacional">
+                    <table class="table" id="tableobjetivoespecifico">
                         <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Eje Estratégico</th>
-                                <th>Objetivo Nacional</th>
+                                <th>Objetivo Específico</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyobjetivonacional">
+                        <tbody id="bodyobjetivoespecifico">
                             
                         </tbody>
                     </table>
@@ -166,6 +154,6 @@
     <!-- SWEET JS -->
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
-    <script type="text/javascript" src="js/pnObjetivoNacional.js"></script>
+    <script type="text/javascript" src="js/pnObjetivoEspecifico.js"></script>
   </body>
 </html>

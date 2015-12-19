@@ -129,56 +129,9 @@ class ObjetivoEspNac  extends Conexion{
         
     }
 
-    public function ObtenerCodigo() {
-        $this->dblink->beginTransaction();
-        
-        try {               
-                $sql = "Select oen_codigo from tbobjetivo_especificonacional order by oen_codigo desc limit 1";
-                
-                $sentencia =  $this->dblink->prepare($sql);            
-                $sentencia->execute();
-                $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
-
-                  
-                 $valor = (INTEGER)(substr($resultado["oen_codigo"], 3,3));   
-                $codigo="";                                 
-                $codigoss=$valor+1;
-                
-                if($codigoss>=0 && $codigoss <10){
-                    
-                    $codigo=(string)("OEN00".$codigoss);
-                    
-                }else if($codigoss>=10&& $codigoss <100){
-                    
-                    $codigo=(string)("OEN0".$codigoss);                  
-                }else{
-                    $codigo=(string)("OEN".$codigoss);
-                }
-                $array=array('state'=>1,'resultado'=>$codigo);
-            return $array;                                               
-        } catch (Exception $exc) {        
-                                        
-            throw $exc;
-        }        
-        
-        
-    }
     
-    public function obtenerEjes() {
-        try {
-            $sql = "
-                    select eje_codigo, eje_nombre from tbejeestrategico order by eje_nombre asc
-                    ";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(); 
-            
-            return $resultado;
-         
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
+    
+    
 
 
 }
