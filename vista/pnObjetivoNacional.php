@@ -41,14 +41,14 @@
             <ol class="breadcrumb">
                 <li><a href="principal.php"><i class="fa fa-home"></i> SISPE</a></li>
                 <li><a href="#">Plan Perú</a></li>
-                <li class="active">Ejes Estratégicos</li>
+                <li class="active">Objetivo Nacional</li>
             </ol>
         	<div class="row">
                <div style="text-align:center;">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-graduation-cap"></i></a>
                 </div>
                 <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Ejes</label>
+                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Objetivo Nacional</label>
                 </div>
             </div>
             <!-- INICIO del formulario modal GRABAR -->
@@ -58,21 +58,29 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Agregar nuevo eje</h4>
+                        <h4 class="modal-title" id="titulomodal">Agregar nuevo objetivo</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
                               <div class="col-lg-4">
-                                  <label>Código:</label>
+                                <label>Eje Estratégico:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcodigo" id="txtcodigo" readonly="readonly"><br>
+                                <select class="form-control" name="txteje" id="txteje">
+                                  <option value="0">Elegir Eje</option>
+                                </select><br>
                               </div>
                               <div class="col-lg-4">
-                                  <label>Nombre:</label>
+                                <label>Objetivo Nacional:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
+                                <input type="text" class="form-control" name="txtobjetivo" id="txtobjetivo" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                  <label>Descripción:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                  <textarea class="form-control" name="txtdescripcion" id="txtdescripcion"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -92,21 +100,30 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Editar eje</h4>
+                        <h4 class="modal-title" id="titulomodal">Editar objetivo</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
+                              <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                  <label>Código:</label>
+                                <label>Eje Estratégico:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcodigo" id="txtcodigo" readonly="readonly"><br>
+                                <select class="form-control" name="txtejeedit" id="txtejeedit">
+                                  <option value="0">Elegir Eje</option>
+                                </select><br>
                               </div>
                               <div class="col-lg-4">
-                                  <label>Nombre:</label>
+                                <label>Objetivo Nacional:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
+                                <input type="text" class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                  <label>Descripción:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                  <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -122,15 +139,16 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tablejeestrategico">
+                    <table class="table" id="tableobjetivonacional">
                         <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Eje Estratégico</th>
+                                <th>Objetivo Nacional</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyejeestrategico">
+                        <tbody id="bodyobjetivonacional">
                             
                         </tbody>
                     </table>
@@ -150,6 +168,6 @@
     <!-- SWEET JS -->
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
-    <script type="text/javascript" src="js/pnEjeEstrategico.js"></script>
+    <script type="text/javascript" src="js/pnObjetivoNacional.js"></script>
   </body>
 </html>

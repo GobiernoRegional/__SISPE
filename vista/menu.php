@@ -61,11 +61,11 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>  Danko Jared <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-                                            <li><a href="perfil.php">Configuración</a></li>
+                        <li><a href="perfil.php">Configuración</a></li>
 						<hr>
-                                                <li><a href="cambiar-clave.php">Cambiar Clave</a></li>
+                        <li><a href="cambiar-clave.php">Cambiar Clave</a></li>
 						<hr>
-                                            <li><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></li>
+                        <li><a href="../controlador/cerrarSesion.php">Cerrar Sesión</a></li>
 					</ul>
 				</li>
 			</ul>

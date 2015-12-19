@@ -1,14 +1,14 @@
 <?php
-	$area=$_POST["txtnombre"];
+	$objetivo=$_POST["txtobjetivo"];
 	$descripcion = $_POST["txtdescripcion"];
-        $eje = $_POST["txteje"];
+    $eje = $_POST["txteje"];
         
 	require_once '../negocio/ObjetivoNacional.class.php';
         
 	$objObjNacional = new ObjNacional();
-	$objObjNacional->setNombre($area);
-        $objObjNacional->setDescripcion($descripcion);
-        $objObjNacional->setEje($eje);
+	$objObjNacional->setNombre($objetivo);
+    $objObjNacional->setDescripcion($descripcion);
+    $objObjNacional->setEje($eje);
         
 	$resultado=$objObjNacional->agregar();
 	echo json_encode($resultado);
