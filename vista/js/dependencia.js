@@ -12,6 +12,7 @@ $('#frmgrabar').submit(function(e){
     	data:$("#frmgrabar").serialize() ,
 
     	success: function(DataJson){
+//                alert("entro");
       		if(DataJson.state){
       			swal("Registro Correcto", "", "success");
        			listar();
@@ -19,7 +20,7 @@ $('#frmgrabar').submit(function(e){
        			$('#myModal').modal('hide');
        			limpiarFormulario();
       		}else{
-      			swal("Ha ocurrido un error", "", "error");                           
+      			swal("Ha ocurrido un errorrr", "", "error");                           
         		listar();
         		cargarCodigo();
         		$('#myModal').modal('hide');
@@ -28,7 +29,8 @@ $('#frmgrabar').submit(function(e){
     	}
   	})
   	.fail(function(){
-    	swal("Ha ocurrido un error", "", "error");
+//            alert(" no entro");
+            swal("Ha ocurrido un error", "", "error");
   	});
         
 });
