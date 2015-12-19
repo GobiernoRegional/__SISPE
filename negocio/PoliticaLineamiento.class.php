@@ -64,7 +64,7 @@ class PoliticaLineamiento  extends Conexion{
         
         try {  
                             
-               $sql = "select select fn_politicalineamientoinsertar('".$this->getNombre()."','".$this->getDescripcion()."','".$this->getEje()."')";
+               $sql = "select fn_politicalineamientoinsertar('".$this->getNombre()."','".$this->getDescripcion()."','".$this->getEje()."')";
                 
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -110,7 +110,7 @@ class PoliticaLineamiento  extends Conexion{
                 from
                         tbpolitica_liniamiento
                 where
-                        pri_Codigo = '".$codigo."'
+                        pli_Codigo = '".$codigo."'
                 ";
             $sentecia = $this->dblink->prepare($sql) OR DIE ("No se pudo leer estos Registro");
             $sentecia->execute();

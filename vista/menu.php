@@ -36,7 +36,10 @@
 
 						<li><a href="pnPrioridades.php">Prioridades</a></li>
 
-						<li><a href="#">Objetivos específicos, metas y acciones estratégicas</a></li>
+						<li><a href="#">Objetivos específicos</a></li>
+						<hr>
+						<li><a href="#">Indicadores y metas</a></li>
+						<li><a href="#">Acciones estratégicas</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">

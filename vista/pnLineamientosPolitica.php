@@ -74,10 +74,10 @@
                               <div class="col-lg-8">
                                   <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
                               </div>
-                              <div class="col-lg-4">
+                              <div class="col-lg-2">
                                 <label>Descripción</label>
                               </div>
-                              <div class="col-lg-8">
+                              <div class="col-lg-10">
                                 <textarea class="form-control" name="txtdescripcion" id="txtdescripcion">
                                   
                                 </textarea><br>
@@ -119,10 +119,10 @@
                               <div class="col-lg-8">
                                   <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required><br>
                               </div>
-                              <div class="col-lg-4">
+                              <div class="col-lg-2">
                                 <label>Descripción</label>
                               </div>
-                              <div class="col-lg-8">
+                              <div class="col-lg-10">
                                 <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit">
                                   
                                 </textarea><br>
@@ -141,7 +141,7 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tablejeestrategico">
+                    <table class="table" id="tablelineamientos">
                         <thead>
                             <tr>
                                 <th>Código</th>
@@ -150,7 +150,7 @@
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyejeestrategico">
+                        <tbody id="bodylineamientos">
                             
                         </tbody>
                     </table>
@@ -171,5 +171,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/pnLineamientoPolitica.js"></script>
+    <script type="text/javascript" src="../util/ckeditor/ckeditor.js"></script>
   </body>
 </html>
