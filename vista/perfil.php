@@ -56,29 +56,40 @@
                             </div><!--Fin de Columna-->
                         </div>   
                         <div class="col-lg-7">
-                            <div class="form-group">
-                                <label class="col-lg-12">Nombres: </label>   
-                                <input type="text"  style="border-style:hidden" id="txtnombres"  name="txtnombres"  readonly=""/>
+                            <div class="row">
+                                <div class="form-group">
+                                    <p>
+                                    <label class="col-lg-2">Nombres: </label>   
+                                    <input type="text"  style="border-style:hidden" class="col-lg-5" id="txtnombres"  name="txtnombres"  readonly="" value="<?php echo $nombre; ?>"/>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Apellidos: </label> 
-                                <input type="text"   style="border-style:hidden" id="txtapellidos"  name="txtapellidos" readonly=""/>
+                            <div class="row">
+                                <div class="form-group">
+                                    <p>
+                                     <label class="col-lg-2">Apellidos: </label> 
+                                     <input type="text"   style="border-style:hidden" id="txtapellidos"  name="txtapellidos" readonly="" value="<?php echo $apellido; ?>"/>                            
+                                    </p>
+                                </div>
                             </div>
+                            
                             <div class="form-group">
-                                <label>DNI: </label>
+                           </div>
+                            <div class="form-group">
+                                <label class="col-lg-2" >DNI: </label>
                                 <input type="text"   style="border-style:hidden" id="txtdni"  name="txtdni"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Teléfono: </label>
+                                <label class="col-lg-2">Teléfono: </label>
                                 <input type="text"   style="border-style:hidden" id="txttelefono"  name="txttelefono"  readonly=""/>
                             </div>
                             <div class="form-group">
-                                <label>Correo: </label>
-                                <input type="text"   style="border-style:hidden; width: 50% " id="txtcorreo"  name="txtcorreo"  readonly=""/>
+                                <label class="col-lg-2">Correo: </label>
+                               <p> <input type="text"   style="border-style:hidden;" class="col-lg-7" id="txtcorreo"  name="txtcorreo"  readonly=""/></p> 
                             </div>
                             <div class="form-group">
-                                <label>Área:</label>
-                                <input type="text"  style="border-style:hidden; width: 50% " id="txtinstitucion"  name="txtinstitucion"  readonly=""/>
+                                <label class="col-lg-2">Área:</label>
+                                <p> <input type="text"  style="border-style:hidden;" class="col-lg-7"id="txtinstitucion"  name="txtinstitucion"  readonly=""/></p>
                             </div>
                         </div>
                     </div>             
