@@ -61,8 +61,7 @@ class Dependencia  extends Conexion{
         try {  
                 
                 $sql = "select fn_insertardependencia( '".$this->getDescripcion()."','".$this->getTelefono()."')";
-                echo $sql;
-                return;
+     
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
                 $this->dblink->commit();  
