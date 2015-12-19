@@ -47,7 +47,7 @@
 						<hr>
 						<li><a href="#">Objetivos Estratégicos</a></li>
 						<hr>
-						<li><a href="#">Políticas</a></li>
+                                                <li><a href="politica.php">Políticas</a></li>
 						<li><a href="#">Variables</a></li>
 					</ul>
 				</li>

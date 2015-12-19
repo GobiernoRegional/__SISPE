@@ -1,12 +1,12 @@
 $(document).ready(function(){
-	listar();
-	cargarCodigo();
+    listar();
+    cargarCodigo();
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/DependenciaGrabar.controlador.php",
+    	url: "../controlador/PoliticaRegionGrabar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmgrabar").serialize() ,
@@ -18,7 +18,6 @@ $('#frmgrabar').submit(function(e){
        			cargarCodigo();
        			$('#myModal').modal('hide');
        			limpiarFormulario();
-                        alert(3);
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
@@ -30,14 +29,13 @@ $('#frmgrabar').submit(function(e){
   	})
   	.fail(function(){
     	swal("Ha ocurrido un error", "", "error");
-  	});
-        
+  	})
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
     
   	$.ajax({
-    	url: "../controlador/DependenciaEditar.controlador.php",
+    	url: "../controlador/PoliticaRegionEditar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data:$("#frmeditar").serialize() ,
@@ -66,68 +64,82 @@ function camposMayus(field){
 }
 function limpiarFormulario(){
   $("#txtnombre").val("");
-  $("#txttelefono").val("");
 }
 function limpiarFormularioEditar(){
+	$("#txtcodigoedit").val("");
 	$("#txtnombreedit").val("");
-	$("#txttelefonoedit").val("");
 }
 function listar(){
-	$("#bodydependencias").empty();
+	$("#bodypolitica").empty();
 	$.ajax({
-    	url: "../controlador/DependenciaListar.controlador.php",
+    	url: "../controlador/PoliticaRegionListar.controlador.php",
     	type: "post",
     	dataType: "json",
     	success: function(DataJson){
+            
       		if(DataJson.state){
        			for(data in DataJson.resultado){
-                            //alert(data);Numero de Regitros
-                            $("#bodydependencias").append("<tr><td>"+DataJson.resultado[data].dep_codigo+"</td><td>"+DataJson.resultado[data].dep_nombre+"</td><td>"+DataJson.resultado[data].dep_telefono+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].dep_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].dep_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+//                            alert(data);Numero de registros
+       				$("#bodypolitica").append(
+                                        '<tr>' +
+                                            '<td>'
+                                                +DataJson.resultado[data].pol_codigo+                                        
+                                            '</td>'+
+                                            
+                                            '<td>'
+                                                +DataJson.resultado[data].pol_descripcion+
+                                            '</td>'+
+                                            
+                                            '<td> '+
+                                                "<a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pol_codigo+"\")'> \n\
+                                                  <i class='glyphicon glyphicon-wrench'></i>\n\
+                                                </a>"+
+                                                "<a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].pol_codigo+"\")'>\n\
+                                                <i class='glyphicon glyphicon-remove'></i>\n\
+                                                </a>"+
+                                            '</td>'+
+                                        '</tr>');
        			}
       		}else{                           
         		
       		}
-          $("#tabledependencias").DataTable();                                                               
-    	}
-  	})
-  	.fail(function(){
-    	//swal("Ha ocurrido un error", "", "error");
-  	})
-}
-function cargarCodigo(){
-	$.ajax({
-    	url: "../controlador/DependenciaObtenerCodigo.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	success: function(DataJson){
-      	if(DataJson.state){
-   				$("#txtcodigo").val(DataJson.resultado);
-      	}else{                           
-        		
-      	}                                                           
+          $("#tablepolitica").DataTable();                                                               
     	}
   	})
   	.fail(function(){
     	//swal("Ha ocurrido un error", "", "error");
   	});
 }
+
+
+function cargarCodigo(){
+	$.ajax({
+    	url: "../controlador/PoliticaObtenerCodigo.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	success: function(DataJson){
+            if(DataJson.state){
+                $("#txtcodigo").val(DataJson.resultado);
+            }                                                           
+    	}
+  	});
+}
 function editar(id){
-	var parametro={
+    	var parametro={
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/DependenciaCargarCodigo.php",
+    	url: "../controlador/PoliticaRegionCargarCodigo.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,
     	success: function(DataJson){
-      		if(DataJson.state){
-     				$("#txtcodigoedit").val(DataJson.resultado.dep_codigo);
-     				$("#txtnombreedit").val(DataJson.resultado.dep_nombre);
-            $("#txttelefonoedit").val(DataJson.resultado.dep_telefono);
-      		}else{                           
+      	if(DataJson.state){
+            $("#txtcodigoedit").val(DataJson.resultado.pol_codigo);
+            $("#txtnombreedit").val(DataJson.resultado.pol_descripcion);
+      	}else{                           
         		
-      		}                                                           
+      	}                                                           
     	}
   	})
   	.fail(function(){
@@ -139,7 +151,7 @@ function eliminar(id){
 		"codigo":id,
 	}
 	$.ajax({
-    	url: "../controlador/DependenciaEliminar.controlador.php",
+    	url: "../controlador/PoliticaRegionEliminar.controlador.php",
     	type: "post",
     	dataType: "json",
     	data: parametro,
