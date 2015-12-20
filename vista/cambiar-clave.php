@@ -51,40 +51,41 @@
                                 <h3 class="text-danger"> <?php echo $cargo; ?></h3>
                             </div><!--Fin de Columna-->
                         </div>   
-                        <div class="col-lg-7">
-                            <div class="form-group">                                
-                                <label class="col-lg-3">Nombres:</label>   
-                                <input type="text" class="col-lg-5"  style="border-style:hidden" id="txtnomb"  name="txtnomb" value="<?php echo $nombreUsuario;?>" readonly=""/>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3">Usuario: </label> 
-                                <input type="text" class="col-lg-5"  style="border-style:hidden" id="txtusuario"  name="txtusuario" value="<?php echo $cuenta;?>"  readonly=""/>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3">Clave Antigua: </label>
-                                <input type="password"  class="col-lg-4" style="border-style: dotted" id="txtclaveantigua"  name="txtclaveantigua"  required=""/>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3">Clave Nueva:</label>
-                                <input type="password" class="col-lg-4"  style="border-style: dotted" id="txtclavenueva"  name="txtclavenueva"   required=""/>
-                            </div><br>
-                            <div class="form-group">
-                                <label class="col-lg-3">Repita Clave: </label>
-                                <input type="password"  class="col-lg-4"  style="border-style: dotted" id="txtclaverepetida"  name="txtclaverepetida"   required=""/>
-                            </div><br>
-                            <div class="form-group">
-                                <input type="hidden"   style="border-style: dotted" id="txtclav"  name="txtclav" value="<?php echo $clave;?>"  required=""/>
+                        <form id="frmgrabar" name="frmgrabar">
+                            <div class="col-lg-7">
+                                <div class="form-group">                                
+                                    <label class="col-lg-3">Nombres:</label>   
+                                    <input type="text" class="col-lg-5"  style="border-style:hidden" id="txtnomb"  name="txtnomb" value="<?php echo $nombreUsuario;?>" readonly=""/>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-lg-3">Usuario: </label> 
+                                    <input type="text" class="col-lg-5"  style="border-style:hidden" id="txtusuario"  name="txtusuario" value="<?php echo $cuenta;?>"  readonly=""/>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-lg-3">Clave Antigua: </label>
+                                    <input type="password"  class="col-lg-4" style="border-style: dotted" id="txtclaveantigua"  name="txtclaveantigua"  required=""/>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-lg-3">Clave Nueva:</label>
+                                    <input type="password" class="col-lg-4"  style="border-style: dotted" id="txtclavenueva"  name="txtclavenueva"   required=""/>
+                                </div><br>
+                                <div class="form-group">
+                                    <label class="col-lg-3">Repita Clave: </label>
+                                    <input type="password"  class="col-lg-4"  style="border-style: dotted" id="txtclaverepetida"  name="txtclaverepetida"   required=""/>
+                                </div><br>
+                                <div class="form-group">
+                                    <input type="hidden"   style="border-style: dotted" id="txtclav"  name="txtclav" value="<?php echo $clave;?>"  required=""/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3">&nbsp;</label>
+                                    <br>
+                                    <button type="button" class="btn btn-success" id="btnagregar" name="btnagregar" onclick="CambiarClave();">Guardar Cambios</button>
+                                    <label></label>
+                                    <a href="principal.php"><button  type="button" class="btn btn-danger"  id="btncancelar">Cancelar.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label class="col-lg-3">&nbsp;</label>
-                                <br>
-                                <button type="submit" class="btn btn-success" id="btnagregar" name="btnagregar">Guardar Cambios</button>
-                                <label></label>
-                                <a href="principal.php"><button  type="button" class="btn btn-danger"  id="btncancelar">Cancelar.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button></a>
-                            </div>
-                            
-                        </div>
+                        </form>
                     </div>              
                 </div><!-- /.box-header -->  
             </div>
@@ -96,6 +97,9 @@
     <script src="../util/jquery/jquery.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../util/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/cambiarClave.js" type="text/javascript"></script>
+    <!-- SWEET JS -->
+    <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
   </body>
 
 </html>
