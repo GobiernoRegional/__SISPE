@@ -1,64 +1,83 @@
-$(document).ready(function (){
-//     $('#txttelefono').css('display', 'none');
-//     $('#txtcorreo').css('display', 'block');
-
+function cargarDatos(){
     $('#btnperfil').css('display', 'none');
     $("#txttelefonoedit").val($("#txttelefono").val());
     $("#txtcorreoedit").val($("#txtcorreo").val());
     $("#txtdireccionedit").val($("#txtdireccion").val());
     
+    $("#txttelefonocont").val($("#txttelefono").val());
+    $("#txtcorreocont").val($("#txtcorreo").val());
+    $("#txtdireccioncont").val($("#txtdireccion").val());    
+    
     document.getElementById("txttelefono").disabled='false'; 
     document.getElementById("txtcorreo").disabled='false'; 
     document.getElementById("txtdireccion").disabled='false'; 
+}
+function validaDobleClick(campo){
+    document.getElementById(campo).disabled="";
+    $('#'+campo).css('background', '#FFFFFF');
+    $('#btnperfil').css('display', 'none');
+    $('#txtcontrol').val(parseInt($("#txtcontrol").val())+1); 
+}
+
+function validaKeyPress(campo){
+    $('#txtcontrol').val(parseInt($('#txtcontrol').val())-1);
+    $('#'+campo).css('background', '#D9EDF7');
+    
+    if( $('#txtcontrol').val()==='0'){ 
+        if(
+        $("#txttelefonoedit").val()!== $("#txttelefonocont").val() ||
+        $("#txtcorreoedit").val()!== $("#txtcorreocont").val() ||
+        $("#txtdireccionedit").val()!== $("#txtdireccioncont").val()){
+        
+        $('#btnperfil').css('display', 'block');  
+        }
+    }else{
+           $('#btnperfil').css('display', 'none'); 
+    }
+
+    document.getElementById(campo).disabled='false';    
+}
+
+
+$(document).ready(function (){
+    cargarDatos();
 });
 
 //TELEFONO
 $(document).on("dblclick", "#txttelefono", function(){    
-    document.getElementById('txttelefono').disabled="";
-    $('#txttelefono').css('background', '#FFFFFF');
-    $('#btnperfil').css('display', 'none');
+    validaDobleClick("txttelefono");
 });
 
 $(document).on("keypress", "#txttelefono", function(evento){
     if (evento.which === 13){
-        $("#txttelefonoedit").val($("#txttelefono").val());  
-        document.getElementById("txttelefono").disabled='false';
-        $('#txttelefono').css('background', '#D9EDF7');
-        $('#btnperfil').css('display', 'block');
+       $("#txttelefonoedit").val($("#txttelefono").val()); 
+        validaKeyPress("txttelefono");        
     }else{
        return validarNumeros(evento);
     }
 });
 
 //CORREO
-$(document).on("dblclick", "#txtcorreo", function(){    
-    document.getElementById('txtcorreo').disabled="";
-    $('#txtcorreo').css('background', '#FFFFFF');
-    $('#btnperfil').css('display', 'none');
+$(document).on("dblclick", "#txtcorreo", function(){       
+    validaDobleClick("txtcorreo");    
 });
 
 $(document).on("keypress", "#txtcorreo", function(evento){
     if (evento.which === 13){  
         $("#txtcorreoedit").val($("#txtcorreo").val()); 
-        document.getElementById("txtcorreo").disabled='false';
-        $('#txtcorreo').css('background', '#D9EDF7');
-        $('#btnperfil').css('display', 'block');
+        validaKeyPress("txtcorreo");        
     }
 });
 
 //DIRECCIÓN
 $(document).on("dblclick", "#txtdireccion", function(){    
-    document.getElementById('txtdireccion').disabled="";
-    $('#txtdireccion').css('background', '#FFFFFF');
-    $('#btnperfil').css('display', 'none');
+    validaDobleClick("txtdireccion");   
 });
 
 $(document).on("keypress", "#txtdireccion", function(evento){
     if (evento.which === 13){
         $("#txtdireccionedit").val($("#txtdireccion").val());
-        document.getElementById("txtdireccion").disabled='false';
-        $('#txtdireccion').css('background', '#D9EDF7');
-        $('#btnperfil').css('display', 'block');
+        validaKeyPress("txtdireccion");   
     }
 });
 

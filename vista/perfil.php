@@ -87,6 +87,7 @@
                                     <label class="col-lg-2">Teléfono: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7;"  id="txttelefono"  name="txttelefono"   value="<?php echo $telefono; ?>"/>
                                     <input type="hidden" id="txttelefonoedit"  name="txttelefonoedit"  />
+                                    <input type="hidden" id="txttelefonocont"  name="txttelefonocont"  />
                                 </div>
                             </div>
                             <div class="row">
@@ -94,6 +95,7 @@
                                     <label class="col-lg-2">Correo: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtcorreo"  name="txtcorreo"   value="<?php echo $correo; ?>"/>
                                     <input type="hidden" id="txtcorreoedit"  name="txtcorreoedit"  />
+                                    <input type="hidden" id="txtcorreocont"  name="txtcorreocont"  />
                                 </div>
                             </div>
                             <div class="row">
@@ -101,6 +103,7 @@
                                     <label class="col-lg-2">Dirección: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtdireccion"  name="txtdireccion"   value="<?php echo $direccion; ?>"/>
                                     <input type="hidden" id="txtdireccionedit"  name="txtdireccionedit"  />
+                                    <input type="hidden" id="txtdireccioncont"  name="txtdireccioncont"  />
                                 </div>
                             </div>
                             <div class="row">
@@ -110,6 +113,8 @@
 
                                 </div>
                             </div>
+                            <input type="hidden" id="txtcontrol"  name="txtcontrol" value="0" />
+
                             <div class="row">
                                 <div class="form-group">
                                     <button type="button"  style="float: right" class="btn btn-success" aria-hidden="true" id="btnperfil" name="btnperfil" onclick="GrabarPerfil()">Grabar los datos</button>
