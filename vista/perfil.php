@@ -86,18 +86,21 @@
                                 <div class="form-group">
                                     <label class="col-lg-2">Teléfono: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7;"  id="txttelefono"  name="txttelefono"   value="<?php echo $telefono; ?>"/>
+                                    <input type="hidden" id="txttelefonoedit"  name="txttelefonoedit"  />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group">
                                     <label class="col-lg-2">Correo: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtcorreo"  name="txtcorreo"   value="<?php echo $correo; ?>"/>
+                                    <input type="hidden" id="txtcorreoedit"  name="txtcorreoedit"  />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group">
                                     <label class="col-lg-2">Dirección: </label>
                                     <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtdireccion"  name="txtdireccion"   value="<?php echo $direccion; ?>"/>
+                                    <input type="hidden" id="txtdireccionedit"  name="txtdireccionedit"  />
                                 </div>
                             </div>
                             <div class="row">

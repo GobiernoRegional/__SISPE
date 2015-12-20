@@ -1,8 +1,8 @@
 <?php
 	$dni        =   $_POST["txtdni"];
-	$direccion  =   $_POST["txtdireccion"];
-        $correo     =   $_POST["txtcorreo"];
-	$telefono   =   $_POST["txttelefono"];
+	$direccion  =   $_POST["txtdireccionedit"];
+        $correo     =   $_POST["txtcorreoedit"];
+	$telefono   =   $_POST["txttelefonoedit"];
         
 	require_once '../negocio/Perfil.class.php';
 	$objPerfil = new Perfil();
