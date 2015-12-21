@@ -6,7 +6,12 @@ $(document).ready(function(){
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
-    
+        
+        if($("#txtdependencia").val()==="0"){
+            swal("Seleccione una Dependencia", "", "error");
+            return 0;  
+        }
+        
   	$.ajax({
     	url: "../controlador/AreaGrabar.controlador.php",
     	type: "post",
@@ -35,6 +40,11 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtdependenciaedit").val()==="0"){
+            swal("Seleccione una Dependencia", "", "error");
+            return 0;  
+        }
     
   	$.ajax({
     	url: "../controlador/AreaEditar.controlador.php",
@@ -197,3 +207,20 @@ function eliminar(id){
     	swal("Ha ocurrido un error", "", "error");
   	});
 }
+
+///Validaciones
+$(document).on("keypress", "#txtnombre", function(){
+    if($("#txtnombre").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtnombreedit", function(){
+    if($("#txtnombreedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
