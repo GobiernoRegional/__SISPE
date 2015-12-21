@@ -77,7 +77,7 @@
                                   <label>DNI:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdni" id="txtdni" maxlength="8"><br>
+                                  <input type="text" class="form-control" name="txtdni" id="txtdni" maxlength="8" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>F. Nac:</label>
@@ -110,7 +110,7 @@
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono"><br>
+                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Cargo:</label>
@@ -190,7 +190,7 @@
                                   <label>DNI:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdniedit" id="txtdniedit" maxlength="8"><br>
+                                  <input type="text" class="form-control" name="txtdniedit" id="txtdniedit" maxlength="8" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>F. Nac:</label>
@@ -223,7 +223,7 @@
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit"><br>
+                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Cargo:</label>
@@ -293,5 +293,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/personal.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
   </body>
 </html>
