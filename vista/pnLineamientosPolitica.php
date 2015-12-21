@@ -138,7 +138,23 @@
                 </div>
             </form>
             <!-- FIN del formulario modal -->  
-
+            <!-- INICIO del formulario modal eLIMINAR -->            
+                <div class="modal fade" id="myModale" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="titulomodal">ESTA SEGURO DE ELIMINAR ESTE ELEMENTO</h4>
+                      </div>
+                      <div class="modal-footer">
+                          <input type="hidden" name="txtcodigoeliminar" id="txtcodigoeliminar">
+                          <button type="submit" class="btn btn-success" aria-hidden="true" onclick="eliminardato('si')">Aceptar</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal" name="btncerrareliminar"id="btncerrareliminar" onclick="eliminardato('no')">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>        
+            <!-- FIN del formulario Eliminar -->  
             <div class="row">
                 <div class="table-responsive">
                     <table class="table" id="tablelineamientos">

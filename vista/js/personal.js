@@ -94,7 +94,7 @@ function listar(){
     	success: function(DataJson){
       		if(DataJson.state){
        			for(data in DataJson.resultado){
-       				$("#bodypersonal").append("<tr><td>"+DataJson.resultado[data].per_codigo+"</td><td>"+DataJson.resultado[data].per_apellido+" "+DataJson.resultado[data].per_nombre+"</td><td>"+DataJson.resultado[data].are_nombre+"</td><td>"+DataJson.resultado[data].car_nombre+"</td><td>"+DataJson.resultado[data].per_dni+"</td><td>"+DataJson.resultado[data].per_correo+"</td><td>"+DataJson.resultado[data].per_telefono+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+       				$("#bodypersonal").append("<tr><td>"+DataJson.resultado[data].per_codigo+"</td><td>"+DataJson.resultado[data].per_apellido+" "+DataJson.resultado[data].per_nombre+"</td><td>"+DataJson.resultado[data].are_nombre+"</td><td>"+DataJson.resultado[data].car_nombre+"</td><td>"+DataJson.resultado[data].per_dni+"</td><td>"+DataJson.resultado[data].per_correo+"</td><td>"+DataJson.resultado[data].per_telefono+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].per_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
        			}
       		}else{                           
         		
@@ -138,26 +138,7 @@ function editar(id){
   	});
 }
 function eliminar(id){
-	var parametro={
-		"codigo":id,
-	}
-	$.ajax({
-    	url: "../controlador/eliminarPersonal.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	data: parametro,
-    	success: function(DataJson){
-      		if(DataJson.state){
-       			swal("Correcto", "", "success");
-            	listar();
-      		}else{                           
-        		
-      		}                                                           
-    	}
-  	})
-  	.fail(function(){
-    	swal("Ha ocurrido un error", "", "error");
-  	});
+	$("#txtcodigoeliminar").val(id);	
 }
 function cargarCargo(){
 	$.ajax({
@@ -234,4 +215,35 @@ function cargarAreaEdit(){
   	.fail(function(){
     	//swal("Ha ocurrido un error", "", "error");
   	})
+}
+
+function eliminardato(valor){
+//    alert($("#txtcodigoeliminar").val());    
+    if(valor ==="no"){
+        return 0;
+    }else{
+        var parametro={
+		"codigo":  $("#txtcodigoeliminar").val(),
+	}
+	$.ajax({
+    	url: "../controlador/eliminarPersonal.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data: parametro,
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			swal("Correcto", "", "success");
+            	listar();
+//            	cargarCodigo();
+                $("#btncerrareliminar").click();
+      		}else{                           
+        		
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	});
+    }
+	
 }

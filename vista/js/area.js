@@ -82,7 +82,7 @@ function listar(){
     	success: function(DataJson){
       		if(DataJson.state){
        			for(data in DataJson.resultado){
-       				$("#bodyareas").append("<tr><td>"+DataJson.resultado[data].are_codigo+"</td><td>"+DataJson.resultado[data].are_nombre+"</td><td>"+DataJson.resultado[data].dep_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].are_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].are_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+       				$("#bodyareas").append("<tr><td>"+DataJson.resultado[data].are_codigo+"</td><td>"+DataJson.resultado[data].are_nombre+"</td><td>"+DataJson.resultado[data].dep_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].are_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].are_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
        			}
       		}else{                           
         		
@@ -152,6 +152,7 @@ function cargarCodigo(){
   	});
 }
 function editar(id){
+    
 	var parametro={
 		"codigo":id,
 	}
@@ -175,8 +176,16 @@ function editar(id){
   	});
 }
 function eliminar(id){
-	var parametro={
-		"codigo":id,
+    $("#txtcodigoeliminar").val(id);	
+}
+
+function eliminardato(valor){
+//    alert($("#txtcodigoeliminar").val());    
+    if(valor ==="no"){
+        return 0;
+    }else{
+        var parametro={
+		"codigo":  $("#txtcodigoeliminar").val(),
 	}
 	$.ajax({
     	url: "../controlador/AreaEliminar.controlador.php",
@@ -188,6 +197,7 @@ function eliminar(id){
        			swal("Correcto", "", "success");
             	listar();
             	cargarCodigo();
+                $("#btncerrareliminar").click();
       		}else{                           
         		
       		}                                                           
@@ -196,4 +206,6 @@ function eliminar(id){
   	.fail(function(){
     	swal("Ha ocurrido un error", "", "error");
   	});
+    }
+	
 }

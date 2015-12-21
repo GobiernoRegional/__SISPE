@@ -94,7 +94,7 @@ function listar(){
                                                 "<a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pol_codigo+"\")'> \n\
                                                   <i class='glyphicon glyphicon-wrench'></i>\n\
                                                 </a>"+
-                                                "<a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].pol_codigo+"\")'>\n\
+                                                "<a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pol_codigo+"\")'>\n\
                                                 <i class='glyphicon glyphicon-remove'></i>\n\
                                                 </a>"+
                                             '</td>'+
@@ -147,8 +147,16 @@ function editar(id){
   	});
 }
 function eliminar(id){
-	var parametro={
-		"codigo":id,
+	$("#txtcodigoeliminar").val(id);	
+}
+
+function eliminardato(valor){
+//    alert($("#txtcodigoeliminar").val());    
+    if(valor ==="no"){
+        return 0;
+    }else{
+        var parametro={
+		"codigo":  $("#txtcodigoeliminar").val(),
 	}
 	$.ajax({
     	url: "../controlador/PoliticaRegionEliminar.controlador.php",
@@ -160,6 +168,7 @@ function eliminar(id){
        			swal("Correcto", "", "success");
             	listar();
             	cargarCodigo();
+                $("#btncerrareliminar").click();
       		}else{                           
         		
       		}                                                           
@@ -168,4 +177,6 @@ function eliminar(id){
   	.fail(function(){
     	swal("Ha ocurrido un error", "", "error");
   	});
+    }
+	
 }

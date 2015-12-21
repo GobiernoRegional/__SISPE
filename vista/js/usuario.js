@@ -201,3 +201,35 @@ function cargarCombPersonal(){
 $("#myModal").on('shown.bs.modal', function(){
     $("#txtcodigo").focus();
 });
+
+
+function eliminardato(valor){
+//    alert($("#txtcodigoeliminar").val());    
+    if(valor ==="no"){
+        return 0;
+    }else{
+        var parametro={
+		"codigo":  $("#txtcodigoeliminar").val(),
+	}
+	$.ajax({
+    	url: "../controlador/AreaEliminar.controlador.php",
+    	type: "post",
+    	dataType: "json",
+    	data: parametro,
+    	success: function(DataJson){
+      		if(DataJson.state){
+       			swal("Correcto", "", "success");
+            	listar();
+            	cargarCodigo();
+                $("#btncerrareliminar").click();
+      		}else{                           
+        		
+      		}                                                           
+    	}
+  	})
+  	.fail(function(){
+    	swal("Ha ocurrido un error", "", "error");
+  	});
+    }
+	
+}

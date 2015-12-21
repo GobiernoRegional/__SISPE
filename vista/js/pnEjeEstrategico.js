@@ -67,7 +67,7 @@ function listar(){
     	success: function(DataJson){
       		if(DataJson.state){
        			for(data in DataJson.resultado){
-       				$("#bodyejeestrategico").append("<tr><td>"+DataJson.resultado[data].eje_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+       				$("#bodyejeestrategico").append("<tr><td>"+DataJson.resultado[data].eje_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].eje_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
        			}
       		}else{                           
         		
@@ -109,8 +109,16 @@ function editar(id){
   	});
 }
 function eliminar(id){
-	var parametro={
-		"codigo":id,
+	$("#txtcodigoeliminar").val(id);	
+}
+
+function eliminardato(valor){
+//    alert($("#txtcodigoeliminar").val());    
+    if(valor ==="no"){
+        return 0;
+    }else{
+        var parametro={
+		"codigo":  $("#txtcodigoeliminar").val(),
 	}
 	$.ajax({
     	url: "../controlador/EjeEstrategicoEliminar.controlador.php",
@@ -121,7 +129,9 @@ function eliminar(id){
       		if(DataJson.state){
        			swal("Correcto", "", "success");
             	listar();
-            	cargarCodigo();
+//            	cargarCodigo();
+//                    alert(2);
+                $("#btncerrareliminar").click();
       		}else{                           
         		
       		}                                                           
@@ -130,4 +140,6 @@ function eliminar(id){
   	.fail(function(){
     	swal("Ha ocurrido un error", "", "error");
   	});
+    }
+	
 }
