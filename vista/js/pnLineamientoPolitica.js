@@ -4,8 +4,6 @@ $(document).ready(function(){
 	cargarEjeEditar();
   CKEDITOR.replace("txtdescripcion");
   CKEDITOR.replace("txtdescripcionedit");
-  CKEDITOR.replace("txtdescripcionvista");
-  
 
 });
 $('#frmgrabar').submit(function(e){ 
@@ -100,7 +98,7 @@ function listar(){
       success: function(DataJson){
           if(DataJson.state){
             for(data in DataJson.resultado){
-              $("#bodylineamientos").append("<tr><td>"+DataJson.resultado[data].pli_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td>"+DataJson.resultado[data].pli_nombre+"</td><td><a class='btn btn-success' data-toggle='modal' data-target='#myModaldetalle' onclick='detalledescripcion(\""+DataJson.resultado[data].pli_codigo+"\")'>Descripcion</a></td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+              $("#bodylineamientos").append("<tr><td>"+DataJson.resultado[data].pli_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td>"+DataJson.resultado[data].pli_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
             }
           }else{                           
             
@@ -111,28 +109,6 @@ function listar(){
     .fail(function(){
       //swal("Ha ocurrido un error", "", "error");
     })
-}
-
-function detalledescripcion(id){
-    var parametro={
-    "codigo":id,
-  }
-  $.ajax({
-      url: "../controlador/PoliticaLineamientoCargarCodigo.controlador.php",
-      type: "post",
-      dataType: "json",
-      data: parametro,
-      success: function(DataJson){
-        if(DataJson.state){
-          CKEDITOR.instances['txtdescripcionvista'].setData(DataJson.resultado.pli_descripcion)
-        }else{                           
-          
-        }                                                           
-      }
-    })
-    .fail(function(){
-      swal("Ha ocurrido un error", "", "error");
-    });
 }
 function editar(id){
   var parametro={
@@ -149,7 +125,7 @@ function editar(id){
           $("#txtejeedit").val(DataJson.resultado.pli_eje_codigo);
           $("#txtnombreedit").val(DataJson.resultado.pli_nombre);
           CKEDITOR.instances['txtdescripcionedit'].setData(DataJson.resultado.pli_descripcion)
-
+          //$("#txtprioridadesedit").val(DataJson.resultado.pri_nombre);
         }else{                           
           
         }                                                           
