@@ -1,23 +1,21 @@
 <?php
-	$codigo                 = $_POST["txtcodigoedit"];
-	$indicador              = $_POST["txtnombreedit"];
-        $formula                = $_POST["txtanoedit"];
-        $fuente                 = $_POST["txtfuenteedit"];
-        $linea                  = $_POST["txtcantidadedit"];
-        $tendencia              = $_POST["txtformulaedit"];
-        $meta21                 = $_POST["txtmeta21edit"];
-        $objNacional            = $_POST["txtobjnacionaledit"];
+	$indicador              = $_POST["txtindicador"];
+        $formula                = $_POST["txtformula"];
+        $fuente                 = $_POST["txtfuente"];
+        $linea                  = $_POST["txtlineabase"];
+        $meta21                 = $_POST["txtmeta"];
+        $tendencia = $_POST["txttendencia"];
+        $objNacional            = $_POST["txtobjetivo"];
         
-        require_once '../negocio/IndicadorNacional.class.php.class.php';
+        require_once '../negocio/IndicadorNacional.class.php';
 	$objIndicadorNacional = new IndicadorNacional();
-	$objIndicadorNacional->setCodigo($codigo);
 	$objIndicadorNacional->setNombre($indicador);
         $objIndicadorNacional->setFormula($formula);
         $objIndicadorNacional->setFuente($fuente);
-        $objIndicadorNacional->setLinea($linea);
-        $objIndicadorNacional->setTendencia($tendencia);
+        $objIndicadorNacional->setLineabase($linea);
         $objIndicadorNacional->setMeta21($meta21);
-        $objIndicadorNacional->setObjEspNacional($objEspNacional);
+        $objIndicadorNacional->setTendencia($tendencia);
+        $objIndicadorNacional->setObjEspNacional($objNacional);
 
 	$resultado=$objIndicadorNacional->agregar();
 	echo json_encode($resultado);

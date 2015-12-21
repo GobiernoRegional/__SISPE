@@ -62,18 +62,50 @@
                       <div class="modal-body">
                           <div class="row">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <select class="form-control" name="txteje" id="txteje">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivo" id="txtobjetivo" onchange="camposMayus(this)"><br>
+                                <select class="form-control" name="txtobjetivo" id="txtobjetivo">
+                                  <option value="0">Elegir Objetivo</option>
+                                </select><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Indicador:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtindicador" id="txtindicador" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Fórmula del indicador:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <textarea class="form-control" name="txtformula" id="txtformula">
+                                  
+                                </textarea><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Fuente de información:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtfuente" id="txtfuente" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Línea de base:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtlineabase" id="txtlineabase" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Tendencia al 2021:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txttendencia" id="txttendencia" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Meta 2021:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtmeta" id="txtmeta" onchange="camposMayus(this)"><br>
                               </div>
                           </div>
                       </div>
@@ -99,18 +131,50 @@
                           <div class="row">
                               <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <select class="form-control" name="txtejeedit" id="txtejeedit">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" onchange="camposMayus(this)"><br>
+                                <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit">
+                                  <option value="0">Elegir Objetivo</option>
+                                </select><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Indicador:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtindicadoredit" id="txtindicadoredit" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Fórmula del indicador:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <textarea class="form-control" name="txtformulaedit" id="txtformulaedit">
+                                  
+                                </textarea><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Fuente de información:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtfuenteedit" id="txtfuenteedit" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Línea de base:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtlineabaseedit" id="txtlineabaseedit" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Tendencia al 2021:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txttendenciaedit" id="txttendenciaedit" onchange="camposMayus(this)"><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Meta 2021:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" class="form-control" name="txtmetaedit" id="txtmetaedit" onchange="camposMayus(this)"><br>
                               </div>
                           </div>
                       </div>
@@ -126,16 +190,18 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tableobjetivoespecifico">
+                    <table class="table" id="tableindicadores">
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Eje Estratégico</th>
                                 <th>Objetivo Específico</th>
+                                <th>Indicador</th>
+                                <th>Línea de Base</th>
+                                <th>Meta 2021</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyobjetivoespecifico">
+                        <tbody id="bodyindicadores">
                             
                         </tbody>
                     </table>
