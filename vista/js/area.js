@@ -92,7 +92,7 @@ function listar(){
   	})
   	.fail(function(){
     	//swal("Ha ocurrido un error", "", "error");
-  	})
+  	});
 }
 function cargarDependencia(){
   $.ajax({
