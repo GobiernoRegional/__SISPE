@@ -42,7 +42,7 @@
             </ol>
         	<div class="row">
                <div style="text-align:center;">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-child"></i></a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-pencil-square-o"></i></a>
                 </div>
                 <div style="text-align:center;">
                     <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Acciones Estratégicas</label>
