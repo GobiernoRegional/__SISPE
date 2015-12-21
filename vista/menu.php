@@ -38,8 +38,8 @@
 
 						<li><a href="pnObjetivosEspecificos.php">Objetivos específicos</a></li>
 						<hr>
-						<li><a href="#">Indicadores y metas</a></li>
-						<li><a href="#">Acciones estratégicas</a></li>
+						<li><a href="pnIndicadoresyMetas.php">Indicadores y metas</a></li>
+						<li><a href="pnAccionesEstrategicas.php">Acciones estratégicas</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
