@@ -6,6 +6,10 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+    if($("#txteje").val() ==="0" || $("#txtobjetivo").val() ===""  ){
+        swal("Debe Completar Todos Los Campos", "", "error");  
+        return 0;
+    }
   	$.ajax({
     	url: "../controlador/ObjetivoEstrategicoRegGrabar.controlador.php",
     	type: "post",
@@ -33,6 +37,10 @@ $('#frmgrabar').submit(function(e){
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
     
+    if($("#txtejeedit").val() ==="0" || $("#txtobjetivoedit").val() ===""  ){
+        swal("Debe Completar Todos Los Campos", "", "error");  
+        return 0;
+    }
     $.ajax({
       url: "../controlador/ObjetivoEstrategicoRegEditar.controlador.php",
       type: "post",
