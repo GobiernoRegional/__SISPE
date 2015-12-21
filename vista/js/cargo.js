@@ -5,7 +5,7 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
-        if($("#txtcargo").val()==="0"){
+        if($("#txtcargo").val()===""){
             swal("Complete los campos", "", "error");
             return 0;  
         }
@@ -143,6 +143,11 @@ function eliminar(id){
 	var parametro={
 		"codigo":id,
 	}
+        
+        if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
+        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
+        }
+        
 	$.ajax({
     	url: "../controlador/eliminarCargo.controlador.php",
     	type: "post",
