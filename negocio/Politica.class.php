@@ -4,6 +4,15 @@ require_once '../datos/conexion.php';
 class PoliticaR  extends Conexion{
     private $codigo;
     private $descripcion;
+    private $sector;
+    
+    function getSector() {
+        return $this->sector;
+    }
+
+    function setSector($sector) {
+        $this->sector = $sector;
+    }
     
     function getDescripcion() {
      return $this->descripcion;
@@ -46,7 +55,7 @@ class PoliticaR  extends Conexion{
         
         try {  
                             
-               $sql = "select fn_politicainsertar('".$this->getDescripcion()."')";
+               $sql = "select fn_politicainsertar('".$this->getDescripcion().",".$this->getSector()."')";
                 
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -66,7 +75,7 @@ class PoliticaR  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_politicamodificar('".$this->getCodigo()."','".$this->getDescripcion()."')";                             
+            $sql = "select fn_politicamodificar('".$this->getCodigo()."','".$this->getDescripcion().$this->getSector()."')";                           
             $sentencia = $this->dblink->prepare($sql)OR DIE ("No se pudo Modificar Este Registro");
             $sentencia->execute();
             $this->dblink->commit();
@@ -86,7 +95,8 @@ class PoliticaR  extends Conexion{
             $sql = "
                 select
                         pol_codigo,
-                        pol_descripcion                          
+                        pol_descripcion,
+                        pol_sec_codigo
                 from
                         tbpolitica                         
                 where
@@ -153,10 +163,10 @@ class PoliticaR  extends Conexion{
         
     }
     
-    public function obtenerSubcapitulos() {
+    public function obtenerSector() {
         try {
             $sql = "
-                    select sub_codigo, sub_nombre from tbsubcapitulos order by sub_nombre asc
+                    select tse_codigo, tse_nombre from tbtipo_sector order by tse_nombre asc
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
