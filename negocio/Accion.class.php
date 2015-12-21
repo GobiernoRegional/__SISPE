@@ -96,7 +96,7 @@ class Accion  extends Conexion{
                 select
                         acc_codigo,
                         acc_descripcion,
-                        acc_obj_codigo
+                        acc_oen_codigo
                 from
                         tbaccion
                 where

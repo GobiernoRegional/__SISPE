@@ -38,18 +38,10 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="principal.php"><i class="fa fa-home"></i> SISPE</a></li>
-                <li><a href="#">Plan Perú</a></li>
-                <li><a href="pnObjetivosEspecificos.php">Objetivos Específicos</a></li>
-                <li class="active">Indicadores y Metas</li>
+                <li><a href="#">PRDC</a></li>
+                <li class="active">Ejes Estratégicos</li>
             </ol>
-        	<div class="row">
-               <div style="text-align:center;">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-tachometer"></i></a>
-                </div>
-                <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Indicadores</label>
-                </div>
-            </div>
+        	  <br>
             <!-- INICIO del formulario modal GRABAR -->
             <form name="frmgrabar" id="frmgrabar">
                 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -57,23 +49,16 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Agregar nuevo objetivo</h4>
+                        <h4 class="modal-title" id="titulomodal">Agregar nuevo eje</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
+                              
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
+                                  <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txteje" id="txteje">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
-                                <label>Objetivo Específico:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivo" id="txtobjetivo" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>
@@ -93,24 +78,21 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Editar objetivo</h4>
+                        <h4 class="modal-title" id="titulomodal">Editar eje</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
-                              <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
+                                  <label>Código:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtejeedit" id="txtejeedit">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
+                                  <input type="text" class="form-control" name="txtcodigoedit" id="txtcodigoedit" readonly="readonly"><br>
                               </div>
                               <div class="col-lg-4">
-                                <label>Objetivo Específico:</label>
+                                  <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>
@@ -126,16 +108,14 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tableobjetivoespecifico">
+                    <table class="table" id="tablejeestrategico">
                         <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Eje Estratégico</th>
-                                <th>Objetivo Específico</th>
-                                <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyobjetivoespecifico">
+                        <tbody id="bodyejeestrategico">
                             
                         </tbody>
                     </table>
@@ -155,6 +135,6 @@
     <!-- SWEET JS -->
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
-    <script type="text/javascript" src="js/pnIndicadoresMetas.js"></script>
+    <script type="text/javascript" src="js/prEjeEstrategico.js"></script>
   </body>
 </html>
