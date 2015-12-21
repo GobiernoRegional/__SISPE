@@ -40,7 +40,22 @@ class Perfil extends Conexion{
      $this->numeroTelefono = $numeroTelefono;
     }
 
-
+    
+    function listar($dni){
+        try {
+            $sql="select * from tbpersonal where per_dni = '$dni' order by per_codigo asc";
+            
+            $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
+            $sentencia->execute();
+            $registros = $sentencia->fetchAll();
+            $array=array('state'=>1,'resultado'=>$registros);
+            return $array;
+            
+            } catch (Exception $exc) {
+                echo $exc;
+            }
+    }
+    
     public function editar() {
         $this->dblink->beginTransaction();
         
