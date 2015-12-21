@@ -4,6 +4,11 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txtnombre").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/EjeEstrategicoGrabar.controlador.php",
     	type: "post",
@@ -14,13 +19,11 @@ $('#frmgrabar').submit(function(e){
       		if(DataJson.state){
       			swal("Registro Correcto", "", "success");
        			listar();
-       			cargarCodigo();
        			$('#myModal').modal('hide');
        			limpiarFormulario();
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
-        		cargarCodigo();
         		$('#myModal').modal('hide');
         		limpiarFormulario();
       		}                                                           
@@ -42,13 +45,11 @@ $('#frmeditar').submit(function(e){
     	success: function(DataJson){
       		if(DataJson.state){
       			swal("Editar Correcto", "", "success");
-       			listar();
-       			cargarCodigo();
+       			listar();       			
        			$('#myModal2').modal('hide');
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
-        		listar();
-        		cargarCodigo();
+        		listar();                        
         		$('#myModal2').modal('hide');
         		
       		}                                                           
@@ -141,3 +142,20 @@ function eliminardato(valor){
     }
 	
 }
+
+///Validaciones
+$(document).on("keypress", "#txtnombre", function(){
+    if($("#txtnombre").val().length < 200){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtnombreedit", function(){
+    if($("#txtnombreedit").val().length < 200){
+        return true;
+    }else{
+        return false;
+    }
+});
