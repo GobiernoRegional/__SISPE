@@ -1,10 +1,10 @@
 <?php
-	$objetivo=$_POST["txtnombre"];
+	$objetivo=$_POST["txtobjetivo"];
 	$eje = $_POST["txteje"];
 	require_once '../negocio/ObjetivoEstrategicoRegional.class.php';
 	$objObjetivo = new Objetivo();
-	$objObjetivo->setNombre($eje);
-        $objObjetivo->setEje($eje);
+	$objObjetivo->setNombre($objetivo);
+    $objObjetivo->setEje($eje);
 	$resultado=$objObjetivo->agregar();
 	echo json_encode($resultado);
 ?>
