@@ -41,6 +41,7 @@ function validaKeyPress(campo){
 
 $(document).ready(function (){
     cargarDatos();
+    alert("perfil");
 });
 
 //TELEFONO
