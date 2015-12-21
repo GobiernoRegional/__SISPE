@@ -56,13 +56,13 @@ class Sesion extends Conexion {
                         upper(usu_nombre)= upper(:p_usuario)
                     ";
 
-            print_r( $this->getUsuario());
+//            print_r( $this->getUsuario());
             $sentecia = $this->dblink->prepare($sql);
             $sentecia->bindParam(":p_usuario", $this->getUsuario());
             $sentecia->execute();
             $resultado = $sentecia->fetch();
             
-            print_r($resultado);
+//            print_r($resultado);
 
             if ($resultado["usu_clave"] == md5($this->getClave())){
                 if ($resultado["usu_estado"] == "I"){
