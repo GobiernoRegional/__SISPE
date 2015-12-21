@@ -36,7 +36,8 @@ class PoliticaR  extends Conexion{
     function listar(){
         
         try {
-            $sql="select * from tbpolitica 
+            $sql="select * from tbpolitica inner join tbtipo_sector
+                    on tbpolitica.pol_sec_codigo=tbtipo_sector.tse_codigo
                    order by pol_codigo ";
            
             $sentecia = $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
@@ -55,7 +56,7 @@ class PoliticaR  extends Conexion{
         
         try {  
                             
-               $sql = "select fn_politicainsertar('".$this->getDescripcion().",".$this->getSector()."')";
+               $sql = "select fn_politicainsertar('".$this->getDescripcion()."','".$this->getSector()."')";
                 
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -75,7 +76,7 @@ class PoliticaR  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_politicamodificar('".$this->getCodigo()."','".$this->getDescripcion().$this->getSector()."')";                           
+            $sql = "select fn_politicamodificar('".$this->getCodigo()."','".$this->getDescripcion()."','".$this->getSector()."')";                           
             $sentencia = $this->dblink->prepare($sql)OR DIE ("No se pudo Modificar Este Registro");
             $sentencia->execute();
             $this->dblink->commit();
