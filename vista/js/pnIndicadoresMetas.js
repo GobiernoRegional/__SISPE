@@ -6,11 +6,6 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
-        if($("#txtobjetivo").val()==="0" || $("#txtindicador").val()===""|| $("#txtformula").val()===""|| $("#txtfuente").val()===""|| $("#txtlineabase").val()===""|| $("#txttendencia").val()===""|| $("#txtmeta").val()===""){
-            swal("Complete los campos", "", "error");
-            return 0;  
-        }
-    
   	$.ajax({
     	url: "../controlador/IndicadorNacionalGrabar.controlador.php",
     	type: "post",
@@ -37,11 +32,6 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
-    
-    if($("#txtobjetivoedit").val()==="0" || $("#txtindicadoredit").val()===""|| $("#txtformulaedit").val()===""|| $("#txtfuenteedit").val()===""|| $("#txtlineabaseedit").val()===""|| $("#txttendenciaedit").val()===""|| $("#txtmetaedit").val()===""){
-            swal("Complete los campos", "", "error");
-            return 0;  
-        }
     
     $.ajax({
       url: "../controlador/IndicadorNacionalEditar.controlador.php",
@@ -171,113 +161,31 @@ function cargarObjetivoEdit(){
 
 
 function eliminardato(valor){
-//    alert($("#txtcodigoeliminar").val());    
+    //alert($("#txtcodigoeliminar").val());    
     if(valor ==="no"){
         return 0;
     }else{
-        var parametro={
-		"codigo":  $("#txtcodigoeliminar").val(),
-	}
-        
-       	$.ajax({
-    	uurl: "../controlador/IndicadorNacionalEliminar.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	data: parametro,
-    	success: function(DataJson){
-      		if(DataJson.state){
-       			swal("Correcto", "", "success");
-            	listar();
-                $("#btncerrareliminar").click();
-      		}else{                           
-        		
-      		}                                                           
-    	}
-  	})
-  	.fail(function(){
-    	swal("Ha ocurrido un error", "", "error");
-  	});
-
+      var parametro={
+		    "codigo":  $("#txtcodigoeliminar").val(),
+	    }
+	    $.ajax({
+    	  url: "../controlador/IndicadorNacionalEliminar.controlador.php",
+      	type: "post",
+      	dataType: "json",
+      	data: parametro,
+      	success: function(DataJson){
+    		  if(DataJson.state){
+     			  swal("Correcto", "", "success");
+          	listar();
+            $("#btncerrareliminar").click();
+    		  }else{                           
+      		
+    		  }                                                           
+      	}
+    	})
+    	.fail(function(){
+    	  swal("Ha ocurrido un error", "", "error");
+    	});
     }
+	
 }
-
-///Validaciones
-$(document).on("keypress", "#txtindicador", function(){
-    if($("#txtindicador").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtindicadoredit", function(){
-    if($("#txtindicadoredit").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtformula", function(){
-    if($("#txtformula").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtformulaedit", function(){
-    if($("#txtformulaedit").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtfuente", function(){
-    if($("#txtfuente").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtfuenteedit", function(){
-    if($("#txtfuenteedit").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txttendencia", function(){
-    if($("#txttendencia").val().length < 100){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txttendenciaedit", function(){
-    if($("#txttendenciaedit").val().length < 100){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtlineabase", function(){
-    if($("#txtlineabase").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtlineabaseedit", function(){
-    if($("#txtlineabaseedit").val().length < 200){
-        return true;
-    }else{
-        return false;
-    }
-});
