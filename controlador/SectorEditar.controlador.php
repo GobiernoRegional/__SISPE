@@ -1,8 +1,8 @@
 <?php
-	$codigo             = $_POST["txtcodigoedit"];
-        $sector             = $_POST["txtnombreedit"];
+	$codigo             = $_POST["txtcodigo"];
+    $sector             = $_POST["txtsectoredit"];
         
-        require_once '../negocio/TipoSector.class.php';
+    require_once '../negocio/TipoSector.class.php';
 	$objTipoSector = new TipoSector();
 	$objTipoSector->setCodigo($codigo);
 	$objTipoSector->setNombre($sector);
