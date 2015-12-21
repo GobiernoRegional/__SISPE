@@ -7,7 +7,9 @@
     }
         
     $nombreUsuario = ucwords(strtolower($_SESSION["usuario"]));
-    $cargo = ucwords(strtolower($_SESSION["cargo"]));    
+    $cargo = ucwords(strtolower($_SESSION["cargo"]));
+
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,18 +38,10 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="principal.php"><i class="fa fa-home"></i> SISPE</a></li>
-                <li><a href="#">Plan Perú</a></li>
-                <li><a href="pnObjetivosEspecificos.php">Objetivos Específicos</a></li>
-                <li class="active">Acciones Estratégicas</li>
+                <li><a href="#">PRDC</a></li>
+                <li class="active">Ejes Estratégicos</li>
             </ol>
-        	<div class="row">
-               <div style="text-align:center;">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-pencil-square-o"></i></a>
-                </div>
-                <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Acciones Estratégicas</label>
-                </div>
-            </div>
+        	  <br>
             <!-- INICIO del formulario modal GRABAR -->
             <form name="frmgrabar" id="frmgrabar">
                 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -55,23 +49,16 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Agregar nueva acción estratégica</h4>
+                        <h4 class="modal-title" id="titulomodal">Agregar nuevo eje</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
+                              
                               <div class="col-lg-4">
-                                <label>Objetivo Específico:</label>
+                                  <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivo" id="txtobjetivo">
-                                  <option value="0">Elegir Objetivo</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
-                                <label>Acción Estratégica:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <textarea type="text" class="form-control" name="txtaccion" id="txtaccion" onchange="camposMayus(this)"></textarea><br>
+                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>
@@ -91,24 +78,21 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Editar objetivo</h4>
+                        <h4 class="modal-title" id="titulomodal">Editar eje</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
-                              <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                <label>Objetivo Específico:</label>
+                                  <label>Código:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit">
-                                  <option value="0">Elegir Objetivo</option>
-                                </select><br>
+                                  <input type="text" class="form-control" name="txtcodigoedit" id="txtcodigoedit" readonly="readonly"><br>
                               </div>
                               <div class="col-lg-4">
-                                <label>Acción Estratégica:</label>
+                                  <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                <textarea type="text" class="form-control" name="txtaccionedit" id="txtaccionedit" onchange="camposMayus(this)"></textarea><br>
+                                  <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required><br>
                               </div>
                           </div>
                       </div>
@@ -124,16 +108,14 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tableaccionestrategica">
+                    <table class="table" id="tablejeestrategico">
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Objetivo Específico</th>
-                                <th>Acción Estratégica</th>
-                                <th>Acción</th>
+                                <th>Eje Estratégico</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyaccionestrategica">
+                        <tbody id="bodyejeestrategico">
                             
                         </tbody>
                     </table>
@@ -153,6 +135,6 @@
     <!-- SWEET JS -->
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
-    <script type="text/javascript" src="js/pnAccionEstrategica.js"></script>
+    <script type="text/javascript" src="js/prEjeEstrategico.js"></script>
   </body>
 </html>

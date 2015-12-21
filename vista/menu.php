@@ -45,7 +45,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PRDC <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Ejes Estratégicos</a></li>
+						<li><a href="prEjeEstrategico.php">Ejes Estratégicos</a></li>
 						<hr>
 						<li><a href="#">Objetivos Estratégicos</a></li>
 						<hr>

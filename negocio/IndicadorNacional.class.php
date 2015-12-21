@@ -1,41 +1,86 @@
 <?php
 
 require_once '../datos/conexion.php';
-class Accion  extends Conexion{
+class IndicadorNacional  extends Conexion{
     private $codigo;
-    private $descripcion;    
-    private  $objetivo;
-    
+    private $nombre;    
+    private $formula;
+    private $fuente;
+    private $lineabase;
+    private $tendencia;
+    private $meta21;
+    private $objEspNacional;
+
     function getCodigo() {
-      return $this->codigo;
+        return $this->codigo;
     }
 
-    function getDescripcion() {
-      return $this->descripcion;
+    function getNombre() {
+        return $this->nombre;
     }
 
-    function getObjetivo() {
-      return $this->objetivo;
+    function getFormula() {
+        return $this->formula;
+    }
+
+    function getFuente() {
+        return $this->fuente;
+    }
+
+    function getLineabase() {
+        return $this->lineabase;
+    }
+
+    function getTendencia() {
+        return $this->tendencia;
+    }
+
+    function getMeta21() {
+        return $this->meta21;
+    }
+
+    function getObjEspNacional() {
+        return $this->objEspNacional;
     }
 
     function setCodigo($codigo) {
-      $this->codigo = $codigo;
+        $this->codigo = $codigo;
     }
 
-    function setDescripcion($descripcion) {
-      $this->descripcion = $descripcion;
+    function setNombre($nombre) {
+        $this->nombre = $nombre;
     }
 
-    function setObjetivo($objetivo) {
-      $this->objetivo = $objetivo;
+    function setFormula($formula) {
+        $this->formula = $formula;
     }
 
+    function setFuente($fuente) {
+        $this->fuente = $fuente;
+    }
 
+    function setLineabase($lineabase) {
+        $this->lineabase = $lineabase;
+    }
 
-    function listar(){
+    function setTendencia($tendencia) {
+        $this->tendencia = $tendencia;
+    }
+
+    function setMeta21($meta21) {
+        $this->meta21 = $meta21;
+    }
+
+    function setObjEspNacional($objEspNacional) {
+        $this->objEspNacional = $objEspNacional;
+    }
+
+        function listar(){
         try {
-            $sql="select * from  tbaccion acc "
-                . "inner join tbobjetivo_especificonacional  oen on (acc.acc_oen_codigo = oen.oen_codigo)";
+            $sql="
+                select *
+                from tbindicador_nacional indn
+                inner join tbobjetivo_especificonacional  oen on (indn.indn_objetivoespecificonacional = oen.oen_codigo)";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
@@ -53,8 +98,8 @@ class Accion  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_accioninsertar( '".$this->getDescripcion()."',"
-                        ."'".$this->getObjetivo()."')";
+                $sql = "select fn_insertarIndicadorNacional('".$this->getNombre()."','".$this->getFormula()."','".$this->getFuente()."',"
+                    . "'".$this->getLineabase()."','".$this->getTendencia()."','".$this->getMeta21()."','".$this->getObjEspNacional()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -74,7 +119,8 @@ class Accion  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_accionmodificar('".$this->getCodigo()."','".$this->getDescripcion()."','".$this->getObjetivo()."')";
+             $sql = "select fn_indicadorNacionalmodificar('".$this->getCodigo()."','".$this->getNombre()."','".$this->getFormula()."','".$this->getFuente()."',"
+                    . "'".$this->getLineabase()."','".$this->getTendencia()."','".$this->getMeta21()."','".$this->getObjEspNacional()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -94,13 +140,18 @@ class Accion  extends Conexion{
         try {
             $sql = "
                 select
-                        acc_codigo,
-                        acc_descripcion,
-                        acc_oen_codigo
+                        indn_codigo      ,                        
+                        indn_nombre   	,
+			indn_formula 	,
+			indn_fuente	,
+			indn_lineabase  ,
+			indn_tendencia,
+			indn_meta21    ,
+			indn_objetivoespecificonacional 
                 from
-                        tbaccion
+                        tbindicador_nacional
                 where
-                        acc_codigo = '".$codigo."'
+                        indn_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
@@ -114,7 +165,7 @@ class Accion  extends Conexion{
     }
     public function eliminar() {
         try {
-            $sql = "delete from tbaccion where acc_codigo = '".$this->getCodigo()."'";
+            $sql = "delete from tbindicador_nacional where indn_codigo = '".$this->getCodigo()."'";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);
@@ -132,26 +183,26 @@ class Accion  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {               
-                $sql = "Select acc_codigo from tbaccion order by acc_codigo desc limit 1";
+                $sql = "Select indn_codigo from tbindicador_nacional order by indn_codigo desc limit 1";
                 
                 $sentencia =  $this->dblink->prepare($sql);            
                 $sentencia->execute();
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["acc_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["ind_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
                 if($codigoss>=0 && $codigoss <10){
                     
-                    $codigo=(string)("ACC00".$codigoss);
+                    $codigo=(string)("INN00".$codigoss);
                     
                 }else if($codigoss>=10&& $codigoss <100){
                     
-                    $codigo=(string)("ACC0".$codigoss);                  
+                    $codigo=(string)("INN0".$codigoss);                  
                 }else{
-                    $codigo=(string)("ACC".$codigoss);
+                    $codigo=(string)("INN".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
             return $array;                                               
@@ -159,11 +210,10 @@ class Accion  extends Conexion{
                                         
             throw $exc;
         }        
-        
-        
+             
     }
     
-    public function obtenerObjetivo() {
+    public function obtenerObjetivoEstNacional() {
         try {
             $sql = "
                    Select oen_codigo,oen_nombre from tbobjetivo_especificonacional order by oen_nombre
@@ -177,7 +227,5 @@ class Accion  extends Conexion{
         } catch (Exception $exc) {
             throw $exc;
         }
-    }
-
-
+    }    
 }

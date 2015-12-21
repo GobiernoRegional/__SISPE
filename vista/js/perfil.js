@@ -72,6 +72,7 @@ function validaKeyPress(campo){
 $(document).ready(function (){
     cargarDatos();
     listar();
+
 });
 
 //TELEFONO
