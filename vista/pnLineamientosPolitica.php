@@ -100,13 +100,13 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Editar lineamiento</h4>
+                        <h4 class="modal-title" id="titulomodaledi">Editar lineamiento</h4>
                       </div>
                       <div class="modal-body">
-                          <div class="row">
+                        <div class="row">
                               <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
+                                  <label id="labeltext1">Eje Estratégico:</label>
                               </div>
                               <div class="col-lg-8">
                                 <select class="form-control" name="txtejeedit" id="txtejeedit">
@@ -114,16 +114,16 @@
                                 </select><br>
                               </div>
                               <div class="col-lg-4">
-                                  <label>Nombre:</label>
+                                  <label id="labeltex2t">Nombre:</label>
                               </div>
                               <div class="col-lg-8">
                                   <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required><br>
                               </div>
                               <div class="col-lg-2">
-                                <label>Descripción</label>
+                                <label id="labeltext3">Descripción</label>
                               </div>
                               <div class="col-lg-10">
-                                <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit">
+                                  <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit" >
                                   
                                 </textarea><br>
                               </div>
@@ -138,7 +138,7 @@
                 </div>
             </form>
             <!-- FIN del formulario modal -->  
-            <!-- INICIO del formulario modal eLIMINAR -->            
+            <!-- INICIO del formulario modal eliminar -->            
                 <div class="modal fade" id="myModale" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -154,15 +154,42 @@
                     </div>
                   </div>
                 </div>        
-            <!-- FIN del formulario Eliminar -->  
+            <!-- FIN del formulario Eliminar --> 
+            
+                <!-- INICIO del formulario modal GRABAR -->
+                <div class="modal fade" id="myModaldetalle" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="titulomodaledi">Detalle de Descripción</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                              <input type="hidden" name="txtcodigo" id="txtcodigo">                              
+                              <div class="col-lg-12">
+                                  <textarea class="form-control" name="txtdescripcionvista" id="txtdescripcionvista" readonly="" >
+                                  
+                                </textarea><br>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btncerrar">Salir</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            <!-- FIN del formulario modal -->  
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tablelineamientos">
+                    <table class="table" id="tablelineamientos" > 
                         <thead>
                             <tr>
                                 <th>Código</th>
                                 <th>Eje Estratégico</th>
                                 <th>Lineamiento</th>
+                                <th>Descripción</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>

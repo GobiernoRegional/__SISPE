@@ -298,16 +298,16 @@ $(document).on("keypress", "#txtapellidosedit", function(){
     }
 });
 
-$(document).on("keypress", "#txtfechanacimiento", function(){
-    if($("#txtnombres").val().length < 300){
+$(document).on("keypress", "#txtdni", function(){
+    if($("#txtdni").val().length < 300){
         return true;
     }else{
         return false;
     }
 });
 
-$(document).on("keypress", "#txtfechanacimientoedit", function(){
-    if($("#txtfechanacimientoedit").val().length < 300){
+$(document).on("keypress", "#txtdniedit", function(){
+    if($("#txtdniedit").val().length < 8){
         return true;
     }else{
         return false;
@@ -324,6 +324,22 @@ $(document).on("keypress", "#txtdireccion", function(){
 
 $(document).on("keypress", "#txtdireccionedit", function(){
     if($("#txtdireccionedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txttelefono", function(){
+    if($("#txttelefono").val().length < 9){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txttelefonoedit", function(){
+    if($("#txttelefonoedit").val().length < 9){
         return true;
     }else{
         return false;

@@ -6,6 +6,11 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txtobjetivo").val()==="0" || $("#txtaccion").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/AccionGrabar.controlador.php",
     	type: "post",
@@ -32,6 +37,11 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtobjetivoedit").val()==="0" || $("#txtaccionedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
     
     $.ajax({
       url: "../controlador/AccionEditar.controlador.php",
@@ -179,3 +189,20 @@ function eliminardato(valor){
     }
 	
 }
+
+///Validaciones
+$(document).on("keypress", "#txtaccion", function(){
+    if($("#txtaccion").val().length < 400){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtaccionedit", function(){
+    if($("#txtaccionedit").val().length < 400){
+        return true;
+    }else{
+        return false;
+    }
+});

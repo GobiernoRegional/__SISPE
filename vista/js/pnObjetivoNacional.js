@@ -6,6 +6,11 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txteje").val()==="0" || $("#txtobjetivo").val()==="" || $("#txtdescripcion").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/ObjetivoNacionalGrabar.controlador.php",
     	type: "post",
@@ -32,6 +37,11 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtejeedit").val()==="0" || $("#txtobjetivoedit").val()==="" || $("#txtdescripcionedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
     
     $.ajax({
       url: "../controlador/ObjetivoNacionalEditar.controlador.php",
@@ -181,3 +191,20 @@ function eliminardato(valor){
     }
 	
 }
+
+///Validaciones
+$(document).on("keypress", "#txtobjetivo", function(){
+    if($("#txtobjetivo").val().length < 00){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtobjetivoedit", function(){
+    if($("#txtobjetivoedit").val().length < 100){
+        return true;
+    }else{
+        return false;
+    }
+});
