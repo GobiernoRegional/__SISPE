@@ -52,7 +52,7 @@
 						<hr>
                         <li><a href="politica.php">Políticas</a></li>
                         <hr>
-                        <li><a href="prEstrategias.php">Estrategías</a></li>
+                        <li><a href="prEstrategias.php">Estrategias</a></li>
                         <li><a href="prProgramas.php">Programas/Proyectos</a></li>
 					</ul>
 				</li>

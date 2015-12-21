@@ -35,7 +35,8 @@ class Estrategia  extends Conexion{
     function listar(){
         
         try {
-            $sql="select * from tbestrategia 
+            $sql="select * from tbestrategia inner join tbpolitica
+                on tbestrategia.est_cod_politica=tbpolitica.pol_codigo
                    order by est_codigo ";
            
             $sentecia = $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
@@ -92,12 +93,12 @@ class Estrategia  extends Conexion{
             $sql = "
                 select
                         est_codigo,
-                        est_descripcion                          
+                        est_descripcion,                          
                         est_cod_politica
                 from
                         tbestrategia                         
                 where
-                        est_codigo = ".$codigo."'
+                        est_codigo = '".$codigo."'
                 ";
             $sentecia = $this->dblink->prepare($sql) OR DIE ("No se pudo leer estos Registro");
             $sentecia->execute();
