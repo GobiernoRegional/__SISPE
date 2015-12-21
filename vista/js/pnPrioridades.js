@@ -8,6 +8,12 @@ $(document).ready(function(){
 
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txteje").val()==="0" || $("#txtprioridades").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
     var parametro={
     	"txteje":$("#txteje").val(),
     	"txtprioridades": CKEDITOR.instances['txtprioridades'].getData(),
@@ -38,6 +44,12 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtejeedit").val()==="0" || $("#txtprioridadesedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
     var parametro={
     	"txtcodigoedit":$("#txtcodigo").val(),
     	"txtejeedit":$("#txtejeedit").val(),

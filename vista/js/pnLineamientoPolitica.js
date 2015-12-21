@@ -8,6 +8,12 @@ $(document).ready(function(){
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txteje").val()==="0" || $("#txtnombre").val()===""|| $("#txtdescripcion").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
     var parametro={
       "txteje":$("#txteje").val(),
       "txtnombre":$("#txtnombre").val(),
@@ -39,6 +45,12 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtejeedit").val()==="0" || $("#txtnombreedit").val()===""|| $("#txtdescripcionedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
     var parametro={
       "txtcodigoedit":$("#txtcodigo").val(),
       "txtejeedit":$("#txtejeedit").val(),
@@ -199,3 +211,19 @@ function eliminardato(valor){
     }
 	
 }
+///Validaciones
+$(document).on("keypress", "#txtnombre", function(){
+    if($("#txtnombre").val().length < 600){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtnombreedit", function(){
+    if($("#txtnombreedit").val().length < 600){
+        return true;
+    }else{
+        return false;
+    }
+});

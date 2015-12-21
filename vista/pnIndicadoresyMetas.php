@@ -93,7 +93,7 @@
                                 <label>Línea de base:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtlineabase" id="txtlineabase" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtlineabase" id="txtlineabase" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Tendencia al 2021:</label>
@@ -105,7 +105,7 @@
                                 <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtmeta" id="txtmeta" onchange="camposMayus(this)"><br>
+                                <input type="text" class="form-control" name="txtmeta" id="txtmeta" onkeypress="return soloNumeros(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -162,7 +162,7 @@
                                 <label>Línea de base:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtlineabaseedit" id="txtlineabaseedit" onchange="camposMayus(this)"><br>
+                                <input type="text" class="form-control" name="txtlineabaseedit" id="txtlineabaseedit" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Tendencia al 2021:</label>
@@ -174,7 +174,7 @@
                                 <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtmetaedit" id="txtmetaedit" onchange="camposMayus(this)"><br>
+                                <input type="text" class="form-control" name="txtmetaedit" id="txtmetaedit" onkeypress="return soloNumeros(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -238,5 +238,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/pnIndicadoresMetas.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
   </body>
 </html>
