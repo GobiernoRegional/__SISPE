@@ -43,7 +43,7 @@
             </ol>
         	<div class="row">
                <div style="text-align:center;">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-graduation-cap"></i></a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-file-archive-o"></i></a>
                 </div>
                 <div style="text-align:center;">
                     <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Políticas</label>
