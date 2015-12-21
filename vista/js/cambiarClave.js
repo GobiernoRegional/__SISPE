@@ -24,11 +24,13 @@ function CambiarClave(){
                 swal("Ha ocurrido un error", "", "error");
                 });
             }else{
-                alert("Las Claves Nuevas no Coinciden")
+                swal("Las Claves Nuevas no Coinciden", "", "error");     
+//                alert("Las Claves Nuevas no Coinciden")
                 return 0;
             }
         }else{
-            alert("Las Clave Ingresada no coincide con la Antigua")
+             swal("Las Clave Ingresada no coincide con la Antigua", "", "error");
+//            alert("Las Clave Ingresada no coincide con la Antigua")
             return 0;   
         }  
    
@@ -40,7 +42,8 @@ $(function() {
         if($("#txtclaveantigua").val()===$("#txtclav").val()){
             return true; 
         }else{
-            alert("Las Clave Ingresada no coincide con la Antigua")
+            swal("Las Clave Ingresada no coincide con la Antigua", "", "error");
+//             alert("Las Clave Ingresada no coincide con la Antigua");
             return false;                        
         }
       
@@ -49,7 +52,8 @@ $(function() {
         if($("#txtclaveantigua").val()===$("#txtclav").val()){
             return true; 
         }else{
-            alert("Las Clave Ingresada no coincide con la Antigua")
+            swal("Las Clave Ingresada no coincide con la Antigua", "", "error");
+//            alert("Las Clave Ingresada no coincide con la Antigua");            
             return false;                        
         }
       
