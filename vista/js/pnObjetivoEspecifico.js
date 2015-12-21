@@ -167,7 +167,6 @@ function eliminardato(valor){
       		if(DataJson.state){
        			swal("Correcto", "", "success");
             	listar();
-            	cargarCodigo();
                 $("#btncerrareliminar").click();
       		}else{                           
         		
