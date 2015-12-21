@@ -7,8 +7,8 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
         
-        if($("#txtdependencia").val()==="0"){
-            swal("Seleccione una Dependencia", "", "error");
+        if($("#txtdependencia").val()==="0" || $("#txtnombre").val()===""){
+            swal("Complete los campos", "", "error");
             return 0;  
         }
         
@@ -41,8 +41,8 @@ $('#frmgrabar').submit(function(e){
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
     
-        if($("#txtdependenciaedit").val()==="0"){
-            swal("Seleccione una Dependencia", "", "error");
+        if($("#txtdependenciaedit").val()==="0" ||  $("#txtnombreedit").val()===""){
+            swal("Complete los Campos", "", "error");
             return 0;  
         }
     
@@ -188,6 +188,11 @@ function eliminar(id){
 	var parametro={
 		"codigo":id,
 	}
+        
+        if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
+        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
+        } 
+        
 	$.ajax({
     	url: "../controlador/AreaEliminar.controlador.php",
     	type: "post",
