@@ -47,9 +47,14 @@
 					<ul class="dropdown-menu">
 						<li><a href="prEjeEstrategico.php">Ejes Estratégicos</a></li>
 						<hr>
-						<li><a href="#">Objetivos Estratégicos</a></li>
+						<li><a href="prObjetivosEstrategicos.php">Objetivos Estratégicos</a></li>
+						<li><a href="prSector.php">Sector</a></li>
 						<hr>
                         <li><a href="politica.php">Políticas</a></li>
+                        <hr>
+                        <li><a href="prEstrategias.php">Estrategías</a></li>
+                        <li><a href="prProgramas.php">Programas/Proyectos</a></li>
+                        <hr>
 						<li><a href="#">Variables</a></li>
 					</ul>
 				</li>
