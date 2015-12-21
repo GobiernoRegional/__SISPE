@@ -1,10 +1,10 @@
 <?php
-	$accion=$_POST["txtnombre"];
+	$accion=$_POST["txtaccion"];
 	$objetivo = $_POST["txtobjetivo"];
 	require_once '../negocio/Accion.class.php';
 	$objAccion = new Accion();
 	$objAccion->setDescripcion($accion);
-        $objAccion->setObjetivo($objetivo);
+    $objAccion->setObjetivo($objetivo);
 	$resultado=$objAccion->agregar();
 	echo json_encode($resultado);
 ?>

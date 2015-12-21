@@ -7,9 +7,7 @@
     }
         
     $nombreUsuario = ucwords(strtolower($_SESSION["usuario"]));
-    $cargo = ucwords(strtolower($_SESSION["cargo"]));
-
-    
+    $cargo = ucwords(strtolower($_SESSION["cargo"]));    
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +42,7 @@
             </ol>
         	<div class="row">
                <div style="text-align:center;">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-hand-o-right"></i></a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-child"></i></a>
                 </div>
                 <div style="text-align:center;">
                     <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Acciones Estratégicas</label>
@@ -57,23 +55,23 @@
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="titulomodal">Agregar nuevo objetivo</h4>
+                        <h4 class="modal-title" id="titulomodal">Agregar nueva acción estratégica</h4>
                       </div>
                       <div class="modal-body">
                           <div class="row">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <select class="form-control" name="txteje" id="txteje">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivo" id="txtobjetivo" onchange="camposMayus(this)"><br>
+                                <select class="form-control" name="txtobjetivo" id="txtobjetivo">
+                                  <option value="0">Elegir Objetivo</option>
+                                </select><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Acción Estratégica:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <textarea type="text" class="form-control" name="txtaccion" id="txtaccion" onchange="camposMayus(this)"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -99,18 +97,18 @@
                           <div class="row">
                               <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                <label>Eje Estratégico:</label>
-                              </div>
-                              <div class="col-lg-8">
-                                <select class="form-control" name="txtejeedit" id="txtejeedit">
-                                  <option value="0">Elegir Eje</option>
-                                </select><br>
-                              </div>
-                              <div class="col-lg-4">
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" onchange="camposMayus(this)"><br>
+                                <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit">
+                                  <option value="0">Elegir Objetivo</option>
+                                </select><br>
+                              </div>
+                              <div class="col-lg-4">
+                                <label>Acción Estratégica:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <textarea type="text" class="form-control" name="txtaccionedit" id="txtaccionedit" onchange="camposMayus(this)"></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -126,16 +124,16 @@
 
             <div class="row">
                 <div class="table-responsive">
-                    <table class="table" id="tableobjetivoespecifico">
+                    <table class="table" id="tableaccionestrategica">
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Eje Estratégico</th>
                                 <th>Objetivo Específico</th>
+                                <th>Acción Estratégica</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
-                        <tbody id="bodyobjetivoespecifico">
+                        <tbody id="bodyaccionestrategica">
                             
                         </tbody>
                     </table>
@@ -155,6 +153,6 @@
     <!-- SWEET JS -->
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
-    <script type="text/javascript" src="js/pnObjetivoEspecifico.js"></script>
+    <script type="text/javascript" src="js/pnAccionEstrategica.js"></script>
   </body>
 </html>
