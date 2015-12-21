@@ -161,32 +161,31 @@ function cargarObjetivoEdit(){
 
 
 function eliminardato(valor){
-//    alert($("#txtcodigoeliminar").val());    
+    //alert($("#txtcodigoeliminar").val());    
     if(valor ==="no"){
         return 0;
     }else{
-        var parametro={
-		"codigo":  $("#txtcodigoeliminar").val(),
-	}
-	$.ajax({
-    	uurl: "../controlador/IndicadorNacionalEliminar.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	data: parametro,
-    	success: function(DataJson){
-      		if(DataJson.state){
-       			swal("Correcto", "", "success");
-            	listar();
-            	cargarCodigo();
-                $("#btncerrareliminar").click();
-      		}else{                           
-        		
-      		}                                                           
-    	}
-  	})
-  	.fail(function(){
-    	swal("Ha ocurrido un error", "", "error");
-  	});
+      var parametro={
+		    "codigo":  $("#txtcodigoeliminar").val(),
+	    }
+	    $.ajax({
+    	  url: "../controlador/IndicadorNacionalEliminar.controlador.php",
+      	type: "post",
+      	dataType: "json",
+      	data: parametro,
+      	success: function(DataJson){
+    		  if(DataJson.state){
+     			  swal("Correcto", "", "success");
+          	listar();
+            $("#btncerrareliminar").click();
+    		  }else{                           
+      		
+    		  }                                                           
+      	}
+    	})
+    	.fail(function(){
+    	  swal("Ha ocurrido un error", "", "error");
+    	});
     }
 	
 }
