@@ -158,10 +158,6 @@ function eliminardato(valor){
 		"codigo":  $("#txtcodigoeliminar").val(),
 	}
         
-        if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
-        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
-        } 
-        
 	$.ajax({
     	url: "../controlador/DependenciaEliminar.controlador.php",
     	type: "post",
