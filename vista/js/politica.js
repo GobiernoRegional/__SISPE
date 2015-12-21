@@ -1,6 +1,7 @@
 $(document).ready(function(){
     listar();
-    cargarCodigo();
+    cargarSector();
+    cargarSectorEditar();
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
@@ -15,13 +16,11 @@ $('#frmgrabar').submit(function(e){
       		if(DataJson.state){
       			swal("Registro Correcto", "", "success");
        			listar();
-       			cargarCodigo();
        			$('#myModal').modal('hide');
        			limpiarFormulario();
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
-        		cargarCodigo();
         		$('#myModal').modal('hide');
         		limpiarFormulario();
       		}                                                           
@@ -44,12 +43,10 @@ $('#frmeditar').submit(function(e){
       		if(DataJson.state){
       			swal("Editar Correcto", "", "success");
        			listar();
-       			cargarCodigo();
        			$('#myModal2').modal('hide');
       		}else{
       			swal("Ha ocurrido un error", "", "error");                           
         		listar();
-        		cargarCodigo();
         		$('#myModal2').modal('hide');
         		
       		}                                                           
@@ -63,11 +60,8 @@ function camposMayus(field){
   field.value=field.value.toUpperCase();
 }
 function limpiarFormulario(){
-  $("#txtnombre").val("");
-}
-function limpiarFormularioEditar(){
-	$("#txtcodigoedit").val("");
-	$("#txtnombreedit").val("");
+	$("#txtsector").val(0);
+	$("#txtnombre").val("");
 }
 function listar(){
 	$("#bodypolitica").empty();
@@ -80,25 +74,7 @@ function listar(){
       		if(DataJson.state){
        			for(data in DataJson.resultado){
 //                            alert(data);Numero de registros
-       				$("#bodypolitica").append(
-                                        '<tr>' +
-                                            '<td>'
-                                                +DataJson.resultado[data].pol_codigo+                                        
-                                            '</td>'+
-                                            
-                                            '<td>'
-                                                +DataJson.resultado[data].pol_descripcion+
-                                            '</td>'+
-                                            
-                                            '<td> '+
-                                                "<a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pol_codigo+"\")'> \n\
-                                                  <i class='glyphicon glyphicon-wrench'></i>\n\
-                                                </a>"+
-                                                "<a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pol_codigo+"\")'>\n\
-                                                <i class='glyphicon glyphicon-remove'></i>\n\
-                                                </a>"+
-                                            '</td>'+
-                                        '</tr>');
+       				$("#bodypolitica").append("<tr><td>"+DataJson.resultado[data].pol_codigo+"</td><td>"+DataJson.resultado[data].tse_nombre+"</td><td>"+DataJson.resultado[data].pol_descripcion+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pol_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' onclick='eliminar(\""+DataJson.resultado[data].pol_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
        			}
       		}else{                           
         		
@@ -111,18 +87,43 @@ function listar(){
   	});
 }
 
-
-function cargarCodigo(){
-	$.ajax({
-    	url: "../controlador/PoliticaObtenerCodigo.controlador.php",
-    	type: "post",
-    	dataType: "json",
-    	success: function(DataJson){
-            if(DataJson.state){
-                $("#txtcodigo").val(DataJson.resultado);
-            }                                                           
-    	}
-  	});
+function cargarSector(){
+  $.ajax({
+      url: "../controlador/SectorListar.controlador.php",
+      type: "post",
+      dataType: "json",
+      success: function(DataJson){
+          if(DataJson.state){
+            for(data in DataJson.resultado){
+              $("#txtsector").append("<option value="+DataJson.resultado[data].tse_codigo+">"+DataJson.resultado[data].tse_nombre+"</option>");
+            }
+          }else{                           
+            
+          }                                                            
+      }
+    })
+    .fail(function(){
+      //swal("Ha ocurrido un error", "", "error");
+    })
+}
+function cargarSectorEditar(){
+  $.ajax({
+      url: "../controlador/SectorListar.controlador.php",
+      type: "post",
+      dataType: "json",
+      success: function(DataJson){
+          if(DataJson.state){
+            for(data in DataJson.resultado){
+              $("#txtsectoredit").append("<option value="+DataJson.resultado[data].tse_codigo+">"+DataJson.resultado[data].tse_nombre+"</option>");
+            }
+          }else{                           
+            
+          }                                                            
+      }
+    })
+    .fail(function(){
+      //swal("Ha ocurrido un error", "", "error");
+    })
 }
 function editar(id){
     	var parametro={
@@ -135,8 +136,9 @@ function editar(id){
     	data: parametro,
     	success: function(DataJson){
       	if(DataJson.state){
-            $("#txtcodigoedit").val(DataJson.resultado.pol_codigo);
+            $("#txtcodigo").val(DataJson.resultado.pol_codigo);
             $("#txtnombreedit").val(DataJson.resultado.pol_descripcion);
+            $("#txtsectoredit").val(DataJson.resultado.pol_sec_codigo);
       	}else{                           
         		
       	}                                                           
@@ -147,16 +149,8 @@ function editar(id){
   	});
 }
 function eliminar(id){
-	$("#txtcodigoeliminar").val(id);	
-}
-
-function eliminardato(valor){
-//    alert($("#txtcodigoeliminar").val());    
-    if(valor ==="no"){
-        return 0;
-    }else{
-        var parametro={
-		"codigo":  $("#txtcodigoeliminar").val(),
+	var parametro={
+		"codigo":id,
 	}
 	$.ajax({
     	url: "../controlador/PoliticaRegionEliminar.controlador.php",
@@ -168,7 +162,6 @@ function eliminardato(valor){
        			swal("Correcto", "", "success");
             	listar();
             	cargarCodigo();
-                $("#btncerrareliminar").click();
       		}else{                           
         		
       		}                                                           
@@ -177,6 +170,4 @@ function eliminardato(valor){
   	.fail(function(){
     	swal("Ha ocurrido un error", "", "error");
   	});
-    }
-	
 }

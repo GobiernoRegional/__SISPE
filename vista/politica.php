@@ -39,14 +39,14 @@
             <ol class="breadcrumb">
                 <li><a href="principal.php"><i class="fa fa-home"></i> SISPE</a></li>
                 <li><a href="#">PRDC</a></li>
-                <li class="active">Política</li>
+                <li class="active">Políticas</li>
             </ol>
         	<div class="row">
                <div style="text-align:center;">
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-graduation-cap"></i></a>
                 </div>
                 <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Política</label>
+                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Políticas</label>
                 </div>
             </div>
             <!-- INICIO del formulario modal GRABAR -->
@@ -61,16 +61,18 @@
                       <div class="modal-body">                         
                           <div class="row">
                               <div class="col-lg-4">
-                                  <label>Código:</label>
+                                  <label>Sector:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcodigo" id="txtcodigo" readonly="readonly"><br>
+                                  <select class="form-control" name="txtsector" id="txtsector">
+                                    <option value="0">Elegir Sector</option>
+                                  </select><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Política:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required><br>
+                                  <textarea type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -94,17 +96,20 @@
                       </div>
                       <div class="modal-body">
                           <div class="row">
+                              <input type="hidden" name="txtcodigo" id="txtcodigo">
                               <div class="col-lg-4">
-                                  <label>Código:</label>
+                                  <label>Sector:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtcodigoedit" id="txtcodigoedit" readonly="readonly"><br>
+                                  <select class="form-control" name="txtsectoredit" id="txtsectoredit">
+                                    <option value="0">Elegir Sector</option>
+                                  </select><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required><br>
+                                  <textarea type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -140,6 +145,7 @@
                         <thead>
                             <tr>
                                 <th>Código</th>
+                                <th>Sector</th>
                                 <th>Política</th>
                                 <th>Acción</th>
                             </tr>
