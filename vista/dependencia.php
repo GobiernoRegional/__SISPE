@@ -77,7 +77,7 @@
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono"><br>
+                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -117,7 +117,7 @@
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit"><br>
+                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -179,5 +179,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/dependencia.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
   </body>
 </html>

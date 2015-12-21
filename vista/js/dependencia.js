@@ -5,6 +5,11 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txtnombre").val()==="" || $("#txttelefono").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/DependenciaGrabar.controlador.php",
     	type: "post",
@@ -36,6 +41,11 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtnombreedit").val()==="" || $("#txttelefonoedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
     
   	$.ajax({
     	url: "../controlador/DependenciaEditar.controlador.php",
@@ -147,6 +157,11 @@ function eliminardato(valor){
         var parametro={
 		"codigo":  $("#txtcodigoeliminar").val(),
 	}
+        
+        if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
+        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
+        } 
+        
 	$.ajax({
     	url: "../controlador/DependenciaEliminar.controlador.php",
     	type: "post",
@@ -169,3 +184,36 @@ function eliminardato(valor){
     }
 	
 }
+
+$(document).on("keypress", "#txtnombre", function(){
+    if($("#txtnombre").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtnombreedit", function(){
+    if($("#txtnombreedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txttelefono", function(){
+    if($("#txttelefono").val().length < 6){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txttelefonoedit", function(){
+    if($("#txttelefonoedit").val().length < 6){
+        return true;
+    }else{
+        return false;
+    }
+});
+

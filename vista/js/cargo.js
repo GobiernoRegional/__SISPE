@@ -5,6 +5,11 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txtcargo").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/grabarCargo.controlador.php",
     	type: "post",
@@ -33,6 +38,11 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtcargoedit").val()==="0"){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
     
   	$.ajax({
     	url: "../controlador/editarCargo.controlador.php",
@@ -141,6 +151,11 @@ function eliminardato(valor){
         var parametro={
 		"codigo":  $("#txtcodigoeliminar").val(),
 	}
+        
+        if(!confirm("Esta seguro de eliminar Estos registros seleccionados")){
+        return 0;//si da cancelar no avanza fin de la operacion caso contrario se avanza
+        }
+        
 	$.ajax({
     	url: "../controlador/eliminarCargo.controlador.php",
     	type: "post",
@@ -163,3 +178,21 @@ function eliminardato(valor){
     }
 	
 }
+
+
+$(document).on("keypress", "#txtcargo", function(){
+    if($("#txtcargo").val().length < 100){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtcargoedit", function(){
+    if($("#txtcargoedit").val().length < 100){
+        return true;
+    }else{
+        return false;
+    }
+});
+

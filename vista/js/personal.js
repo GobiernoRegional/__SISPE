@@ -9,6 +9,14 @@ $(document).ready(function(){
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
     
+        if($("#txtnombres").val()==="" || $("#txtapellidos").val()==="" || $("#txtdni").val()===""
+                || $("#txtfechanacimiento").val()===""|| $("#txtdireccion").val()===""|| $("#txtsexo").val()==="0"
+                || $("#txtemail").val()===""|| $("#txttelefono").val()===""|| $("#txtcargo").val()===""
+                || $("#txtarea").val()===""|| $("#txtacceso").val()==="0"){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
+    
   	$.ajax({
     	url: "../controlador/grabarPersonal.controlador.php",
     	type: "post",
@@ -35,6 +43,14 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
+    
+        if($("#txtnombresedit").val()==="" || $("#txtapellidosedit").val()==="" || $("#txtdniedit").val()===""
+                || $("#txtfechanacimientoedit").val()===""|| $("#txtdireccionedit").val()===""|| $("#txtsexoedit").val()==="0"
+                || $("#txtemailedit").val()===""|| $("#txttelefonoedit").val()===""|| $("#txtcargoedit").val()===""
+                || $("#txtareaedit").val()===""){
+            swal("Complete los campos", "", "error");
+            return 0;  
+        }
     
   	$.ajax({
     	url: "../controlador/editarPersonal.controlador.php",
@@ -217,6 +233,7 @@ function cargarAreaEdit(){
   	})
 }
 
+
 function eliminardato(valor){
 //    alert($("#txtcodigoeliminar").val());    
     if(valor ==="no"){
@@ -247,3 +264,53 @@ function eliminardato(valor){
     }
 	
 }
+
+///Validaciones
+$(document).on("keypress", "#txtnombres", function(){
+    if($("#txtnombres").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtnombresedit", function(){
+    if($("#txtnombresedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtapellidos", function(){
+    if($("#txtnombres").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtapellidosedit", function(){
+    if($("#txtnombresedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtfechanacimiento", function(){
+    if($("#txtnombres").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtfechanacimientoedit", function(){
+    if($("#txtnombresedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
