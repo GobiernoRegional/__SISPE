@@ -12,7 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Terrones/Dropbox/xampp/GobiernoSistema/__SISPE/vista/js/perfil.js</file>
+=======
+            <file>file:/C:/xampp/htdocs/__SISPE/vista/area.php</file>
+            <file>file:/C:/xampp/htdocs/__SISPE/vista/pnIndicadoresyMetas.php</file>
+>>>>>>> 4b453942106edc1b531d93cb9b286c7978a639b7
         </group>
     </open-files>
 </project-private>
