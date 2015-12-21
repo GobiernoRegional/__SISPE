@@ -13,6 +13,8 @@
      $telefono          = ucwords(strtolower($_SESSION["telefono"]));
      $nombre            = ucwords(strtolower($_SESSION["nombres"]));
      $apellido          = ucwords(strtolower($_SESSION["apellidos"]));
+     $dni               = ucwords(strtolower($_SESSION["dni"]));
+     $direccion         = ucwords(strtolower($_SESSION["direccion"]));
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +57,14 @@
                                 <h3 class="text-danger"> <?php echo $cargo; ?></h3>
                             </div><!--Fin de Columna-->
                         </div>   
+                        <form name="frmgrabar" id="frmgrabar">
                         <div class="col-lg-7">
                             <div class="row">
                                 <div class="form-group">
                                     <p>
-                                    <label class="col-lg-2">Nombres: </label>   
-                                    <input type="text"  style="border-style:hidden" class="col-lg-5" id="txtnombres"  name="txtnombres"  readonly="" value="<?php echo $nombre; ?>"/>
+                                    <label class="col-lg-2">Nombres: </label>
+                                    <input type="text"   style="border-style:hidden;background: #D9EDF7;"  id="txtnombres"  name="txtnombres" readonly="" value="<?php echo $nombre; ?>"/>                            
+
                                     </p>
                                 </div>
                             </div>
@@ -68,30 +72,57 @@
                                 <div class="form-group">
                                     <p>
                                      <label class="col-lg-2">Apellidos: </label> 
-                                     <input type="text"   style="border-style:hidden" id="txtapellidos"  name="txtapellidos" readonly="" value="<?php echo $apellido; ?>"/>                            
+                                     <input type="text"   style="border-style:hidden;background: #D9EDF7;"  id="txtapellidos"  name="txtapellidos" readonly="" value="<?php echo $apellido; ?>"/>                            
                                     </p>
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                           </div>
-                            <div class="form-group">
-                                <label class="col-lg-2" >DNI: </label>
-                                <input type="text"   style="border-style:hidden" id="txtdni"  name="txtdni"  readonly=""/>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-lg-2" >DNI: </label>
+                                    <input type="text"    style="border-style:hidden;background: #D9EDF7;"  id="txtdni"  name="txtdni"  readonly="" value="<?php echo $dni; ?>"/>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-2">Teléfono: </label>
-                                <input type="text"   style="border-style:hidden" id="txttelefono"  name="txttelefono"  readonly=""/>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-lg-2">Teléfono: </label>
+                                    <input type="text"    style="border-style:hidden;background: #D9EDF7;"  id="txttelefono"  name="txttelefono"   value="<?php echo $telefono; ?>"/>
+                                    <input type="hidden" id="txttelefonoedit"  name="txttelefonoedit"  />
+                                    <input type="hidden" id="txttelefonocont"  name="txttelefonocont"  />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-2">Correo: </label>
-                               <p> <input type="text"   style="border-style:hidden;" class="col-lg-7" id="txtcorreo"  name="txtcorreo"  readonly=""/></p> 
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-lg-2">Correo: </label>
+                                    <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtcorreo"  name="txtcorreo"   value="<?php echo $correo; ?>"/>
+                                    <input type="hidden" id="txtcorreoedit"  name="txtcorreoedit"  />
+                                    <input type="hidden" id="txtcorreocont"  name="txtcorreocont"  />
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-lg-2">Área:</label>
-                                <p> <input type="text"  style="border-style:hidden;" class="col-lg-7"id="txtinstitucion"  name="txtinstitucion"  readonly=""/></p>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-lg-2">Dirección: </label>
+                                    <input type="text"    style="border-style:hidden;background: #D9EDF7; width: 50%;"  id="txtdireccion"  name="txtdireccion"   value="<?php echo $direccion; ?>"/>
+                                    <input type="hidden" id="txtdireccionedit"  name="txtdireccionedit"  />
+                                    <input type="hidden" id="txtdireccioncont"  name="txtdireccioncont"  />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-lg-2">Área:</label>
+                                    <input type="text"    style="border-style:hidden;background: #D9EDF7;"  id="txtarea"  name="txtarea"  readonly="" value="<?php echo $area; ?>"/>
+
+                                </div>
+                            </div>
+                            <input type="hidden" id="txtcontrol"  name="txtcontrol" value="0" />
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <button type="button"  style="float: right" class="btn btn-success" aria-hidden="true" id="btnperfil" name="btnperfil" onclick="GrabarPerfil()">Grabar los datos</button>
+
+                                </div>
                             </div>
                         </div>
+                        </form>
                     </div>             
                 </div><!-- /.box-header -->  
             </div>
@@ -103,6 +134,10 @@
     <script src="../util/jquery/jquery.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="../util/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="js/perfil.js" type="text/javascript"></script>
+    <script src="js/util.js" type="text/javascript"></script>
+    <!-- SWEET JS -->
+    <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
   </body>
 
 </html>

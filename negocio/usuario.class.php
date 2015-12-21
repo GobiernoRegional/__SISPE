@@ -77,6 +77,9 @@ class Usuario extends Conexion {
             $sentencia->bindParam(":clv_nueva", $this->getClave_nueva());
             $sentencia->execute();
             $this->dblink->commit();
+            $array=array('state'=>true);
+            
+            return $array;
         } catch (Exception $exc) {
             echo $exc->getMessage();
            
