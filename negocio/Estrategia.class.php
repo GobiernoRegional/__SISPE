@@ -4,6 +4,7 @@ require_once '../datos/conexion.php';
 class Estrategia  extends Conexion{
     private $codigo;
     private $descripcion;
+    private $politica;
     
     function getDescripcion() {
      return $this->descripcion;
@@ -22,8 +23,15 @@ class Estrategia  extends Conexion{
         $this->codigo = $codigo;
     }
 
+    function getPolitica() {
+        return $this->politica;
+    }
 
-        
+    function setPolitica($politica) {
+        $this->politica = $politica;
+    }
+
+            
     function listar(){
         
         try {
@@ -45,7 +53,7 @@ class Estrategia  extends Conexion{
         
         try {  
                             
-               $sql = "select fn_estrategiainsertar('".$this->getDescripcion()."')";
+               $sql = "select fn_estrategiainsertar('".$this->getDescripcion()."','".$this->getPolitica()."')";
                 
                 $sentencia = $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -64,7 +72,7 @@ class Estrategia  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_estrategiamodificar('".$this->getCodigo()."','".$this->getDescripcion()."')";                             
+            $sql = "select fn_estrategiamodificar('".$this->getCodigo()."','".$this->getDescripcion()."','".$this->getPolitica()."')";                           
             $sentencia = $this->dblink->prepare($sql)OR DIE ("No se pudo Modificar Este Registro");
             $sentencia->execute();
             $this->dblink->commit();
@@ -85,6 +93,7 @@ class Estrategia  extends Conexion{
                 select
                         est_codigo,
                         est_descripcion                          
+                        est_cod_politica
                 from
                         tbestrategia                         
                 where
@@ -147,6 +156,22 @@ class Estrategia  extends Conexion{
         }        
         
         
-    }   
+    }
+    
+    public function obtenerPolitica() {
+        try {
+            $sql = "
+                   Select pol_codigo,pol_descripcion from tbpolitica order by pol_descripcion
+                    ";
+            $sentencia = $this->dblink->prepare($sql);
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(); 
+            
+            return $resultado;
+         
+        } catch (Exception $exc) {
+            throw $exc;
+        }
+    }
 
 }

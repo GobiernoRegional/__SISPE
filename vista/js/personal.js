@@ -307,7 +307,55 @@ $(document).on("keypress", "#txtfechanacimiento", function(){
 });
 
 $(document).on("keypress", "#txtfechanacimientoedit", function(){
-    if($("#txtnombresedit").val().length < 300){
+    if($("#txtfechanacimientoedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtdireccion", function(){
+    if($("#txtdireccion").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtdireccionedit", function(){
+    if($("#txtdireccionedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtsexo", function(){
+    if($("#txtsexo").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtsexoedit", function(){
+    if($("#txtsexoedit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtemail", function(){
+    if($("#txtemail").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtemailedit", function(){
+    if($("#txtemailedit").val().length < 300){
         return true;
     }else{
         return false;
