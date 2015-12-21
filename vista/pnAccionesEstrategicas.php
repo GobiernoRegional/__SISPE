@@ -47,7 +47,7 @@
                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="display: inline-block;"><i class="fa fa-hand-o-right"></i></a>
                 </div>
                 <div style="text-align:center;">
-                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Objetivo Específico</label>
+                    <label style="display: inline-block; font-size:16px; margin-top: 10px; margin-bottom: 20px;">Agregar Acciones Estratégicas</label>
                 </div>
             </div>
             <!-- INICIO del formulario modal GRABAR -->
