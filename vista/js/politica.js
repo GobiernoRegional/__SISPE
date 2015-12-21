@@ -161,7 +161,6 @@ function eliminar(id){
       		if(DataJson.state){
        			swal("Correcto", "", "success");
             	listar();
-            	cargarCodigo();
       		}else{                           
         		
       		}                                                           

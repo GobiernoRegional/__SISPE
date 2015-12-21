@@ -330,22 +330,6 @@ $(document).on("keypress", "#txtdireccionedit", function(){
     }
 });
 
-$(document).on("keypress", "#txtsexo", function(){
-    if($("#txtsexo").val().length < 300){
-        return true;
-    }else{
-        return false;
-    }
-});
-
-$(document).on("keypress", "#txtsexoedit", function(){
-    if($("#txtsexoedit").val().length < 300){
-        return true;
-    }else{
-        return false;
-    }
-});
-
 $(document).on("keypress", "#txtemail", function(){
     if($("#txtemail").val().length < 300){
         return true;
