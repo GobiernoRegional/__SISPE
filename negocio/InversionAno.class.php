@@ -1,50 +1,59 @@
 <?php
 
 require_once '../datos/conexion.php';
-class ProgramaInversion  extends Conexion{
+class InversionAno  extends Conexion{
     private $codigo;
-    private $nestudio;    
-    private $pestrategia;
-    private $ubicacion;  
-    
+    private $año;
+    private $monto;
+    private  $pin_codigo;
+    private $total;
+
     function getCodigo() {
         return $this->codigo;
     }
 
-    function getNestudio() {
-        return $this->nestudio;
+    function getAño() {
+        return $this->año;
     }
 
-    function getPestrategia() {
-        return $this->pestrategia;
+    function getMonto() {
+        return $this->monto;
     }
 
-    function getUbicacion() {
-        return $this->ubicacion;
+    function getPin_codigo() {
+        return $this->pin_codigo;
+    }
+
+    function getTotal() {
+        return $this->total;
     }
 
     function setCodigo($codigo) {
         $this->codigo = $codigo;
     }
 
-    function setNestudio($nestudio) {
-        $this->nestudio = $nestudio;
+    function setAño($año) {
+        $this->año = $año;
     }
 
-    function setPestrategia($pestrategia) {
-        $this->pestrategia = $pestrategia;
+    function setMonto($monto) {
+        $this->monto = $monto;
     }
 
-    function setUbicacion($ubicacion) {
-        $this->ubicacion = $ubicacion;
+    function setPin_codigo($pin_codigo) {
+        $this->pin_codigo = $pin_codigo;
     }
 
+    function setTotal($total) {
+        $this->total = $total;
+    }
+    
+    
+    function listar (){
         
-    function listar(){
-        try {
-            $sql="select * from  tbprograma_inversion pin 
-                    inner join tbprograma_estrategia  pes on (pin.pin_npe_codigo = pes.pes_codigo)
-                    inner join tbubigeo_distrito udi on (pin.pin_udi_codigo=udi.udi_codigo)";
+        try{
+            $sql="select * from tbinversion_ano ian"
+                . "inner join tbprograma_inversion pin on (ian.ian_codigo=pin.pin_codigo)";
             
             $sentencia =  $this->dblink->prepare($sql)OR DIE ("No se pudo Leer Estos Registro");
             $sentencia->execute();
@@ -52,19 +61,18 @@ class ProgramaInversion  extends Conexion{
             $array=array('state'=>1,'resultado'=>$registros);
             return $array;
             
-            } catch (Exception $exc) {
-                echo $exc;
-            }
+        } catch (Exception $ex) {
+            echo $exc;
+        }
     }
-    
-    public function agregar() {
+    public function agregar(){
+        
         $this->dblink->beginTransaction();
         
         try {  
                 
-                $sql = "select fn_insertarprogramainversion( '".$this->getNestudio()."',"
-                        ."'".$this->getPestrategia()."',"
-                        ."'".$this->getUbicacion()."')";
+                  $sql = "select fn_inversion_anoinsertar('".$this->getAño()."','".$this->getMonto()."',"
+                    . "'".$this->getPin_codigo()."','".$this->getTotal()."')";
                 
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
@@ -77,16 +85,13 @@ class ProgramaInversion  extends Conexion{
             throw $exc;
         }
         
-        return true;        
+        return true;    
     }
-    
     public function editar() {
         $this->dblink->beginTransaction();
         
         try {
-            $sql = "select fn_modificarprogramainversion('".$this->getCodigo()."','".$this->getNestudio()."',"
-                        ."'".$this->getPestrategia()."',"
-                        ."'".$this->getUbicacion()."')";
+            $sql = "select fn_inversion_anomodificar('".$this->getCodigo()."','".$this->getAño()."','".$this->getMonto()."','".$this->getPin_codigo()."','".$this->getTotal()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -101,19 +106,19 @@ class ProgramaInversion  extends Conexion{
         
         return true;        
     }
-    
     public function leerDatos($codigo) {
         try {
             $sql = "
                 select
-                        pin_codigo,
-                        pin_nestudio,
-                        pin_npe_codigo,
-                        pin_udi_codigo
+                        ian_codigo ,
+                        ian_año ,
+                        ian_monto,
+                        ian_pin_codigo,
+                        ian_total
                 from
-                        tbprograma_inversion
+                        tbinversion_ano
                 where
-                        pin_codigo = '".$codigo."'
+                        ian_codigo = '".$codigo."'
                 ";
             $sentencia =  $this->dblink->prepare($sql) ;
             $sentencia->execute();
@@ -125,9 +130,9 @@ class ProgramaInversion  extends Conexion{
             throw $exc;
         }            
     }
-    public function eliminar() {
+     public function eliminar() {
         try {
-            $sql = "delete from tbprograma_inversion where pin_codigo = '".$this->getCodigo()."'";
+            $sql = "delete from tbinversion_ano where ian_codigo = '".$this->getCodigo()."'";
             $sentencia =  $this->dblink->prepare($sql) ;       
             $sentencia->execute();
             $array=array('state'=>1);
@@ -140,44 +145,44 @@ class ProgramaInversion  extends Conexion{
         return true;
         
     }
-
-    public function ObtenerCodigo() {
+     public function ObtenerCodigo() {
         $this->dblink->beginTransaction();
         
         try {               
-                $sql = "Select pin_codigo from tbprograma_inversion order by pin_codigo desc limit 1";
+                $sql = "Select ian_codigo from tbinversion_ano order by ian_codigo desc limit 1";
                 
                 $sentencia =  $this->dblink->prepare($sql);            
                 $sentencia->execute();
                 $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
 
                   
-                 $valor = (INTEGER)(substr($resultado["pin_codigo"], 3,3));   
+                 $valor = (INTEGER)(substr($resultado["ian_codigo"], 3,3));   
                 $codigo="";                                 
                 $codigoss=$valor+1;
                 
                 if($codigoss>=0 && $codigoss <10){
                     
-                    $codigo=(string)("PIN00".$codigoss);
+                    $codigo=(string)("IAN00".$codigoss);
                     
                 }else if($codigoss>=10&& $codigoss <100){
                     
-                    $codigo=(string)("PIN0".$codigoss);                  
+                    $codigo=(string)("IAN0".$codigoss);                  
                 }else{
-                    $codigo=(string)("PIN".$codigoss);
+                    $codigo=(string)("IAN".$codigoss);
                 }
                 $array=array('state'=>1,'resultado'=>$codigo);
             return $array;                                               
         } catch (Exception $exc) {        
                                         
             throw $exc;
-        }               
+        }        
+        
+        
     }
-    
-     public function obtenerProgramaEstrategia() {
+    public function obtenerProgramaInversion() {
         try {
             $sql = "
-                    select pes_codigo, pes_titulo from tbprograma_estrategia order by pes_titulo asc
+                   Select pin_codigo,pin_nestudio from tbprograma_inversion order by pin_nestudio
                     ";
             $sentencia = $this->dblink->prepare($sql);
             $sentencia->execute();
@@ -190,22 +195,7 @@ class ProgramaInversion  extends Conexion{
         }
     }
     
-    public function obtenerCiudades() {
-        try {
-            $sql = "
-                    select udi_codigo, (udi_nombre||' (' || upr_nombre||')')as Ciudad from tbubigeo_distrito di
-                    inner join tbubigeo_provincia pr on (di.udi_upr_codigo=pr.upr_codigo) order by udi_nombre asc
-                    ";
-            $sentencia = $this->dblink->prepare($sql);
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(); 
-            
-            return $resultado;
-         
-        } catch (Exception $exc) {
-            throw $exc;
-        }
-    }
-
-
+   
 }
+
+    
