@@ -3,7 +3,12 @@ $(document).ready(function(){
 });
 $('#frmgrabar').submit(function(e){ 
     e.preventDefault();
-    
+  
+      if($("#txtsector").val()===""){
+          swal("Complete los campos", "", "error");
+          return 0;  
+      }
+
     $.ajax({
       url: "../controlador/SectorGrabar.controlador.php",
       type: "post",
@@ -30,7 +35,13 @@ $('#frmgrabar').submit(function(e){
 });
 $('#frmeditar').submit(function(e){ 
     e.preventDefault();
-    
+
+
+    if($("#txtsectoredit").val()!==""){
+        swal("Complete los campos", "", "error");
+        return 0;  
+        
+    }
     $.ajax({
       url: "../controlador/SectorEditar.controlador.php",
       type: "post",
@@ -53,7 +64,7 @@ $('#frmeditar').submit(function(e){
     })
     .fail(function(){
       swal("Ha ocurrido un error", "", "error");
-    })
+    });
 });
 function editar(id){
   var parametro={
@@ -139,3 +150,21 @@ function eliminardato(valor){
     }
 	
 }
+
+//VALIDACIONES
+
+$(document).on("keypress", "#txtsector", function(){
+    if($("#txtsector").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});
+
+$(document).on("keypress", "#txtsectoredit", function(){
+    if($("#txtsectoredit").val().length < 300){
+        return true;
+    }else{
+        return false;
+    }
+});

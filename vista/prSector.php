@@ -64,7 +64,7 @@
                                 <label>Sector:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtsector" id="txtsector" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtsector" id="txtsector" onchange="camposMayus(this)" onkeypress="return soloLetras(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -93,7 +93,7 @@
                                 <label>Sector:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtsectoredit" id="txtsectoredit" onchange="camposMayus(this)"><br>
+                                <input type="text" class="form-control" name="txtsectoredit" id="txtsectoredit" onchange="camposMayus(this)" onkeypress="return soloLetras(event)"><br>
                               </div>
                           </div>
                       </div>
@@ -156,5 +156,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/prSector.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
   </body>
 </html>
