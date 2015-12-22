@@ -4,6 +4,7 @@ $(document).ready(function(){
 	cargarEjeEditar();
   CKEDITOR.replace("txtdescripcion");
   CKEDITOR.replace("txtdescripcionedit");
+  CKEDITOR.replace("txtdescripcionview");
 
 });
 $('#frmgrabar').submit(function(e){ 
@@ -98,7 +99,7 @@ function listar(){
       success: function(DataJson){
           if(DataJson.state){
             for(data in DataJson.resultado){
-              $("#bodylineamientos").append("<tr><td>"+DataJson.resultado[data].pli_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td>"+DataJson.resultado[data].pli_nombre+"</td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
+              $("#bodylineamientos").append("<tr><td>"+DataJson.resultado[data].pli_codigo+"</td><td>"+DataJson.resultado[data].eje_nombre+"</td><td>"+DataJson.resultado[data].pli_nombre+"</td><td><a class='btn btn-success' data-toggle='modal' data-target='#myModaldetalle' onclick='vistaDescripcion(\""+DataJson.resultado[data].pli_codigo+"\")'>Ver Descripción</a></td><td><a class='btn btn-warning' data-toggle='modal' data-target='#myModal2' onclick='editar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-wrench'></i></a> <a class='btn btn-danger' data-toggle='modal' data-target='#myModale' onclick='eliminar(\""+DataJson.resultado[data].pli_codigo+"\")'><i class='glyphicon glyphicon-remove'></i></a></td></tr>");
             }
           }else{                           
             
@@ -110,6 +111,30 @@ function listar(){
       //swal("Ha ocurrido un error", "", "error");
     })
 }
+
+function vistaDescripcion(id){
+  var parametro={
+    "codigo":id,
+  }
+  $.ajax({
+      url: "../controlador/PoliticaLineamientoCargarCodigo.controlador.php",
+      type: "post",
+      dataType: "json",
+      data: parametro,
+      success: function(DataJson){
+        if(DataJson.state){
+          CKEDITOR.instances['txtdescripcionview'].setData(DataJson.resultado.pli_descripcion)
+          //$("#txtprioridadesedit").val(DataJson.resultado.pri_nombre);
+        }else{                           
+          
+        }                                                           
+      }
+    })
+    .fail(function(){
+      swal("Ha ocurrido un error", "", "error");
+    });
+}
+
 function editar(id){
   var parametro={
     "codigo":id,
