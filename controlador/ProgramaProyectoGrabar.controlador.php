@@ -1,6 +1,6 @@
 <?php
-	$programaproyecto = $_POST["txtestrategia"];
-        $politica = $_POST["txtpolitica"];
+	$programaproyecto = $_POST["txtprograma"];
+    $politica = $_POST["txtpolitica"];
         
     require_once '../negocio/ProgramaProyecto.class.php';
 	$objProgramaProyecto = new ProgramaProyecto();
