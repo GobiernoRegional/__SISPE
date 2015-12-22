@@ -35,7 +35,7 @@ function soloLetras(e){
 function soloNumeros(e) {
     var key = e.keyCode || e.which;
     var tecla = String.fromCharCode(key).toLowerCase();
-    var letras = "0123456789";
+    var letras = "0123456789,.%";
     var especiales = [8, 37, 39, 46];
 
     var tecla_especial = false

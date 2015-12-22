@@ -63,7 +63,7 @@
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivo" id="txtobjetivo">
+                                  <select class="form-control" name="txtobjetivo" id="txtobjetivo" required="">
                                   <option value="0">Elegir Objetivo</option>
                                 </select><br>
                               </div>
@@ -71,7 +71,7 @@
                                 <label>Acción Estratégica:</label>
                               </div>
                               <div class="col-lg-8">
-                                <textarea type="text" class="form-control" name="txtaccion" id="txtaccion" onchange="camposMayus(this)"></textarea><br>
+                                  <textarea type="text" class="form-control" name="txtaccion" id="txtaccion" onchange="camposMayus(this)" required=""></textarea><br>
                               </div>
                           </div>
                       </div>
@@ -100,7 +100,7 @@
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit">
+                                  <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" required="">
                                   <option value="0">Elegir Objetivo</option>
                                 </select><br>
                               </div>
@@ -108,7 +108,7 @@
                                 <label>Acción Estratégica:</label>
                               </div>
                               <div class="col-lg-8">
-                                <textarea type="text" class="form-control" name="txtaccionedit" id="txtaccionedit" onchange="camposMayus(this)"></textarea><br>
+                                  <textarea type="text" class="form-control" name="txtaccionedit" id="txtaccionedit" onchange="camposMayus(this)" required=""></textarea><br>
                               </div>
                           </div>
                       </div>

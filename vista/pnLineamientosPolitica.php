@@ -64,7 +64,7 @@
                                 <label>Eje Estratégico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txteje" id="txteje">
+                                  <select class="form-control" name="txteje" id="txteje" required="">
                                   <option value="0">Elegir Eje</option>
                                 </select><br>
                               </div>
@@ -78,7 +78,7 @@
                                 <label>Descripción</label>
                               </div>
                               <div class="col-lg-10">
-                                <textarea class="form-control" name="txtdescripcion" id="txtdescripcion">
+                                  <textarea class="form-control" name="txtdescripcion" id="txtdescripcion" required="">
                                   
                                 </textarea><br>
                               </div>
@@ -109,7 +109,7 @@
                                 <label>Eje Estratégico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtejeedit" id="txtejeedit">
+                                  <select class="form-control" name="txtejeedit" id="txtejeedit" required="">
                                   <option value="0">Elegir Eje</option>
                                 </select><br>
                               </div>
@@ -123,7 +123,7 @@
                                 <label>Descripción</label>
                               </div>
                               <div class="col-lg-10">
-                                <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit">
+                                  <textarea class="form-control" name="txtdescripcionedit" id="txtdescripcionedit" required="">
                                   
                                 </textarea><br>
                               </div>

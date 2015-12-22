@@ -6,8 +6,9 @@
     color: white;
     font-family: "Roboto",sans-serif;
     bottom: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
+    float: top;
 }
 	.footer__creado__a{
 		color: #1d1d1d;
@@ -15,3 +16,12 @@
 		.footer__creado__a:hover{
 			color: white;
 		}
+                
+/*                
+                
+@media(max-height:750px){  
+    .footer__creado{
+        position: relative;
+
+    }
+}*/

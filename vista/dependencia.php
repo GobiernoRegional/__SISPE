@@ -71,13 +71,13 @@
                                   <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                           </div>
                       </div>
@@ -117,7 +117,7 @@
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                           </div>
                       </div>

@@ -168,7 +168,7 @@
                     </table>
                 </div>
             </div>
-        </div>
+        </div><br/><br/>
         <?php
             include 'footer.php';
         ?>

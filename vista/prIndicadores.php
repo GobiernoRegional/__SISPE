@@ -78,31 +78,31 @@
                                   <label>Línea Base - Cantidad:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtlbcantidad" id="txtlbcantidad" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtlbcantidad" id="txtlbcantidad" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Línea Base - Año:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtlbanio" id="txtlbanio" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtlbanio" id="txtlbanio" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2014:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2014" id="txtmeta2014" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2014" id="txtmeta2014" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2018:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2018" id="txtmeta2018" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2018" id="txtmeta2018" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2021" id="txtmeta2021" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2021" id="txtmeta2021" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Fuente:</label>
@@ -151,31 +151,31 @@
                                   <label>Línea Base - Cantidad:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtlbcantidadedit" id="txtlbcantidadedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtlbcantidadedit" id="txtlbcantidadedit" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Línea Base - Año:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtlbanioedit" id="txtlbanioedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtlbanioedit" id="txtlbanioedit" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2014:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2014edit" id="txtmeta2014edit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2014edit" id="txtmeta2014edit" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2018:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2018edit" id="txtmeta2018edit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2018edit" id="txtmeta2018edit" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtmeta2021edit" id="txtmeta2021edit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtmeta2021edit" id="txtmeta2021edit" onchange="camposMayus(this)" onkeypress="return soloNumeros(event)"><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Fuente:</label>
@@ -252,5 +252,6 @@
     <script type="text/javascript" src="../util/sweet/sweetalert-dev.js"></script>
     <!-- JS Propio -->
     <script type="text/javascript" src="js/prIndicador.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
   </body>
 </html>

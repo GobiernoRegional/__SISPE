@@ -65,7 +65,7 @@
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivo" id="txtobjetivo">
+                                  <select class="form-control" name="txtobjetivo" id="txtobjetivo" required="">
                                   <option value="0">Elegir Objetivo</option>
                                 </select><br>
                               </div>
@@ -73,13 +73,13 @@
                                 <label>Indicador:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtindicador" id="txtindicador" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtindicador" id="txtindicador" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Fórmula del indicador:</label>
                               </div>
                               <div class="col-lg-8">
-                                <textarea class="form-control" name="txtformula" id="txtformula">
+                                  <textarea class="form-control" name="txtformula" id="txtformula" required="">
                                   
                                 </textarea><br>
                               </div>
@@ -87,25 +87,25 @@
                                 <label>Fuente de información:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtfuente" id="txtfuente" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtfuente" id="txtfuente" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Línea de base:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtlineabase" id="txtlineabase" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtlineabase" id="txtlineabase" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Tendencia al 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txttendencia" id="txttendencia" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txttendencia" id="txttendencia" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtmeta" id="txtmeta" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtmeta" id="txtmeta" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                           </div>
                       </div>
@@ -134,7 +134,7 @@
                                 <label>Objetivo Específico:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit">
+                                  <select class="form-control" name="txtobjetivoedit" id="txtobjetivoedit" required="">
                                   <option value="0">Elegir Objetivo</option>
                                 </select><br>
                               </div>
@@ -142,13 +142,13 @@
                                 <label>Indicador:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtindicadoredit" id="txtindicadoredit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtindicadoredit" id="txtindicadoredit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Fórmula del indicador:</label>
                               </div>
                               <div class="col-lg-8">
-                                <textarea class="form-control" name="txtformulaedit" id="txtformulaedit">
+                                  <textarea class="form-control" name="txtformulaedit" id="txtformulaedit" required="">
                                   
                                 </textarea><br>
                               </div>
@@ -156,25 +156,25 @@
                                 <label>Fuente de información:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtfuenteedit" id="txtfuenteedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtfuenteedit" id="txtfuenteedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Línea de base:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtlineabaseedit" id="txtlineabaseedit" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtlineabaseedit" id="txtlineabaseedit" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Tendencia al 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txttendenciaedit" id="txttendenciaedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txttendenciaedit" id="txttendenciaedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                 <label>Meta 2021:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtmetaedit" id="txtmetaedit" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtmetaedit" id="txtmetaedit" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                           </div>
                       </div>

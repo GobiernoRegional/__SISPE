@@ -65,37 +65,37 @@
                                   <label>Nombres:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombres" id="txtnombres" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombres" id="txtnombres" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Apellidos:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>DNI:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdni" id="txtdni" maxlength="8" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtdni" id="txtdni" maxlength="8" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>F. Nac:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="date" class="form-control" name="txtfechanacimiento" id="txtfechanacimiento"><br>
+                                  <input type="date" class="form-control" name="txtfechanacimiento" id="txtfechanacimiento" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Dirección:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdireccion" id="txtdireccion" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtdireccion" id="txtdireccion" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Sexo:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtsexo" id="txtsexo">
+                                  <select class="form-control" name="txtsexo" id="txtsexo" required="">
                                     <option value="1">MASCULINO</option>
                                     <option value="2">FEMENINO</option>
                                   </select><br>
@@ -104,19 +104,19 @@
                                   <label>Email:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="email" class="form-control" name="txtemail" id="txtemail"><br>
+                                  <input type="email" class="form-control" name="txtemail" id="txtemail" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txttelefono" id="txttelefono" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Cargo:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtcargo" id="txtcargo">
+                                  <select class="form-control" name="txtcargo" id="txtcargo" required="">
                                     <option value="0">Elegir Cargo</option>
                                   </select><br>
                               </div>
@@ -124,7 +124,7 @@
                                   <label>Área:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtarea" id="txtarea">
+                                  <select class="form-control" name="txtarea" id="txtarea" required="">
                                     <option value="0">Elegir Área</option>
                                   </select><br>
                               </div>
@@ -132,7 +132,7 @@
                                 <label>Acceso:</label>
                               </div>
                               <div class="col-lg-8">
-                                <select class="form-control" name="txtacceso" id="txtacceso" onchange="visible(this.value)">
+                                  <select class="form-control" name="txtacceso" id="txtacceso" onchange="visible(this.value)">
                                   <option value="1">NO TIENE ACCESO</option>
                                   <option value="2">TIENE ACCESO</option>
                                 </select><br>
@@ -142,13 +142,13 @@
                                   <label>Usuario:</label>
                                 </div>
                                 <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtusuario" id="txtusuario"><br>
+                                    <input type="text" class="form-control" name="txtusuario" id="txtusuario"><br>
                                 </div>
                                 <div class="col-lg-2">
                                   <label>Password:</label>
                                 </div>
                                 <div class="col-lg-4">
-                                  <input type="password" class="form-control" name="txtpassword" id="txtpassword"><br>
+                                    <input type="password" class="form-control" name="txtpassword" id="txtpassword"><br>
                                 </div>
                               </div>
                           </div>
@@ -178,37 +178,37 @@
                                   <label>Nombres:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombresedit" id="txtnombresedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombresedit" id="txtnombresedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Apellidos:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtapellidosedit" id="txtapellidosedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtapellidosedit" id="txtapellidosedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>DNI:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdniedit" id="txtdniedit" maxlength="8" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txtdniedit" id="txtdniedit" maxlength="8" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>F. Nac:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="date" class="form-control" name="txtfechanacimientoedit" id="txtfechanacimientoedit"><br>
+                                  <input type="date" class="form-control" name="txtfechanacimientoedit" id="txtfechanacimientoedit" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Dirección:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txtdireccionedit" id="txtdireccionedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtdireccionedit" id="txtdireccionedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Sexo:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtsexoedit" id="txtsexoedit">
+                                  <select class="form-control" name="txtsexoedit" id="txtsexoedit" required="">
                                     <option value="1">MASCULINO</option>
                                     <option value="2">FEMENINO</option>
                                   </select><br>
@@ -217,19 +217,19 @@
                                   <label>Email:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="email" class="form-control" name="txtemailedit" id="txtemailedit"><br>
+                                  <input type="email" class="form-control" name="txtemailedit" id="txtemailedit" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Teléfono:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)"><br>
+                                  <input type="text" class="form-control" name="txttelefonoedit" id="txttelefonoedit" onkeypress="return soloNumeros(event)" required=""><br>
                               </div>
                               <div class="col-lg-2">
                                   <label>Cargo:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtcargoedit" id="txtcargoedit">
+                                  <select class="form-control" name="txtcargoedit" id="txtcargoedit" required="">
                                     <option value="0">Elegir Cargo</option>
                                   </select><br>
                               </div>
@@ -237,7 +237,7 @@
                                   <label>Área:</label>
                               </div>
                               <div class="col-lg-4">
-                                  <select class="form-control" name="txtareaedit" id="txtareaedit">
+                                  <select class="form-control" name="txtareaedit" id="txtareaedit" required="">
                                     <option value="0">Elegir Área</option>
                                   </select><br>
                               </div>

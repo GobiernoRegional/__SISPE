@@ -71,13 +71,13 @@
                                   <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombre" id="txtnombre" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Dependencia:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <select class="form-control" name="txtdependencia" id="txtdependencia">
+                                  <select class="form-control" name="txtdependencia" id="txtdependencia" required="">
                                     <option value="0">Elegir Dependencia</option>
                                   </select><br>
                               </div>
@@ -113,13 +113,13 @@
                                   <label>Nombre:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)"><br>
+                                  <input type="text" class="form-control" name="txtnombreedit" id="txtnombreedit" onchange="camposMayus(this)" required=""><br>
                               </div>
                               <div class="col-lg-4">
                                   <label>Dependencia:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <select class="form-control" name="txtdependenciaedit" id="txtdependenciaedit">
+                                  <select class="form-control" name="txtdependenciaedit" id="txtdependenciaedit" required="">
                                     <option value="0">Elegir Dependencia</option>
                                   </select><br>
                               </div>
@@ -170,9 +170,9 @@
                 </div>
             </div>
         </div>
-        <?php
+                  <?php
             include 'footer.php';
-        ?>
+            ?>
      <!-- jQuery 2.1.3 -->
     <script src="../util/jquery/jquery.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->

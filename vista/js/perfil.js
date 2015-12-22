@@ -53,7 +53,7 @@ function validaKeyPress(campo){
     $('#'+campo).css('background', '#D9EDF7');
     
     if( $('#txtcontrol').val()==='0'){ 
-        alert($('#txtcontrol').val());
+//        alert($('#txtcontrol').val());
         if(
         $("#txttelefonoedit").val()!== $("#txttelefonocont").val() ||
         $("#txtcorreoedit").val()!== $("#txtcorreocont").val() ||

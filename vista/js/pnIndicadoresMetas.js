@@ -118,6 +118,7 @@ function limpiarFormulario(){
   $("#txtformula").val("");
   $("#txtfuente").val("");
   $("#txtlineabase").val("");
+  $("txttendencia").val("");
   $("#txtmeta").val("");
 }
 function cargarObjetivo(){

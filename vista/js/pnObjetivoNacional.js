@@ -178,7 +178,7 @@ function eliminardato(valor){
     	success: function(DataJson){
       		if(DataJson.state){
        			swal("Correcto", "", "success");
-            	listar();
+                    listar();
                 $("#btncerrareliminar").click();
       		}else{                           
         		
@@ -194,7 +194,7 @@ function eliminardato(valor){
 
 ///Validaciones
 $(document).on("keypress", "#txtobjetivo", function(){
-    if($("#txtobjetivo").val().length < 00){
+    if($("#txtobjetivo").val().length < 250){
         return true;
     }else{
         return false;
@@ -202,7 +202,7 @@ $(document).on("keypress", "#txtobjetivo", function(){
 });
 
 $(document).on("keypress", "#txtobjetivoedit", function(){
-    if($("#txtobjetivoedit").val().length < 100){
+    if($("#txtobjetivoedit").val().length < 250){
         return true;
     }else{
         return false;
