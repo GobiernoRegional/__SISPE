@@ -1,12 +1,12 @@
 <?php
-	$codigo                 = $_POST["txtcodigoedit"];
-	$indicador              = $_POST["txtnombreedit"];
-        $ano                    = $_POST["txtanoedit"];
-        $cantidad                = $_POST["txtmedidadedit"];
+	$codigo                 = $_POST["txtcodigo"];
+	$indicador              = $_POST["txtindicadoredit"];
+        $ano                    = $_POST["txtlbanioedit"];
+        $cantidad                = $_POST["txtlbcantidadedit"];
         $meta2014                 = $_POST["txtmeta2014edit"];
-        $meta2018             = $_POST["txtcantidadedit"];
-        $meta2021               = $_POST["txtformulaedit"];
-        $fuente            = $_POST["txtfecuenciaedit"];
+        $meta2018             = $_POST["txtmeta2018edit"];
+        $meta2021               = $_POST["txtmeta2021edit"];
+        $fuente            = $_POST["txtfuenteedit"];
         $variable              = $_POST["txtvariableedit"];
                 
         require_once '../negocio/IndicadorRegional.class.php';

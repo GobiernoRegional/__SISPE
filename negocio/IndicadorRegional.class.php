@@ -2,6 +2,7 @@
 
 require_once '../datos/conexion.php';
 class IndicadorRegional  extends Conexion{
+
     private $codigo;
     private $nombre;    
     private $cantidad;
@@ -20,7 +21,6 @@ class IndicadorRegional  extends Conexion{
      return $this->nombre;
     }
 
-   
     function setCodigo($codigo) {
      $this->codigo = $codigo;
     }
@@ -40,8 +40,6 @@ class IndicadorRegional  extends Conexion{
     function getMeta2014() {
         return $this->meta2014;
     }
-
-   
 
     function getMeta2018() {
         return $this->meta2018;
@@ -87,8 +85,6 @@ class IndicadorRegional  extends Conexion{
         $this->variable = $variable;
     }
 
-       
-    
 
     function listar(){
         try {
@@ -113,10 +109,11 @@ class IndicadorRegional  extends Conexion{
         
         try {  
                 
-                $sql = "select fn_tvinsertarindicador('".$this->getNombre()."','".$this->getCantidad()."','".$this->getPano()."',"
-                    . "'".$this->getMeta2014()."','".$this->getCantidad()."','".$this->getMeta2018()."','".$this->getMeta2021()."',"
-                    . " '".$this->getFuente()."','".$this->getVariable()."')";
-                
+                $sql = "select fn_tvinsertarindicador('".$this->getNombre()."',".$this->getCantidad().",".$this->getPano().",
+                    ".$this->getMeta2014().",".$this->getMeta2018().",".$this->getMeta2021().",
+                    '".$this->getFuente()."','".$this->getVariable()."')";
+                //echo $sql;
+                //return;
                 $sentencia =  $this->dblink->prepare($sql);
                 $sentencia->execute();
                 $this->dblink->commit();
@@ -135,9 +132,9 @@ class IndicadorRegional  extends Conexion{
         $this->dblink->beginTransaction();
         
         try {
-             $sql = "select fn_tvmodificarindicador('".$this->getCodigo()."','".$this->getNombre()."','".$this->getCantidad()."','".$this->getPano()."',"
-                    . "'".$this->getMeta2014()."','".$this->getCantidad()."','".$this->getMeta2018()."','".$this->getMeta2021()."',"
-                    . " '".$this->getFuente()."','".$this->getVariable()."')";
+             $sql = "select fn_tvmodificarindicador('".$this->getCodigo()."','".$this->getNombre()."',".$this->getCantidad().",
+                    ".$this->getPano().",".$this->getMeta2014().",".$this->getMeta2018().",".$this->getMeta2021().",
+                    '".$this->getFuente()."','".$this->getVariable()."')";
           
             $sentencia =  $this->dblink->prepare($sql);
             $sentencia->execute();

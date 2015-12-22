@@ -1,12 +1,12 @@
 <?php
-	$indicador              = $_POST["txtnombreedit"];
-        $ano                    = $_POST["txtanoedit"];
-        $cantidad                = $_POST["txtmedidadedit"];
-        $meta2014                 = $_POST["txtmeta2014edit"];
-        $meta2018             = $_POST["txtcantidadedit"];
-        $meta2021               = $_POST["txtformulaedit"];
-        $fuente            = $_POST["txtfecuenciaedit"];
-        $variable              = $_POST["txtvariableedit"];
+	$indicador              = $_POST["txtindicador"];
+        $cantidad                = $_POST["txtlbcantidad"];
+        $ano                    = $_POST["txtlbanio"];
+        $meta2014                 = $_POST["txtmeta2014"];
+        $meta2018             = $_POST["txtmeta2018"];
+        $meta2021               = $_POST["txtmeta2021"];
+        $fuente            = $_POST["txtfuente"];
+        $variable              = $_POST["txtvariable"];
         
 	require_once '../negocio/IndicadorRegional.class.php';
 	$objIndicadorRegional = new IndicadorRegional();
@@ -21,5 +21,6 @@
         $objIndicadorRegional->setVariable($variable);
         
 	$resultado=$objIndicadorRegional->agregar();
+        //return;
 	echo json_encode($resultado);
 ?>
