@@ -1,7 +1,7 @@
 <?php
 define("SERVIDOR_BD", "localhost");
 define("USUARIO_BD", "postgres");
-define("CLAVE_BD", "12345");
-define("PUERTO_BD", "5433");
-define("NOMBRE_BD", "SistemaPE");
+define("CLAVE_BD", "123456");
+define("PUERTO_BD", "5438");
+define("NOMBRE_BD", "sispe");
 
