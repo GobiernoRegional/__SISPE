@@ -1,6 +1,6 @@
 <?php
 	$codigo             = $_POST["txtcodigo"];
-    $sector             = $_POST["txtsectoredit"];
+        $sector             = $_POST["txtsectored"];
         
     require_once '../negocio/TipoSector.class.php';
 	$objTipoSector = new TipoSector();

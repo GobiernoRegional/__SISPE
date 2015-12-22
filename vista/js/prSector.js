@@ -37,11 +37,6 @@ $('#frmeditar').submit(function(e){
     e.preventDefault();
 
 
-    if($("#txtsectoredit").val()!==""){
-        swal("Complete los campos", "", "error");
-        return 0;  
-        
-    }
     $.ajax({
       url: "../controlador/SectorEditar.controlador.php",
       type: "post",
@@ -77,8 +72,14 @@ function editar(id){
       data: parametro,
       success: function(DataJson){
         if(DataJson.state){
-          $("#txtcodigo").val(DataJson.resultado.tse_codigo);
-          $("#txtsectoredit").val(DataJson.resultado.tse_nombre);
+            for(datas in DataJson.resultado){
+                 $("#txtcodigo").val(DataJson.resultado[datas].tse_codigo);
+                 $("#txtsectored").val(DataJson.resultado[datas].tse_nombre);
+//                    alert(DataJson.resultado[datas].tse_nombre);
+            }
+                             $("#txtsectored").val(DataJson.resultado.tse_nombre);
+
+                alert(DataJson.resultado.tse_nombre)
         }else{                           
           
         }                                                           
@@ -161,8 +162,8 @@ $(document).on("keypress", "#txtsector", function(){
     }
 });
 
-$(document).on("keypress", "#txtsectoredit", function(){
-    if($("#txtsectoredit").val().length < 300){
+$(document).on("keypress", "#txtsectored", function(){
+    if($("#txtsectored").val().length < 300){
         return true;
     }else{
         return false;
