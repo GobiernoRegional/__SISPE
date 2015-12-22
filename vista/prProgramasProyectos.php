@@ -110,7 +110,7 @@
                                   <label>Estrategia:</label>
                               </div>
                               <div class="col-lg-8">
-                                  <textarea type="text" class="form-control" name="txtprograma" id="txtprograma" onchange="camposMayus(this)" required></textarea><br>
+                                  <textarea type="text" class="form-control" name="txtprogramaedit" id="txtprogramaedit" onchange="camposMayus(this)" required></textarea><br>
                               </div>
                           </div>
                       </div>
