@@ -54,6 +54,9 @@
                         <hr>
                         <li><a href="prEstrategias.php">Estrategias</a></li>
                         <li><a href="prProgramasProyectos.php">Programas/Proyectos</a></li>
+                        <hr>
+                        <li><a href="prVariables.php">Variables</a></li>
+                        <li><a href="prIndicadores.php">Indicadores</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
