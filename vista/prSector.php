@@ -93,7 +93,7 @@
                                 <label>Sector:</label>
                               </div>
                               <div class="col-lg-8">
-                                <input type="text" class="form-control" name="txtsectoredit" id="txtsectoredit" onchange="camposMayus(this)" onkeypress="return soloLetras(event)"><br>
+                                  <input type="text" class="form-control" name="txtsectored" required="" id="txtsectored" onchange="camposMayus(this)" ><br>
                               </div>
                           </div>
                       </div>
